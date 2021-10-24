@@ -1,0 +1,210 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.14.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: hbbbbb Adickes Yang, jjjj, LIC=9N0Z9-41KE7-66ZQS-LBYMW-PC1LG-GQJ79
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.14.0.0
+Toolchain Path:  E:\KEIL\MDK5\Install\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DCM.DLL V1.13.1.0
+Target DLL:      Segger\JL2CM3.dll V2.99.13.0
+Dialog DLL:      TCM.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+D:\Work_File\KEIL\2019年程序\MR2驱动程序——新主控板 - 简化 - 调pid\主控模板\Project\Pro\RS422_MODULE.uvprojx
+Project File Date:  07/07/2019
+
+<h2>Output:</h2>
+Build target 'RESS_MODULE'
+compiling main.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\main.c: 0 warnings, 1 error
+compiling beep.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\beep.c: 0 warnings, 1 error
+compiling action.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\action.c: 0 warnings, 1 error
+compiling can1.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\can1.c: 0 warnings, 1 error
+compiling can2.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\can2.c: 0 warnings, 1 error
+compiling cancontrolist.c...
+..\..\USER\SRC\cancontrolist.c(15): error:  #20: identifier "MesgControlGrp" is undefined
+  void InitCANControlList(MesgControlGrp* CAN_MesgSentList , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(15): error:  #20: identifier "u8" is undefined
+  void InitCANControlList(MesgControlGrp* CAN_MesgSentList , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(17): error:  #20: identifier "u8" is undefined
+        u8 i = 0;
+..\..\USER\SRC\cancontrolist.c(18): error:  #20: identifier "u8" is undefined
+        u8 CAN_NodeNumber = 0;
+..\..\USER\SRC\cancontrolist.c(19): error:  #20: identifier "CAN_1" is undefined
+        if(CAN_1 == CAN_x)
+..\..\USER\SRC\cancontrolist.c(21): error:  #20: identifier "Flag" is undefined
+                Flag[Can1ControlList] = 1;                      //报文控制表启动标志位
+..\..\USER\SRC\cancontrolist.c(21): error:  #20: identifier "Can1ControlList" is undefined
+                Flag[Can1ControlList] = 1;                      //报文控制表启动标志位
+..\..\USER\SRC\cancontrolist.c(22): error:  #20: identifier "CAN1_NodeNumber" is undefined
+                CAN_NodeNumber = CAN1_NodeNumber;
+..\..\USER\SRC\cancontrolist.c(26): error:  #20: identifier "Flag" is undefined
+                Flag[Can2ControlList] = 1;                      //报文控制表启动标志位
+..\..\USER\SRC\cancontrolist.c(26): error:  #20: identifier "Can2ControlList" is undefined
+                Flag[Can2ControlList] = 1;                      //报文控制表启动标志位
+..\..\USER\SRC\cancontrolist.c(27): error:  #20: identifier "CAN2_NodeNumber" is undefined
+                CAN_NodeNumber = CAN2_NodeNumber;
+..\..\USER\SRC\cancontrolist.c(36): error:  #20: identifier "CAN_CONTROLQUEUESIZE" is undefined
+                CAN_MesgSentList[i].SentQueue.Can_sendqueuesize = CAN_CONTROLQUEUESIZE;
+..\..\USER\SRC\cancontrolist.c(44): error:  #20: identifier "MesgControlGrp" is undefined
+  void TraversalControlList(MesgControlGrp* CAN_MesgSentList , Can_Sendqueue* can_queue , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(44): error:  #20: identifier "Can_Sendqueue" is undefined
+  void TraversalControlList(MesgControlGrp* CAN_MesgSentList , Can_Sendqueue* can_queue , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(44): error:  #20: identifier "u8" is undefined
+  void TraversalControlList(MesgControlGrp* CAN_MesgSentList , Can_Sendqueue* can_queue , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(46): error:  #20: identifier "u8" is undefined
+        u8 i=0;
+..\..\USER\SRC\cancontrolist.c(47): error:  #20: identifier "u8" is undefined
+        u8 CAN_NodeNumber = 0;
+..\..\USER\SRC\cancontrolist.c(48): error:  #20: identifier "u8" is undefined
+        u8 CanControlList = 0;
+..\..\USER\SRC\cancontrolist.c(49): error:  #20: identifier "CAN_1" is undefined
+        if(CAN_1 == CAN_x)
+..\..\USER\SRC\cancontrolist.c(51): error:  #20: identifier "CAN1_NodeNumber" is undefined
+                CAN_NodeNumber = CAN1_NodeNumber;
+..\..\USER\SRC\cancontrolist.c(52): error:  #20: identifier "Can1ControlList" is undefined
+                CanControlList = Can1ControlList;
+..\..\USER\SRC\cancontrolist.c(56): error:  #20: identifier "CAN2_NodeNumber" is undefined
+                CAN_NodeNumber = CAN2_NodeNumber;
+..\..\USER\SRC\cancontrolist.c(57): error:  #20: identifier "Can2ControlList" is undefined
+                CanControlList = Can2ControlList;
+..\..\USER\SRC\cancontrolist.c(85): warning:  #223-D: function "memcpy" declared implicitly
+                                                memcpy(&(can_queue->head[can_queue->Rear].Data[0] ),&(CAN_MesgSentList[i].SentQueue.head[CAN_MesgSentList[i].SentQueue.Front].Data[0]),
+..\..\USER\SRC\cancontrolist.c(86): error:  #20: identifier "u8" is undefined
+                                                                                sizeof(u8)*can_queue->head[can_queue->Rear].DLC);
+..\..\USER\SRC\cancontrolist.c(94): error:  #20: identifier "Flag" is undefined
+                                Flag[CanControlList]=0;
+..\..\USER\SRC\cancontrolist.c(96): warning:  #223-D: function "memset" declared implicitly
+                                memset(str_Err, 0, 10);
+..\..\USER\SRC\cancontrolist.c(96): error:  #20: identifier "str_Err" is undefined
+                                memset(str_Err, 0, 10);
+..\..\USER\SRC\cancontrolist.c(107): warning:  #223-D: function "strcpy" declared implicitly
+                                                        strcpy(str_Err, "Elmo1 Ero");
+..\..\USER\SRC\cancontrolist.c(134): error:  #20: identifier "MesgControlGrp" is undefined
+  void CANMesgControlList(MesgControlGrp* CAN_MesgSentList , Can_Sendqueue* can_queue , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(134): error:  #20: identifier "Can_Sendqueue" is undefined
+  void CANMesgControlList(MesgControlGrp* CAN_MesgSentList , Can_Sendqueue* can_queue , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(134): error:  #20: identifier "u8" is undefined
+  void CANMesgControlList(MesgControlGrp* CAN_MesgSentList , Can_Sendqueue* can_queue , u8 CAN_x)
+..\..\USER\SRC\cancontrolist.c(136): error:  #20: identifier "u16" is undefined
+                u16 ControlListID=0xFF;
+..\..\USER\SRC\cancontrolist.c: 3 warnings, 30 errors
+compiling delay.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\delay.c: 0 warnings, 1 error
+compiling ili9320.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\ili9320.c: 0 warnings, 1 error
+compiling ili9320_api.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\ili9320_api.c: 0 warnings, 1 error
+compiling lcd.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\lcd.c: 0 warnings, 1 error
+compiling key.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\key.c: 0 warnings, 1 error
+compiling led.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\led.c: 0 warnings, 1 error
+compiling led8.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\led8.c: 0 warnings, 1 error
+compiling motor.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\motor.c: 0 warnings, 1 error
+compiling param.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\param.c: 0 warnings, 1 error
+compiling pid.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\pid.c: 0 warnings, 1 error
+compiling queue.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\queue.c: 0 warnings, 1 error
+compiling stm32f4xx_it.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\stm32f4xx_it.c: 0 warnings, 1 error
+compiling tim.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\tim.c: 0 warnings, 1 error
+compiling usart1.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\usart1.c: 0 warnings, 1 error
+compiling usart2.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\USER\SRC\usart2.c: 0 warnings, 1 error
+compiling stm32f10x_gpio.c...
+..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c(23): error:  #5: cannot open source input file "stm32f10x_gpio.h": No such file or directory
+  #include "stm32f10x_gpio.h"
+..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c: 0 warnings, 1 error
+compiling stm32f10x_rcc.c...
+..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c(23): error:  #5: cannot open source input file "stm32f10x_rcc.h": No such file or directory
+  #include "stm32f10x_rcc.h"
+..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c: 0 warnings, 1 error
+compiling stm32f10x_usart.c...
+..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c(23): error:  #5: cannot open source input file "stm32f10x_usart.h": No such file or directory
+  #include "stm32f10x_usart.h"
+..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c: 0 warnings, 1 error
+compiling misc.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\Libraries\STM32F10x_StdPeriph_Driver\src\misc.c: 0 warnings, 1 error
+compiling system_stm32f10x.c...
+"no source": Error:  #5: cannot open source input file "..\..\USER\SRC\system_stm32f10x.c": No such file or directory
+..\..\USER\SRC\system_stm32f10x.c: 0 warnings, 1 error
+compiling os_cpu_c.c...
+..\..\Libraries\CMSIS\stm32f4xx.h(246): error:  #5: cannot open source input file "core_cm4.h": No such file or directory
+  #include "core_cm4.h"             /* Cortex-M4 processor and core peripherals */
+..\..\uCOSII\PORT\os_cpu_c.c: 0 warnings, 1 error
+"..\OBJ\RS422_MODULE.axf" - 55 Error(s), 3 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  D:\Work_File\KEIL\2019年程序\MR2驱动程序——新主控板 - 简化 - 调pid\主控模板\Project\Pro\RTE
+  E:\KEIL\MDK5\Install\ARM\PACK\Keil\STM32F4xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Target not created.
+</pre>
+</body>
+</html>

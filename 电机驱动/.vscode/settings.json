@@ -1,0 +1,12 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "can1.h": "c",
+        "mymath.h": "c",
+        "usart.h": "c",
+        "mydataprocess.h": "c",
+        "queue.h": "c",
+        "main.h": "c",
+        "master_para.h": "c"
+    }
+}

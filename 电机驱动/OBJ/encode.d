@@ -1,0 +1,15 @@
+.\obj\encode.o: ..\USER\SRC\encode.c
+.\obj\encode.o: ..\User\inc\encode.h
+.\obj\encode.o: ..\Libraries\CMSIS\stm32f4xx.h
+.\obj\encode.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
+.\obj\encode.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\encode.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h
+.\obj\encode.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmFunc.h
+.\obj\encode.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmSimd.h
+.\obj\encode.o: ..\Libraries\CMSIS\system_stm32f4xx.h
+.\obj\encode.o: ..\User\inc\stm32f4xx_conf.h
+.\obj\encode.o: ..\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\obj\encode.o: ..\Libraries\CMSIS\stm32f4xx.h
+.\obj\encode.o: ..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h
+.\obj\encode.o: ..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h
+.\obj\encode.o: ..\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h

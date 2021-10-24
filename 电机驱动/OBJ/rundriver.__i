@@ -1,0 +1,6 @@
+-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork -I..\Libraries\CMSIS -I..\Libraries\Startup -I..\Libraries\STM32F4xx_StdPeriph_Driver\inc -I..\User\inc -I..\uCOSII\PORT -I..\uCOSII\CORE -I..\uCOSII\CONFIG -I..\GeneralFunction\inc
+-I F:\¿ØÖÆ×é\STM32\uCOS\Project\RTE
+-I "D:\Program Files\keil mdk5.01\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include"
+-I "D:\Program Files\keil mdk5.01\ARM\PACK\Keil\STM32F4xx_DFP\1.0.5\Device\Include"
+-D_RTE_ -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx
+-o .\obj\rundriver.o --omf_browse .\obj\rundriver.crf --depend .\obj\rundriver.d "..\User\src\rundriver.c"
