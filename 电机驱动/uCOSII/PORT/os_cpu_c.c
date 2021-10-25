@@ -223,24 +223,24 @@ OS_STK *OSTaskStkInit (void (*task)(void *p_arg), void *p_arg, OS_STK *ptos, INT
     
 	#if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
 
-	 *(--stk) = (INT32U)0x00000000u;                        /* No Name Register                         */
-    *(--stk) = (INT32U)0x00000000u;                        /* FPSCR                                              */
-    *(--stk) = (INT32U)0x15151515u;                        /* S15                                                    */
-    *(--stk) = (INT32U)0x14141414u;                        /* S14                                                    */
-    *(--stk) = (INT32U)0x13131313u;                        /* S13                                                    */
-    *(--stk) = (INT32U)0x12121212u;                        /* S12                                                    */
-    *(--stk) = (INT32U)0x11111111u;                        /* S11                                                    */
-    *(--stk) = (INT32U)0x10101010u;                        /* S10                                                    */
-    *(--stk) = (INT32U)0x09090909u;                        /* S9                                                     */
-    *(--stk) = (INT32U)0x08080808u;                        /* S8                                                     */
-    *(--stk) = (INT32U)0x07070707u;                        /* S7                                                     */
-    *(--stk) = (INT32U)0x06060606u;                        /* S6                                                     */
-    *(--stk) = (INT32U)0x05050505u;                        /* S5                                                     */
-    *(--stk) = (INT32U)0x04040404u;                        /* S4                                                     */
-    *(--stk) = (INT32U)0x03030303u;                        /* S3                                                     */
-    *(--stk) = (INT32U)0x02020202u;                        /* S2                                                     */
-    *(--stk) = (INT32U)0x01010101u;                        /* S1                                                     */
-    *(--stk) = (INT32U)0x00000000u;                        /* S0                     */
+	  *(--stk) = (INT32U)0x00000000u;                        /* No Name Register                         */
+    *(--stk) = (INT32U)0x00000000u;                        /* FPSCR                                    */
+    *(--stk) = (INT32U)0x15151515u;                        /* S15                                      */
+    *(--stk) = (INT32U)0x14141414u;                        /* S14                                      */
+    *(--stk) = (INT32U)0x13131313u;                        /* S13                                      */
+    *(--stk) = (INT32U)0x12121212u;                        /* S12                                      */
+    *(--stk) = (INT32U)0x11111111u;                        /* S11                                      */
+    *(--stk) = (INT32U)0x10101010u;                        /* S10                                      */
+    *(--stk) = (INT32U)0x09090909u;                        /* S9                                       */
+    *(--stk) = (INT32U)0x08080808u;                        /* S8                                       */
+    *(--stk) = (INT32U)0x07070707u;                        /* S7                                       */
+    *(--stk) = (INT32U)0x06060606u;                        /* S6                                       */
+    *(--stk) = (INT32U)0x05050505u;                        /* S5                                       */
+    *(--stk) = (INT32U)0x04040404u;                        /* S4                                       */
+    *(--stk) = (INT32U)0x03030303u;                        /* S3                                       */
+    *(--stk) = (INT32U)0x02020202u;                        /* S2                                       */
+    *(--stk) = (INT32U)0x01010101u;                        /* S1                                       */
+    *(--stk) = (INT32U)0x00000000u;                        /* S0                                       */
 	#endif
                                                  /* Registers stacked as if auto-saved on exception    */
     *(stk)    = (INT32U)0x01000000L;             /* xPSR                                               */

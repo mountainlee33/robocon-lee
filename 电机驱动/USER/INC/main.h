@@ -23,6 +23,7 @@
 #include "elmo.h"
 #include "akmotor.h"
 #include "dianji.h"
+#include "led8.h"
 
 //START任务
 #define START_TASK_PRIO 5
