@@ -1,0 +1,17 @@
+.\obj\key.o: USER\SRC\key.c
+.\obj\key.o: .\USER\INC\key.h
+.\obj\key.o: .\USER\INC\led8.h
+.\obj\key.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\key.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
+.\obj\key.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\key.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h
+.\obj\key.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmFunc.h
+.\obj\key.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmSimd.h
+.\obj\key.o: .\Libraries\CMSIS\system_stm32f4xx.h
+.\obj\key.o: .\USER\INC\stm32f4xx_conf.h
+.\obj\key.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\obj\key.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\key.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h
+.\obj\key.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h
+.\obj\key.o: .\USER\INC\delay.h
+.\obj\key.o: .\GeneralFunction\inc\sys.h

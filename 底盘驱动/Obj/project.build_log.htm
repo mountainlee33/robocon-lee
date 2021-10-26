@@ -1,0 +1,75 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.14.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=VGXG8-3T2ZM-FWW2N-Y1ZRK-HEEB6-TVHQT
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Standard  Version: 5.14.0.0
+Toolchain Path:  D:\keil\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DCM.DLL V1.13.1.0
+Target DLL:      Segger\JL2CM3.dll V2.99.13.0
+Dialog DLL:      TCM.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+C:\Users\33643\Desktop\robocon-lee\电机驱动\project.uvprojx
+Project File Date:  10/25/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling can1.c...
+USER\SRC\can1.c(88): warning:  #177-D: function "answer_drivemotor" was declared but never referenced
+  static void answer_drivemotor(CanRxMsg *rx_message, u8 motorid)
+USER\SRC\can1.c(95): warning:  #177-D: function "answer_query" was declared but never referenced
+  static void answer_query(CanRxMsg *rx_message, u8 motorid)
+USER\SRC\can1.c: 2 warnings, 0 errors
+linking...
+.\Obj\project.axf: Error: L6200E: Symbol buf multiply defined (by akmotor.o and can1.o).
+.\Obj\project.axf: Error: L6200E: Symbol speed multiply defined (by elmo.o and can1.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 2 error messages.
+".\Obj\project.axf" - 2 Error(s), 2 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.4.2.0.pack
+                ARM::CMSIS:CORE:3.40.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 3.40.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.1.0.5.pack
+                Keil::Device:Startup:1.0.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  C:\Users\33643\Desktop\robocon-lee\电机驱动\RTE
+  D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include
+  D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:3.40.0
+      Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
+
+   * Component: Keil::Device:Startup:1.0.0
+      Include file:  RTE_Driver\Config\RTE_Device.h
+      Source file:   Device\Source\system_stm32f4xx.c
+      Include file:  Device\Include\stm32f4xx.h
+      Source file:   Device\Source\ARM\startup_stm32f40xx.s
+Target not created.
+</pre>
+</body>
+</html>

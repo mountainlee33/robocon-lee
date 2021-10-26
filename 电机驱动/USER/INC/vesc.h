@@ -105,7 +105,7 @@ extern VESCArgum VESCargum;
 extern VESCMotor VESCmotor[4];
 
 void VESC_Init(void);
-void VESC_calculate(VESCMotor *motor);
+void VESC_setZero(VESCMotor *motor);
 void VESC_RPM_mode_I(u8 id);
 void VESC_position_mode_pos(u8 id);
 void VESC_position_mode_I(u8 id);

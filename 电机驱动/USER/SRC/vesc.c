@@ -46,13 +46,14 @@ void VESC_Init(void)
 	
 	for (int i = 0; i < 4; i++)
 	{
+		VESC_setZero(&VESCmotor[i]);
 		VESCmotor[i].limit = VESClimit;
 		VESCmotor[i].argum = VESCargum;
 	}
 }
 
 //开始时，位置清零
-void VESC_calculate(VESCMotor *motor)
+void VESC_setZero(VESCMotor *motor)
 {
 	if(motor->status.isSetZero)
 	{

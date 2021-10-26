@@ -38,7 +38,6 @@ void TIM2_IRQHandler(void)
     {
       if (motor[id].enable)
       {
-				SetZero(&motor[id]);
         if (motor[id].begin)
         {
           switch (motor[id].mode)

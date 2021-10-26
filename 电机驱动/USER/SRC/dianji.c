@@ -81,12 +81,12 @@ void Motor_Init(void){
 	PID_Init(&motor[3].PIDs,8,0.2,0.3,0.4,motor[3].valueSet.velocity);
 	PID_Init(&motor[3].PIDx,8,0.2,0.3,1,motor[3].valueSet.pulse);
 
-		for (int i =0; i<8 ;i++)
-{
+	for (int i =0; i<8 ;i++)
+	{
 	motor[i].argum=motorargum;
 	motor[i].argum.maxPulse = motor[i].limit.maxAngle * motor[i].intrinsic.GEARRATIO * motor[i].intrinsic.LINE * motor[i].intrinsic.RATIO /360.f;
 	motor[i].valueSet.pulse = motor[i].valueSet.angle * motor[i].intrinsic.GEARRATIO * motor[i].intrinsic.RATIO * motor[i].intrinsic.LINE / 360.f;
-}
+	}
 	/*DJ电机标志为零*/
 	Djflag.angle=0;
 	Djflag.begin=0;
@@ -94,9 +94,10 @@ void Motor_Init(void){
 	Djflag.speed=0;
 	Djflag.um=0;
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 4; i++)
   {
     motor[i].limit.posSPlimit = 2000;//位置模式下的速度限制
+		SetZero(&motor[i]);
   }
 
 }
