@@ -12,6 +12,17 @@ void EcodeFloatData_to_4byte(float *f, u8 *buff)
 	buff[3] = ((f_c[1] >> 8) & 0x00ff);
 }
 
+//将int32类型的数据放到四个字节中
+void Ecodeint32Data_to_4byte(volatile vs32 *f, u8 *buff)
+{
+	u16 f_c[2];
+	*(vs32 *)f_c = *f;
+	buff[0] = (f_c[0] >> 0 & 0x00ff);
+	buff[1] = ((f_c[0] >> 8) & 0x00ff);
+	buff[2] = (f_c[1] >> 0 & 0x00ff);
+	buff[3] = ((f_c[1] >> 8) & 0x00ff);
+}
+
 //将number放到数组buffer中，number的高位对应buffer的低字节
 void buffer_append_int32(uint8_t *buffer, int32_t number, int32_t *index)
 {

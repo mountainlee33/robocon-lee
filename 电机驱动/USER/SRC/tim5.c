@@ -30,7 +30,7 @@ void TIM5_IRQHandler(void)
 		TIM_ClearITPendingBit(TIM5, TIM_IT_Update);
 		
 #ifdef USE_VESC
-		for(int i = 0 ; i < 3 ;  i++)
+		for(int i = 0 ; i < 4 ;  i++)
 		{
 			VESC_calculate(&VESCmotor[i]);
 			if(VESCmotor[i].enable)
@@ -68,8 +68,6 @@ void TIM5_IRQHandler(void)
 					}
 				}
 			}
-//			else
-//       VESC_Set_Current(i + 1, 0.0, 0);
 		}
 #endif
 	}

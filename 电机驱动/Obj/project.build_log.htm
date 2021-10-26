@@ -26,13 +26,19 @@ Project File Date:  10/25/2021
 
 <h2>Output:</h2>
 Build target 'Target 1'
-compiling pid.c...
-compiling cylinder.c...
-compiling utils.c...
+compiling can1.c...
+USER\SRC\can1.c(88): warning:  #177-D: function "answer_drivemotor" was declared but never referenced
+  static void answer_drivemotor(CanRxMsg *rx_message, u8 motorid)
+USER\SRC\can1.c(95): warning:  #177-D: function "answer_query" was declared but never referenced
+  static void answer_query(CanRxMsg *rx_message, u8 motorid)
+USER\SRC\can1.c: 2 warnings, 0 errors
 linking...
-Program Size: Code=64998 RO-data=1522 RW-data=196 ZI-data=51804  
-FromELF: creating hex file...
-".\Obj\project.axf" - 0 Error(s), 0 Warning(s).
+.\Obj\project.axf: Error: L6200E: Symbol buf multiply defined (by akmotor.o and can1.o).
+.\Obj\project.axf: Error: L6200E: Symbol speed multiply defined (by elmo.o and can1.o).
+Not enough information to list image symbols.
+Not enough information to list the image map.
+Finished: 2 information, 0 warning and 2 error messages.
+".\Obj\project.axf" - 2 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -59,10 +65,11 @@ Package Vendor: Keil
       Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
 
    * Component: Keil::Device:Startup:1.0.0
-      Include file:  Device\Include\stm32f4xx.h
       Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\system_stm32f4xx.c
+      Include file:  Device\Include\stm32f4xx.h
       Source file:   Device\Source\ARM\startup_stm32f40xx.s
+Target not created.
 </pre>
 </body>
 </html>

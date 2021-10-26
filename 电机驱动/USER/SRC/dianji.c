@@ -33,11 +33,11 @@ void Motor_Init(void){
 	motorargum.lockPulse =0;
 	motorargum.stuckTicks = 1000; //1000ms
 	
-	/*M3508（1）电机初始化*/
+	/*M2006（1）电机初始化*/
 	motor[0].intrinsic=M2006instrin;
 	motor[0].enable = DISABLE;
 	motor[0].begin=false;
-	motor[0].mode=duty;//位置模式
+	motor[0].mode=position;//位置模式
 	motor[0].valueSet.current=0;
 	motor[0].valueSet.angle=0;
 	motor[0].valueSet.velocity=0;
@@ -45,11 +45,11 @@ void Motor_Init(void){
 	PID_Init(&motor[0].PIDs,3.5, 0.12, 0, 0.4,motor[0].valueSet.velocity);
 	PID_Init(&motor[0].PIDx,5, 0.3, 0.2, 1,motor[0].valueSet.pulse);
 
-	/*M3508（2）电机初始化*/
+	/*M2006（2）电机初始化*/
 	motor[1].intrinsic=M2006instrin;
 	motor[1].enable = DISABLE;
 	motor[1].begin=false;
-	motor[1].mode=duty;//位置模式
+	motor[1].mode=position;//位置模式
 	motor[1].valueSet.current=100;
 	motor[1].valueSet.angle=0;
 	motor[1].valueSet.velocity=1000;
@@ -57,11 +57,11 @@ void Motor_Init(void){
 	PID_Init(&motor[1].PIDs,8,0.2,0.3,0.4,motor[1].valueSet.velocity);
 	PID_Init(&motor[1].PIDx,8,0.2,0.3,1,motor[1].valueSet.pulse);
 
-	/*M3508（3）电机初始化*/
+	/*M2006（3）电机初始化*/
 	motor[2].intrinsic=M2006instrin;
 	motor[2].enable = DISABLE;
 	motor[2].begin=false;
-	motor[2].mode=duty;//位置模式
+	motor[2].mode=position;//位置模式
 	motor[2].valueSet.current=100;
 	motor[2].valueSet.angle=0;
 	motor[2].valueSet.velocity=1000;
@@ -69,11 +69,11 @@ void Motor_Init(void){
 	PID_Init(&motor[2].PIDs,3.5, 0.12, 0, 0.4,motor[2].valueSet.velocity);
 	PID_Init(&motor[2].PIDx,5, 0.3, 0.2, 1,motor[2].valueSet.pulse);
 
-	/*M3508（4）电机初始化*/
+	/*M2006（4）电机初始化*/
 	motor[3].intrinsic=M2006instrin;
 	motor[3].enable = DISABLE;
 	motor[3].begin=false;
-	motor[3].mode=duty;//位置模式
+	motor[3].mode=position;//位置模式
 	motor[3].valueSet.current=100;
 	motor[3].valueSet.angle=0;
 	motor[3].valueSet.velocity=1000;

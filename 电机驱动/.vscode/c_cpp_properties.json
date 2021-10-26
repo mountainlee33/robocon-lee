@@ -3,18 +3,16 @@
         {
             "name": "Target 1",
             "includePath": [
-                "d:\\Cpan\\Motor-master\\Motor-master\\GeneralFunction\\inc",
-                "d:\\Cpan\\Motor-master\\Motor-master\\Libraries\\CMSIS",
-                "d:\\Cpan\\Motor-master\\Motor-master\\Libraries\\Startup",
-                "d:\\Cpan\\Motor-master\\Motor-master\\Libraries\\STM32F4xx_StdPeriph_Driver\\inc",
-                "d:\\Cpan\\Motor-master\\Motor-master\\uCOSII\\CONFIG",
-                "d:\\Cpan\\Motor-master\\Motor-master\\uCOSII\\CORE",
-                "d:\\Cpan\\Motor-master\\Motor-master\\uCOSII\\PORT",
-                "d:\\Cpan\\Motor-master\\Motor-master\\USER\\INC",
-                "d:\\Cpan\\Motor-master\\Motor-master\\USER\\SRC",
-                "d:\\Cpan\\Motor-master\\Motor-master\\GeneralFunction\\src",
-                "d:\\Cpan\\Motor-master\\Motor-master\\Libraries\\STM32F4xx_StdPeriph_Driver\\src",
-                "d:\\Cpan\\Motor-master\\Motor-master"
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\GeneralFunction\\inc",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\CMSIS",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\Startup",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\STM32F4xx_StdPeriph_Driver\\inc",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\uCOSII\\CONFIG",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\uCOSII\\CORE",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\uCOSII\\PORT",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\USER\\INC",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\USER\\SRC",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\STM32F4xx_StdPeriph_Driver\\src"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",

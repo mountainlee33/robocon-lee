@@ -55,6 +55,11 @@ static void Task_Elmo(void *pdata);
 __align(8)  OS_STK VESC_TASK_STK[VESC_STK_SIZE];
 static void Task_VESC(void *pdata);
 
+#define VESCSEND_TASK_PRIO 18
+#define VESCSEND_STK_SIZE 256
+__align(8)  OS_STK VESCSEND_TASK_STK[VESCSEND_STK_SIZE];
+static void Task_VESCSEND(void *pdata);
+
 //电磁阀任务
 #define VALVE_TASK_PRIO 8
 #define VALVE_STK_SIZE 256

@@ -1,11 +1,14 @@
 #ifndef _CAN1_H
 #define _CAN1_H
 
-#include "includes.h"//ÈÎºÎÎÄ¼þ±ØÐëÒýÈë
+#include "includes.h" //ï¿½Îºï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #include "stm32f4xx.h"
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_can.h"
 #include "stm32f4xx_rcc.h"
+#include "queue.h"
+#include "vesc.h"
+#include "dianji.h"
 
 void CAN1_Mode_Init(void);
 

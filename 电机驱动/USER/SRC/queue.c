@@ -79,9 +79,19 @@ void Can_DeQueue(CAN_TypeDef *CANx, Can_QueueTypeDef *can_queue)
 			memcpy(ttTxMessage.Data, (can_queue->Can_DataSend[can_queue->Front].Data), ttTxMessage.DLC * sizeof(uint8_t));
 		}
 	}
-	if (can_queue->Can_DataSend[can_queue->Front].InConGrpFlag == false)
-		can_queue->Front = (can_queue->Front + 1) % CAN_QUEUESIZE;
-	
-	CAN_Transmit(CAN2, &ttTxMessage);
+		if (CANx == CAN2) //电机的报文
+		{
+			Can_MesgCtrlList(Can2_MesgSentList, &Can2_Sendqueue, CAN_2);
+			if (can_queue->Can_DataSend[can_queue->Front].InConGrpFlag == false)
+						can_queue->Front = (can_queue->Front + 1) % CAN_QUEUESIZE;
+			CAN_Transmit(CAN2, &ttTxMessage);
+		}
+		else if (CANx == CAN1)
+		{
+			Can_MesgCtrlList(Can1_MesgSentList, &Can1_Sendqueue, CAN_1);
+			if (Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Front].InConGrpFlag == false)
+				can_queue->Front = (can_queue->Front + 1) % CAN_QUEUESIZE;					
+			CAN_Transmit(CAN1, &ttTxMessage);		
+		}
 }
 

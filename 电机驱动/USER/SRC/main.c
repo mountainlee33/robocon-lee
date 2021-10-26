@@ -49,6 +49,7 @@ static void Task_Start(void *pdata)
 #endif
 #ifdef USE_VESC
 	OSTaskCreate(Task_VESC, (void *)0, (OS_STK *)&VESC_TASK_STK[VESC_STK_SIZE - 1], VESC_TASK_PRIO);
+	OSTaskCreate(Task_VESCSEND, (void *)0, (OS_STK *)&VESCSEND_TASK_STK[VESCSEND_STK_SIZE - 1], VESCSEND_TASK_PRIO);
 #endif
 
 	OSTaskSuspend(START_TASK_PRIO); //挂起起始任务.
@@ -103,7 +104,14 @@ static void Task_VESC(void *pdata)
 		OSTimeDly(2); //延时太长，跑位置模式时会一卡一卡
 	}
 }
-
+static void Task_VESCSEND(void *pdata)
+{
+	while (1)
+	{
+		Can_DeQueue(CAN2, &VESC_Sendqueue);
+		OSTimeDly(1000); //延时太长，跑位置模式时会一卡一卡
+	}
+}
 static void Task_DataScope(void *pdata)
 {
 	u8 Send_Count;
