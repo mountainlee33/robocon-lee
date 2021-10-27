@@ -34,9 +34,9 @@
 .\obj\main.o: .\USER\INC\pid.h
 .\obj\main.o: .\USER\INC\utils.h
 .\obj\main.o: .\USER\INC\can2.h
+.\obj\main.o: .\USER\INC\led.h
 .\obj\main.o: .\USER\INC\macro.h
 .\obj\main.o: .\USER\INC\elmo.h
-.\obj\main.o: .\USER\INC\led.h
 .\obj\main.o: .\USER\INC\vesc.h
 .\obj\main.o: .\USER\INC\param.h
 .\obj\main.o: .\USER\INC\odrive.h
@@ -46,8 +46,10 @@
 .\obj\main.o: .\USER\INC\filter.h
 .\obj\main.o: .\USER\INC\canctrollist.h
 .\obj\main.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\main.o: .\USER\INC\beep.h
 .\obj\main.o: .\USER\INC\tim2.h
 .\obj\main.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h
+.\obj\main.o: .\USER\INC\tim3.h
 .\obj\main.o: .\USER\INC\tim5.h
 .\obj\main.o: .\USER\INC\usart2.h
 .\obj\main.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h

@@ -30,10 +30,10 @@
 .\obj\tim3.o: .\USER\INC\pid.h
 .\obj\tim3.o: .\USER\INC\utils.h
 .\obj\tim3.o: .\USER\INC\can2.h
+.\obj\tim3.o: .\USER\INC\led.h
 .\obj\tim3.o: .\USER\INC\queue.h
 .\obj\tim3.o: .\USER\INC\macro.h
 .\obj\tim3.o: .\USER\INC\elmo.h
-.\obj\tim3.o: .\USER\INC\led.h
 .\obj\tim3.o: .\USER\INC\vesc.h
 .\obj\tim3.o: .\USER\INC\param.h
 .\obj\tim3.o: .\USER\INC\led8.h
@@ -43,5 +43,7 @@
 .\obj\tim3.o: .\USER\INC\canctrollist.h
 .\obj\tim3.o: .\USER\INC\numchange.h
 .\obj\tim3.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\tim3.o: .\USER\INC\beep.h
+.\obj\tim3.o: .\USER\INC\delay.h
 .\obj\tim3.o: .\USER\INC\odrive.h
 .\obj\tim3.o: .\USER\INC\akmotor.h

@@ -169,6 +169,7 @@ void CAN2_RX1_IRQHandler(void)
 					VESCmotor[id].argum.lockPosition = VESCmotor[id].ValReal.position;
 				}
 			}
+			VESCmotor[id].argum.lastRxTim = OSTimeGet();
 		}
 #endif
 	}

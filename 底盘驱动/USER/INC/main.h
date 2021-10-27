@@ -9,6 +9,7 @@
 #include "can1.h"
 #include "can2.h"
 #include "tim2.h"
+#include "tim3.h"
 #include "tim5.h"
 #include "usart2.h"
 #include "pid.h"

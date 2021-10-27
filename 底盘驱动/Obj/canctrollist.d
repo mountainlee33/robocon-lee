@@ -31,14 +31,16 @@
 .\obj\canctrollist.o: .\USER\INC\pid.h
 .\obj\canctrollist.o: .\USER\INC\utils.h
 .\obj\canctrollist.o: .\USER\INC\can2.h
+.\obj\canctrollist.o: .\USER\INC\led.h
 .\obj\canctrollist.o: .\USER\INC\macro.h
 .\obj\canctrollist.o: .\USER\INC\elmo.h
-.\obj\canctrollist.o: .\USER\INC\led.h
 .\obj\canctrollist.o: .\USER\INC\vesc.h
 .\obj\canctrollist.o: .\USER\INC\param.h
 .\obj\canctrollist.o: .\USER\INC\canctrollist.h
 .\obj\canctrollist.o: .\USER\INC\numchange.h
 .\obj\canctrollist.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\canctrollist.o: .\USER\INC\beep.h
+.\obj\canctrollist.o: .\USER\INC\delay.h
 .\obj\canctrollist.o: .\USER\INC\odrive.h
 .\obj\canctrollist.o: .\USER\INC\akmotor.h
 .\obj\canctrollist.o: .\USER\INC\led8.h

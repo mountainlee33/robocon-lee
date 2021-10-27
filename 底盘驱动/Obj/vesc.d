@@ -30,10 +30,10 @@
 .\obj\vesc.o: .\USER\INC\pid.h
 .\obj\vesc.o: .\USER\INC\utils.h
 .\obj\vesc.o: .\USER\INC\can2.h
+.\obj\vesc.o: .\USER\INC\led.h
 .\obj\vesc.o: .\USER\INC\queue.h
 .\obj\vesc.o: .\USER\INC\macro.h
 .\obj\vesc.o: .\USER\INC\elmo.h
-.\obj\vesc.o: .\USER\INC\led.h
 .\obj\vesc.o: .\USER\INC\vesc.h
 .\obj\vesc.o: .\USER\INC\param.h
 .\obj\vesc.o: .\USER\INC\odrive.h
@@ -43,3 +43,5 @@
 .\obj\vesc.o: .\USER\INC\filter.h
 .\obj\vesc.o: .\USER\INC\canctrollist.h
 .\obj\vesc.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\vesc.o: .\USER\INC\beep.h
+.\obj\vesc.o: .\USER\INC\delay.h

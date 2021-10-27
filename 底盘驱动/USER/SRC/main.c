@@ -12,6 +12,7 @@ int main(void)
 	SystemInit();
 	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_3);
 	TIM2_Int_Init(11999, 6);
+	TIM3_Init();
 	TIM5_Init();
 	CAN1_Mode_Init();
 	CAN2_Mode_Init();
@@ -64,6 +65,10 @@ static void Task_VESCSEND(void *pdata)
 {
 	while (1)
 	{
+		ifvescstuck(1);
+		ifvescstuck(2);
+		ifvescstuck(3);
+		ifvescstuck(4);		
 		Can_DeQueue(CAN2, &VESC_Sendqueue);
 		OSTimeDly(1000); //延时太长，跑位置模式时会一卡一卡
 	}

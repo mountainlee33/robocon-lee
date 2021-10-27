@@ -9,5 +9,6 @@
 #include "dianji.h"
 #include "param.h"
 
+void TIM3_Init(void);
 
 #endif

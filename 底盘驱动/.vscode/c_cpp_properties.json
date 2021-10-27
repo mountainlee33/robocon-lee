@@ -3,16 +3,16 @@
         {
             "name": "Target 1",
             "includePath": [
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\GeneralFunction\\inc",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\CMSIS",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\Startup",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\STM32F4xx_StdPeriph_Driver\\inc",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\uCOSII\\CONFIG",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\uCOSII\\CORE",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\uCOSII\\PORT",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\USER\\INC",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\USER\\SRC",
-                "c:\\Users\\33643\\Desktop\\robocon-lee\\电机驱动\\Libraries\\STM32F4xx_StdPeriph_Driver\\src"
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\GeneralFunction\\inc",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\Libraries\\CMSIS",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\Libraries\\Startup",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\Libraries\\STM32F4xx_StdPeriph_Driver\\inc",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\uCOSII\\CONFIG",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\uCOSII\\CORE",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\uCOSII\\PORT",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\USER\\INC",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\USER\\SRC",
+                "c:\\Users\\33643\\Desktop\\robocon-lee\\底盘驱动\\Libraries\\STM32F4xx_StdPeriph_Driver\\src"
             ],
             "defines": [
                 "USE_STDPERIPH_DRIVER",

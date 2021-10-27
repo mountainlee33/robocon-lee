@@ -41,5 +41,7 @@
 .\obj\dianji.o: .\USER\INC\canctrollist.h
 .\obj\dianji.o: .\USER\INC\numchange.h
 .\obj\dianji.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\dianji.o: .\USER\INC\beep.h
+.\obj\dianji.o: .\USER\INC\delay.h
 .\obj\dianji.o: .\USER\INC\odrive.h
 .\obj\dianji.o: .\USER\INC\akmotor.h

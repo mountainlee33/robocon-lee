@@ -32,10 +32,10 @@
 .\obj\tim5.o: .\USER\INC\pid.h
 .\obj\tim5.o: .\USER\INC\utils.h
 .\obj\tim5.o: .\USER\INC\can2.h
+.\obj\tim5.o: .\USER\INC\led.h
 .\obj\tim5.o: .\USER\INC\queue.h
 .\obj\tim5.o: .\USER\INC\macro.h
 .\obj\tim5.o: .\USER\INC\elmo.h
-.\obj\tim5.o: .\USER\INC\led.h
 .\obj\tim5.o: .\USER\INC\vesc.h
 .\obj\tim5.o: .\USER\INC\param.h
 .\obj\tim5.o: .\USER\INC\odrive.h
@@ -45,3 +45,5 @@
 .\obj\tim5.o: .\USER\INC\filter.h
 .\obj\tim5.o: .\USER\INC\canctrollist.h
 .\obj\tim5.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\tim5.o: .\USER\INC\beep.h
+.\obj\tim5.o: .\USER\INC\delay.h

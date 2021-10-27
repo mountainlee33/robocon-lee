@@ -32,9 +32,9 @@
 .\obj\can1.o: .\USER\INC\pid.h
 .\obj\can1.o: .\USER\INC\utils.h
 .\obj\can1.o: .\USER\INC\can2.h
+.\obj\can1.o: .\USER\INC\led.h
 .\obj\can1.o: .\USER\INC\macro.h
 .\obj\can1.o: .\USER\INC\elmo.h
-.\obj\can1.o: .\USER\INC\led.h
 .\obj\can1.o: .\USER\INC\vesc.h
 .\obj\can1.o: .\USER\INC\param.h
 .\obj\can1.o: .\USER\INC\odrive.h
@@ -44,3 +44,5 @@
 .\obj\can1.o: .\USER\INC\filter.h
 .\obj\can1.o: .\USER\INC\canctrollist.h
 .\obj\can1.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\can1.o: .\USER\INC\beep.h
+.\obj\can1.o: .\USER\INC\delay.h

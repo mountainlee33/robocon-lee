@@ -19,6 +19,7 @@
 ".\obj\stm32f4xx_it.o"
 ".\obj\delay.o"
 ".\obj\utils.o"
+".\obj\beep.o"
 ".\obj\misc.o"
 ".\obj\stm32f4xx_can.o"
 ".\obj\stm32f4xx_dma.o"

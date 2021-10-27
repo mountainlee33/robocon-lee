@@ -204,83 +204,83 @@ void USART2_IRQHandler(void)
 				}
 			}
 			break;
-			case 0x03: //	elmo界面
-			{
-				if ((usart.RxBuffer_USART2[5] == 0x08) && (usart.RxBuffer_USART2[6] == 0x11)) //ID号
-				{
-					switch (usart.RxBuffer_USART2[7])
-					{
-					case 0x31:
-						ELMOID = 1;
-						break;
-					case 0x32:
-						ELMOID = 2;
-						break;
-					case 0x33:
-						ELMOID = 3;
-						break;
-					case 0x30:
-						ELMOID = 0;
-						break;
-					default:;
-					}
-				}
-				if ((usart.RxBuffer_USART2[5] == 0x09) && (usart.RxBuffer_USART2[6] == 0x10)) //开始
-				{
-					switch(usart.RxBuffer_USART2[8])
-					{
-					case 0x01:
-					ELMOmotor[ELMOID].begin = 1;
-					break;
-					case 0x00:
-					ELMOmotor[ELMOID].begin = 0;
-					break;
-					default:;
-					}
-				}
-				if ((usart.RxBuffer_USART2[5] == 0x0A) && (usart.RxBuffer_USART2[6] == 0x10)) //使能
-				{
-					switch(usart.RxBuffer_USART2[8])
-					{
-					case 0x01:
-					ELMOmotor[ELMOID].enable = 1;
-					break;
-					case 0x00:
-					ELMOmotor[ELMOID].enable = 0;
-					break;
-					default:;
-					}
-				}				
-				if ((usart.RxBuffer_USART2[5] == 0x03) && (usart.RxBuffer_USART2[6] == 0x11)) //模式
-				{
-					switch (usart.RxBuffer_USART2[7])
-					{
-					case 0x32:
-						ELMO_motor_UM(ELMOID, 2, 0);
-						break;
-					case 0x34:
-						ELMO_motor_UM(ELMOID, 4, 0);
-						break;
-					case 0x35:
-						ELMO_motor_UM(ELMOID, 5, 0);
-						break;
-					default:;
-					}
-				}
-				if ((usart.RxBuffer_USART2[5] == 0x01) && (usart.RxBuffer_USART2[6] == 0x11)) //转速设置
-				{
-					ELMO_motor_JV(ELMOID, atof((char *)(&usart.RxBuffer_USART2[7])), 1);
-					ELMO_motor_BG(ELMOID, 0);
-					break;
-				}
-				if ((usart.RxBuffer_USART2[5] == 0x02) && (usart.RxBuffer_USART2[6] == 0x11)) //位置设置
-				{
-					ELMO_motor_SP(ELMOID, atof((char *)(&usart.RxBuffer_USART2[7])), 1);
-					ELMO_motor_BG(ELMOID, 0);
-					break;
-				}
-			}
-			break;
+//			case 0x03: //	elmo界面
+//			{
+//				if ((usart.RxBuffer_USART2[5] == 0x08) && (usart.RxBuffer_USART2[6] == 0x11)) //ID号
+//				{
+//					switch (usart.RxBuffer_USART2[7])
+//					{
+//					case 0x31:
+//						ELMOID = 1;
+//						break;
+//					case 0x32:
+//						ELMOID = 2;
+//						break;
+//					case 0x33:
+//						ELMOID = 3;
+//						break;
+//					case 0x30:
+//						ELMOID = 0;
+//						break;
+//					default:;
+//					}
+//				}
+//				if ((usart.RxBuffer_USART2[5] == 0x09) && (usart.RxBuffer_USART2[6] == 0x10)) //开始
+//				{
+//					switch(usart.RxBuffer_USART2[8])
+//					{
+//					case 0x01:
+//					ELMOmotor[ELMOID].begin = 1;
+//					break;
+//					case 0x00:
+//					ELMOmotor[ELMOID].begin = 0;
+//					break;
+//					default:;
+//					}
+//				}
+//				if ((usart.RxBuffer_USART2[5] == 0x0A) && (usart.RxBuffer_USART2[6] == 0x10)) //使能
+//				{
+//					switch(usart.RxBuffer_USART2[8])
+//					{
+//					case 0x01:
+//					ELMOmotor[ELMOID].enable = 1;
+//					break;
+//					case 0x00:
+//					ELMOmotor[ELMOID].enable = 0;
+//					break;
+//					default:;
+//					}
+//				}				
+//				if ((usart.RxBuffer_USART2[5] == 0x03) && (usart.RxBuffer_USART2[6] == 0x11)) //模式
+//				{
+//					switch (usart.RxBuffer_USART2[7])
+//					{
+//					case 0x32:
+//						ELMO_motor_UM(ELMOID, 2, 0);
+//						break;
+//					case 0x34:
+//						ELMO_motor_UM(ELMOID, 4, 0);
+//						break;
+//					case 0x35:
+//						ELMO_motor_UM(ELMOID, 5, 0);
+//						break;
+//					default:;
+//					}
+//				}
+//				if ((usart.RxBuffer_USART2[5] == 0x01) && (usart.RxBuffer_USART2[6] == 0x11)) //转速设置
+//				{
+//					ELMO_motor_JV(ELMOID, atof((char *)(&usart.RxBuffer_USART2[7])), 1);
+//					ELMO_motor_BG(ELMOID, 0);
+//					break;
+//				}
+//				if ((usart.RxBuffer_USART2[5] == 0x02) && (usart.RxBuffer_USART2[6] == 0x11)) //位置设置
+//				{
+//					ELMO_motor_SP(ELMOID, atof((char *)(&usart.RxBuffer_USART2[7])), 1);
+//					ELMO_motor_BG(ELMOID, 0);
+//					break;
+//				}
+//			}
+//			break;
 			case 0x02: //VESC界面
 			{
 				if ((usart.RxBuffer_USART2[5] == 0x08) && (usart.RxBuffer_USART2[6] == 0x11)) //ID号

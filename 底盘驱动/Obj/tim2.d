@@ -43,5 +43,7 @@
 .\obj\tim2.o: .\USER\INC\canctrollist.h
 .\obj\tim2.o: .\USER\INC\numchange.h
 .\obj\tim2.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\tim2.o: .\USER\INC\beep.h
+.\obj\tim2.o: .\USER\INC\delay.h
 .\obj\tim2.o: .\USER\INC\odrive.h
 .\obj\tim2.o: .\USER\INC\akmotor.h

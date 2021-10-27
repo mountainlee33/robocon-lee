@@ -27,10 +27,10 @@
 .\obj\can2.o: .\USER\INC\pid.h
 .\obj\can2.o: .\USER\INC\utils.h
 .\obj\can2.o: .\USER\INC\can2.h
+.\obj\can2.o: .\USER\INC\led.h
 .\obj\can2.o: .\USER\INC\queue.h
 .\obj\can2.o: .\USER\INC\macro.h
 .\obj\can2.o: .\USER\INC\elmo.h
-.\obj\can2.o: .\USER\INC\led.h
 .\obj\can2.o: .\USER\INC\vesc.h
 .\obj\can2.o: .\USER\INC\param.h
 .\obj\can2.o: .\USER\INC\led8.h
@@ -40,5 +40,7 @@
 .\obj\can2.o: .\USER\INC\canctrollist.h
 .\obj\can2.o: .\USER\INC\numchange.h
 .\obj\can2.o: D:\keil\ARM\ARMCC\Bin\..\include\math.h
+.\obj\can2.o: .\USER\INC\beep.h
+.\obj\can2.o: .\USER\INC\delay.h
 .\obj\can2.o: .\USER\INC\odrive.h
 .\obj\can2.o: .\USER\INC\akmotor.h
