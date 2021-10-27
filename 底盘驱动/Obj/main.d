@@ -49,10 +49,7 @@
 .\obj\main.o: .\USER\INC\tim2.h
 .\obj\main.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h
 .\obj\main.o: .\USER\INC\tim5.h
-.\obj\main.o: .\USER\INC\usart1.h
+.\obj\main.o: .\USER\INC\usart2.h
 .\obj\main.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h
 .\obj\main.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h
-.\obj\main.o: .\USER\INC\usart2.h
-.\obj\main.o: .\USER\INC\usart3.h
-.\obj\main.o: .\USER\INC\DataScope_DP.h
 .\obj\main.o: .\USER\INC\cylinder.h

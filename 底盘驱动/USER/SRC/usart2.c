@@ -433,48 +433,48 @@ void UsartLCDshow(void)
 		}
 	}
 	break;
-	case 0x03: //elmo界面
-	{
-		usart.TxBuffer_USART2[i++] = 0xee;
-		usart.TxBuffer_USART2[i++] = 0xb1;
-		usart.TxBuffer_USART2[i++] = 0x12; //批量更新
-		usart.TxBuffer_USART2[i++] = 0x00; //画面ID
-		usart.TxBuffer_USART2[i++] = 0x03;
-		for (int m = 0; m < 4; m++)
-		{
-			if (ELMOmotor[m].mode != 0)
-			{
-				usart.TxBuffer_USART2[i++] = 0x00;
-				usart.TxBuffer_USART2[i++] = 0x01;
-				usart.TxBuffer_USART2[i++] = 0x00;
-				sprintf(str_temp, "%d", ELMOmotor[m].valReal.speed);
-				usart.TxBuffer_USART2[i++] = strlen(str_temp);
-				strcpy((char *)(&usart.TxBuffer_USART2[i]), str_temp);
-				i += strlen(str_temp);
+//	case 0x03: //elmo界面
+//	{
+//		usart.TxBuffer_USART2[i++] = 0xee;
+//		usart.TxBuffer_USART2[i++] = 0xb1;
+//		usart.TxBuffer_USART2[i++] = 0x12; //批量更新
+//		usart.TxBuffer_USART2[i++] = 0x00; //画面ID
+//		usart.TxBuffer_USART2[i++] = 0x03;
+//		for (int m = 0; m < 4; m++)
+//		{
+//			if (ELMOmotor[m].mode != 0)
+//			{
+//				usart.TxBuffer_USART2[i++] = 0x00;
+//				usart.TxBuffer_USART2[i++] = 0x01;
+//				usart.TxBuffer_USART2[i++] = 0x00;
+//				sprintf(str_temp, "%d", ELMOmotor[m].valReal.speed);
+//				usart.TxBuffer_USART2[i++] = strlen(str_temp);
+//				strcpy((char *)(&usart.TxBuffer_USART2[i]), str_temp);
+//				i += strlen(str_temp);
 
-				usart.TxBuffer_USART2[i++] = 0x00; //控制ID
-				usart.TxBuffer_USART2[i++] = 0x02;
-				usart.TxBuffer_USART2[i++] = 0x00;					 //字节长度
-				sprintf(str_temp, "%d", ELMOmotor[m].valReal.angle); //发送格式化输出到 str 所指向的字符串
-				usart.TxBuffer_USART2[i++] = strlen(str_temp);
-				strcpy((char *)(&usart.TxBuffer_USART2[i]), str_temp); //把后者所指向的字符串复制到前者
-				i += strlen(str_temp);								   //计算字符串 str_temp的长度
+//				usart.TxBuffer_USART2[i++] = 0x00; //控制ID
+//				usart.TxBuffer_USART2[i++] = 0x02;
+//				usart.TxBuffer_USART2[i++] = 0x00;					 //字节长度
+//				sprintf(str_temp, "%d", ELMOmotor[m].valReal.angle); //发送格式化输出到 str 所指向的字符串
+//				usart.TxBuffer_USART2[i++] = strlen(str_temp);
+//				strcpy((char *)(&usart.TxBuffer_USART2[i]), str_temp); //把后者所指向的字符串复制到前者
+//				i += strlen(str_temp);								   //计算字符串 str_temp的长度
 
-				usart.TxBuffer_USART2[i++] = 0x00;
-				usart.TxBuffer_USART2[i++] = 0x09;
-				usart.TxBuffer_USART2[i++] = 0x10;
-				usart.TxBuffer_USART2[i++] = 0x01;
-				usart.TxBuffer_USART2[i++] = ELMOmotor[m].begin;
+//				usart.TxBuffer_USART2[i++] = 0x00;
+//				usart.TxBuffer_USART2[i++] = 0x09;
+//				usart.TxBuffer_USART2[i++] = 0x10;
+//				usart.TxBuffer_USART2[i++] = 0x01;
+//				usart.TxBuffer_USART2[i++] = ELMOmotor[m].begin;
 
-				usart.TxBuffer_USART2[i++] = 0x00;
-				usart.TxBuffer_USART2[i++] = 0x0A;
-				usart.TxBuffer_USART2[i++] = 0x10;
-				usart.TxBuffer_USART2[i++] = 0x01;
-				usart.TxBuffer_USART2[i++] = ELMOmotor[m].begin;
-			}
-		}
-	}
-	break;
+//				usart.TxBuffer_USART2[i++] = 0x00;
+//				usart.TxBuffer_USART2[i++] = 0x0A;
+//				usart.TxBuffer_USART2[i++] = 0x10;
+//				usart.TxBuffer_USART2[i++] = 0x01;
+//				usart.TxBuffer_USART2[i++] = ELMOmotor[m].begin;
+//			}
+//		}
+//	}
+//	break;
 	case 0x02: //vesc界面
 	{
 		usart.TxBuffer_USART2[i++] = 0xee;
