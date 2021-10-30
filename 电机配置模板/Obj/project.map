@@ -8,6 +8,7 @@ Section Cross References
     main.o(.text) refers to os_time.o(.text) for OSTimeDly
     main.o(.text) refers to led.o(.text) for Led_Show
     main.o(.text) refers to cylinder.o(.text) for CYLINDE_CONTROL
+    main.o(.text) refers to datascope_dp.o(.text) for DataScope_Get_Channel_Data
     main.o(.text) refers to elmo.o(.text) for elmo_control
     main.o(.text) refers to os_cpu_c.o(.text) for OS_CPU_SysTickInit
     main.o(.text) refers to usart2.o(.text) for UsartLCDshow
@@ -23,15 +24,14 @@ Section Cross References
     main.o(.text) refers to canctrollist.o(.text) for InitCANControlList
     main.o(.text) refers to param.o(.text) for param_Init
     main.o(.text) refers to os_core.o(.text) for OSInit
-    main.o(.text) refers to datascope_dp.o(.text) for DataScope_Get_Channel_Data
     main.o(.text) refers to queue.o(.bss) for VESC_Sendqueue
     main.o(.text) refers to main.o(.data) for VALVE_DATA
-    main.o(.text) refers to main.o(.bss) for MOTOR_TASK_STK
     main.o(.text) refers to dianji.o(.bss) for motor
+    main.o(.text) refers to main.o(.bss) for MOTOR_TASK_STK
     tim2.o(.text) refers to stm32f4xx_rcc.o(.text) for RCC_APB1PeriphClockCmd
     tim2.o(.text) refers to stm32f4xx_tim.o(.text) for TIM_TimeBaseInit
     tim2.o(.text) refers to misc.o(.text) for NVIC_Init
-    tim2.o(.text) refers to dianji.o(.text) for SetZero
+    tim2.o(.text) refers to dianji.o(.text) for Speed_mode
     tim2.o(.text) refers to queue.o(.text) for Can_DeQueue
     tim2.o(.text) refers to canctrollist.o(.text) for TraversalControlList
     tim2.o(.text) refers to akmotor.o(.text) for AK_Transmit
@@ -67,13 +67,18 @@ Section Cross References
     can1.o(.text) refers to stm32f4xx_can.o(.text) for CAN_Init
     can1.o(.text) refers to misc.o(.text) for NVIC_Init
     can1.o(.text) refers to rt_memcpy_v6.o(.text) for __aeabi_memcpy
+    can1.o(.text) refers to vesc.o(.text) for VESC_Set_Pos
+    can1.o(.text) refers to numchange.o(.text) for Ecodeint32Data_to_4byte
     can1.o(.text) refers to queue.o(.bss) for Can2_Sendqueue
+    can1.o(.text) refers to vesc.o(.bss) for VESCmotor
     can1.o(.text) refers to can1.o(.data) for buf
     can1.o(.text) refers to akmotor.o(.data) for buf
+    can1.o(.text) refers to elmo.o(.data) for speed
+    can1.o(.text) refers to dianji.o(.bss) for motor
     tim5.o(.text) refers to stm32f4xx_rcc.o(.text) for RCC_APB1PeriphClockCmd
     tim5.o(.text) refers to stm32f4xx_tim.o(.text) for TIM_TimeBaseInit
     tim5.o(.text) refers to misc.o(.text) for NVIC_Init
-    tim5.o(.text) refers to vesc.o(.text) for VESC_calculate
+    tim5.o(.text) refers to vesc.o(.text) for VESC_Set_Current
     tim5.o(.text) refers to vesc.o(.bss) for VESCmotor
     can2.o(.text) refers to stm32f4xx_rcc.o(.text) for RCC_APB1PeriphClockCmd
     can2.o(.text) refers to stm32f4xx_gpio.o(.text) for GPIO_PinAFConfig

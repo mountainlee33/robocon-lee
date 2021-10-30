@@ -1,0 +1,9 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "hx711.h": "c",
+        "can1.h": "c",
+        "main.h": "c",
+        "param.h": "c"
+    }
+}

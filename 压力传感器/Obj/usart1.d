@@ -1,0 +1,17 @@
+.\obj\usart1.o: USER\SRC\usart1.c
+.\obj\usart1.o: .\USER\INC\usart1.h
+.\obj\usart1.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\usart1.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
+.\obj\usart1.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\usart1.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h
+.\obj\usart1.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmFunc.h
+.\obj\usart1.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmSimd.h
+.\obj\usart1.o: .\Libraries\CMSIS\system_stm32f4xx.h
+.\obj\usart1.o: .\USER\INC\stm32f4xx_conf.h
+.\obj\usart1.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\obj\usart1.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\usart1.o: D:\keil\ARM\ARMCC\Bin\..\include\time.h
+.\obj\usart1.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h
+.\obj\usart1.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h
+.\obj\usart1.o: .\GeneralFunction\inc\sys.h
+.\obj\usart1.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h

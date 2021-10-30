@@ -1,6 +1,0 @@
---c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\GeneralFunction\inc -I.\Libraries\CMSIS -I.\Libraries\Startup -I.\Libraries\STM32F4xx_StdPeriph_Driver\inc -I.\uCOSII\CONFIG -I.\uCOSII\CORE -I.\uCOSII\PORT -I.\USER\INC --locale=english
--I C:\Users\33643\Desktop\robocon-lee\µç»úÇý¶¯\RTE
--I D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include
--I D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.5\Device\Include
--D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -DSTM32F40X_HD
--o .\obj\vesc.o --omf_browse .\obj\vesc.crf --depend .\obj\vesc.d "USER\SRC\vesc.c"

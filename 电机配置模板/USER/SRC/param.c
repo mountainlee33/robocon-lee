@@ -4,7 +4,7 @@ FlagTypeDef flag;
 Usart_Struct usart;
 ErrorTypeDef Error;
 Usart_Struct usart;
-
+System_Flag SystemFlag;
 void Flag_Init(void)
 {
     flag.Can2CtrlList_Enable=true;

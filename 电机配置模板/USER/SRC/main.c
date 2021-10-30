@@ -43,7 +43,7 @@ static void Task_Start(void *pdata)
 #ifdef USE_ELMO
 	OSTaskCreate(Task_Elmo, (void *)0, (OS_STK *)&ELMO_TASK_STK[ELMO_STK_SIZE - 1], ELMO_TASK_PRIO);
 #endif
-//OSTaskCreate(Task_DataScope, (void *)0, (OS_STK *)&DataSCOPE_TASK_STK[DataSCOPE_STK_SIZE - 1], DataSCOPE_TASK_PRIO);
+	OSTaskCreate(Task_DataScope, (void *)0, (OS_STK *)&DataSCOPE_TASK_STK[DataSCOPE_STK_SIZE - 1], DataSCOPE_TASK_PRIO);
 #ifdef USE_VALVE
 	OSTaskCreate(Valve_Control, (void *)0, (OS_STK *)&VALVE_TASK_STK[VALVE_STK_SIZE - 1], VALVE_TASK_PRIO);
 #endif

@@ -12,7 +12,9 @@
 #include "param.h"
 
 void Usart1_Init(void);
-void  SendChar(unsigned char t);
-
+void USART1_sendData(u8 *a,u8 count);
+void DMA2_Stream7_IRQHandler(void);
+unsigned short CRC_CHECK(unsigned char * Buf, unsigned char CRC_CNT);
+void VS4Channal_Send(int16_t n_dataCH1, int16_t n_dataCH2, int16_t n_dataCH3, int16_t n_dataCH4);
 
 #endif

@@ -78,6 +78,14 @@ typedef struct
 	ErrorList *head;
 }ErrorTypeDef;
 
+typedef struct //标志位结构体
+{
+	volatile bool Usart1DmaSendFinish;
+	volatile bool Usart2DmaSendFinish;
+	volatile bool Usart3DmaSendFinish;
+	volatile bool Usart4DmaSendFinish;
+	volatile bool Usart5DmaSendFinish;
+} System_Flag;
 
 /****结构体定义****/
 extern FlagTypeDef flag;

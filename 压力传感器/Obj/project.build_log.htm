@@ -1,0 +1,89 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.14.0.0
+Copyright (C) 2015 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=VGXG8-3T2ZM-FWW2N-Y1ZRK-HEEB6-TVHQT
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Standard  Version: 5.14.0.0
+Toolchain Path:  D:\keil\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.05 update 1 (build 106)
+Assembler:       Armasm.exe V5.05 update 1 (build 106)
+Linker/Locator:  ArmLink.exe V5.05 update 1 (build 106)
+Library Manager: ArmAr.exe V5.05 update 1 (build 106)
+Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
+CPU DLL:         SARMCM3.DLL V5.14.0.0
+Dialog DLL:      DCM.DLL V1.13.1.0
+Target DLL:      Segger\JL2CM3.dll V2.99.13.0
+Dialog DLL:      TCM.DLL V1.14.4.0
+ 
+<h2>Project:</h2>
+D:\定位组资料\压力传感器\PreSF4 - ucos6\project.uvprojx
+Project File Date:  10/30/2021
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling main.c...
+.\USER\INC\stdbool.h(12): warning:  #47-D: incompatible redefinition of macro "__ARMCLIB_VERSION" (declared at line 24 of "D:\keil\ARM\ARMCC\Bin\..\include\time.h")
+  #define __ARMCLIB_VERSION 5060037
+USER\SRC\main.c: 1 warning, 0 errors
+compiling can1.c...
+.\USER\INC\stdbool.h(12): warning:  #47-D: incompatible redefinition of macro "__ARMCLIB_VERSION" (declared at line 12 of "D:\keil\ARM\ARMCC\Bin\..\include\stdint.h")
+  #define __ARMCLIB_VERSION 5060037
+USER\SRC\can1.c(170): warning:  #1-D: last line of file ends without a newline
+  }
+USER\SRC\can1.c(160): warning:  #550-D: variable "txmsg" was set but never used
+        CanTxMsg txmsg;
+USER\SRC\can1.c: 3 warnings, 0 errors
+compiling HX711.c...
+.\USER\INC\stdbool.h(12): warning:  #47-D: incompatible redefinition of macro "__ARMCLIB_VERSION" (declared at line 12 of "D:\keil\ARM\ARMCC\Bin\..\include\stdint.h")
+  #define __ARMCLIB_VERSION 5060037
+USER\SRC\HX711.c: 1 warning, 0 errors
+compiling param.c...
+.\USER\INC\stdbool.h(12): warning:  #47-D: incompatible redefinition of macro "__ARMCLIB_VERSION" (declared at line 12 of "D:\keil\ARM\ARMCC\Bin\..\include\stdint.h")
+  #define __ARMCLIB_VERSION 5060037
+USER\SRC\param.c: 1 warning, 0 errors
+compiling tim3.c...
+.\USER\INC\stdbool.h(12): warning:  #47-D: incompatible redefinition of macro "__ARMCLIB_VERSION" (declared at line 12 of "D:\keil\ARM\ARMCC\Bin\..\include\stdint.h")
+  #define __ARMCLIB_VERSION 5060037
+USER\SRC\tim3.c: 1 warning, 0 errors
+linking...
+Program Size: Code=24764 RO-data=700 RW-data=136 ZI-data=10416  
+FromELF: creating hex file...
+".\Obj\project.axf" - 0 Error(s), 7 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.4.2.0.pack
+                ARM::CMSIS:CORE:3.40.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 3.40.0
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F4xx_DFP.1.0.5.pack
+                Keil::Device:Startup:1.0.0
+                STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
+   * Component: Startup Version: 1.0.0
+
+<h2>Collection of Component include folders:</h2>
+  D:\定位组资料\压力传感器\PreSF4 - ucos6\RTE
+  D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include
+  D:\keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.5\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:3.40.0
+      Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
+
+   * Component: Keil::Device:Startup:1.0.0
+      Source file:   Device\Source\ARM\startup_stm32f40xx.s
+      Include file:  Device\Include\stm32f4xx.h
+      Source file:   Device\Source\system_stm32f4xx.c
+      Include file:  RTE_Driver\Config\RTE_Device.h
+</pre>
+</body>
+</html>

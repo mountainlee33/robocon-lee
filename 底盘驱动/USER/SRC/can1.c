@@ -88,8 +88,10 @@ void CAN1_Mode_Init(void)
 //与原报文一致
 static void answer_drivemotor(CanRxMsg *rx_message, u8 motorid)
 {
-  Can2_Sendqueue.Can_DataSend[Can2_Sendqueue.Rear].ID = 0x300 + motorid;
-  Can2_Sendqueue.Can_DataSend[Can2_Sendqueue.Rear].DLC = sizeof(rx_message);
+  Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].ID = 0x300 + motorid;
+  Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].DLC = sizeof(rx_message);
+	
+  Can1_Sendqueue.Rear = Rear1;
 }
 
 //查询电流，速度，位置
@@ -102,6 +104,7 @@ static void answer_query(CanRxMsg *rx_message, u8 motorid, u8 *buf)
   Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].Data[5] = buf[1];
   Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].Data[6] = buf[2];
   Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].Data[7] = buf[3];
+	
   Can1_Sendqueue.Rear = Rear1;
 }
 void CAN1_RX0_IRQHandler(void)
