@@ -6,6 +6,7 @@
  * @return {*}
  */
  u8 VALVE_DATA;//1296
+vs16 paw_pos[5];
  bool procedure_begin;
 int main(void)
 {

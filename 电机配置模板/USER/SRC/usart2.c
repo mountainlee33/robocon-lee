@@ -352,6 +352,103 @@ void USART2_IRQHandler(void)
 					break;
 				}
 			}
+//			case 0x05://夹拉戈里界面
+//			{
+//			if ((usart.RxBuffer_USART2[5] == 0x01) && (usart.RxBuffer_USART2[6] == 0x10)) 
+//			{
+//				//流程
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x02) && (usart.RxBuffer_USART2[6] == 0x10))
+//			{
+//				//位置1
+//				motor[0].valueSet.angle=paw_pos[1];
+//					break;
+
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x07) && (usart.RxBuffer_USART2[6] == 0x11))
+//			{
+//				//位置1
+//				motor[0].valueSet.angle= atof((char *)(&usart.RxBuffer_USART2[7]));
+//					break;
+//			
+//			}			
+//			if ((usart.RxBuffer_USART2[5] == 0x03) && (usart.RxBuffer_USART2[6] == 0x10))
+//			{
+//				//位置2
+//				motor[0].valueSet.angle=paw_pos[2];
+//					break;
+
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x08) && (usart.RxBuffer_USART2[6] == 0x11))
+//			{
+//				//位置2
+//				motor[0].valueSet.angle = atof((char *)(&usart.RxBuffer_USART2[7]));
+//				break;
+//			}	
+//			if ((usart.RxBuffer_USART2[5] == 0x04) && (usart.RxBuffer_USART2[6] == 0x10)) 
+//			{
+//				//位置3
+//				motor[0].valueSet.angle=paw_pos[3];
+//				break;
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x09) && (usart.RxBuffer_USART2[6] == 0x11))
+//			{
+//				//位置3
+//				motor[0].valueSet.angle = atof((char *)(&usart.RxBuffer_USART2[7]));
+//				break;
+//			}	
+//			if ((usart.RxBuffer_USART2[5] == 0x05) && (usart.RxBuffer_USART2[6] == 0x10)) 
+//			{
+//				//位置4
+//				motor[0].valueSet.angle=paw_pos[4];
+//				break;
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x0A) && (usart.RxBuffer_USART2[6] == 0x11))
+//			{
+//				//位置4
+//				motor[0].valueSet.angle = atof((char *)(&usart.RxBuffer_USART2[7]));
+//				break;
+//			}	
+//			if ((usart.RxBuffer_USART2[5] == 0x06) && (usart.RxBuffer_USART2[6] == 0x10)) 
+//			{
+//				//位置5
+//				motor[0].valueSet.angle=paw_pos[5];
+//				break;
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x0B) && (usart.RxBuffer_USART2[6] == 0x11))
+//			{
+//				//位置5
+//				motor[0].valueSet.angle = atof((char *)(&usart.RxBuffer_USART2[7]));
+//				break;
+//			}	
+//			if ((usart.RxBuffer_USART2[5] == 0x10) && (usart.RxBuffer_USART2[6] == 0x11))
+//			{
+//				//rpm
+//				motor[0].valueSet.velocity = atof((char *)(&usart.RxBuffer_USART2[7]));
+//				break;
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x11) && (usart.RxBuffer_USART2[6] == 0x10))
+//			{
+//				motor[0].enable = 1;
+//				motor[0].begin = 1;
+//				break;
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x0E) && (usart.RxBuffer_USART2[6] == 0x10))
+//			{//零点
+//				motor[0].valueSet.angle = paw_pos[0];
+//				break;
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x0D) && (usart.RxBuffer_USART2[6] == 0x10))
+//			{
+//				//电磁阀
+//				break;
+//			}
+//			if ((usart.RxBuffer_USART2[5] == 0x11) && (usart.RxBuffer_USART2[6] == 0x10))
+//			{//失能
+//				motor[0].enable=0;
+//				break;
+//			}
+//		}
 			break;
 			}
 			USART2_RX_STA = 0;

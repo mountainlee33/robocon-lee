@@ -259,7 +259,7 @@ void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 		tx_message.Data[0] = 0;
 		tx_message.Data[1] = 0;
 	}
-	if (  motor[1].enable == 1)//!ifdjstuck(1) &&
+	if (!ifdjstuck(1) &&  motor[1].enable == 1)
 	{
 		tx_message.Data[2] = (ID2 & 0xFF00) >> 8;
 		tx_message.Data[3] = ID2 & 0xFF; //ID 1
@@ -269,7 +269,7 @@ void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 		tx_message.Data[2] = 0;
 		tx_message.Data[3] = 0;
 	}
-	if ( motor[2].enable == 1)// !ifdjstuck(2) &&
+	if (!ifdjstuck(2) && motor[2].enable == 1)// 
 	{
 		tx_message.Data[4] = (ID3 & 0xFF00) >> 8;
 		tx_message.Data[5] = ID3 & 0xFF; //ID 1
@@ -279,7 +279,7 @@ void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 		tx_message.Data[4] = 0;
 		tx_message.Data[5] = 0;
 	}
-	if (  motor[3].enable == 1)//!ifdjstuck(3) &&
+	if (!ifdjstuck(3) &&  motor[3].enable == 1)//
 	{
 		tx_message.Data[6] = (ID4 & 0xFF00) >> 8;
 		tx_message.Data[7] = ID4 & 0xFF; //ID 1
