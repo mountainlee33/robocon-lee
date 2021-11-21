@@ -15,12 +15,10 @@
 #include "pid.h"
 #include "queue.h"
 #include "macro.h"
-#include "queue.h"
 #include "canctrollist.h"
-#include "cylinder.h"
-#include "elmo.h"
 #include "dianji.h"
 #include "led8.h"
+#include "vesc.h"
 
 //START任务
 #define START_TASK_PRIO 5

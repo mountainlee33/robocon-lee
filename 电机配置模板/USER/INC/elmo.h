@@ -45,7 +45,7 @@ typedef struct
 {
 	volatile vs16 angle;		//轴前角度
 	volatile vs16 current;	//电流
-	volatile vs32 speed;		//速度（rpm,计算转换为JV与SP）
+	volatile vs32 speed1;		//速度（rpm,计算转换为JV与SP）
 	volatile vs32 pulse;		//累积脉冲
 	volatile vs32 position; //绝对位置
 	volatile vs32 AC;

@@ -447,7 +447,7 @@ void UsartLCDshow(void)
 				usart.TxBuffer_USART2[i++] = 0x00;
 				usart.TxBuffer_USART2[i++] = 0x01;
 				usart.TxBuffer_USART2[i++] = 0x00;
-				sprintf(str_temp, "%d", ELMOmotor[m].valReal.speed);
+				sprintf(str_temp, "%d", ELMOmotor[m].valReal.speed1);
 				usart.TxBuffer_USART2[i++] = strlen(str_temp);
 				strcpy((char *)(&usart.TxBuffer_USART2[i]), str_temp);
 				i += strlen(str_temp);

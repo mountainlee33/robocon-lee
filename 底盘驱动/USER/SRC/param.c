@@ -16,6 +16,7 @@ void param_Init(void)
 		Flag_Init();
 		LED_Configuration();
 		Led8_Configuration();
+		Beep_Init();
 		IIR_Init(&IIR_filt);
 		VESC_Init();
 }

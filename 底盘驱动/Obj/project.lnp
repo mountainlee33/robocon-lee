@@ -8,6 +8,7 @@
 ".\obj\param.o"
 ".\obj\numchange.o"
 ".\obj\tim3.o"
+".\obj\task.o"
 ".\obj\queue.o"
 ".\obj\dianji.o"
 ".\obj\vesc.o"

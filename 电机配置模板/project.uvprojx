@@ -173,7 +173,7 @@
             <Capability>1</Capability>
             <DriverSelection>4099</DriverSelection>
           </Flash1>
-          <bUseTDR>1</bUseTDR>
+          <bUseTDR>0</bUseTDR>
           <Flash2>Segger\JL2CM3.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
@@ -474,11 +474,6 @@
           <GroupName>MOTOR</GroupName>
           <Files>
             <File>
-              <FileName>akmotor.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\SRC\akmotor.c</FilePath>
-            </File>
-            <File>
               <FileName>queue.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\SRC\queue.c</FilePath>
@@ -487,11 +482,6 @@
               <FileName>dianji.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\SRC\dianji.c</FilePath>
-            </File>
-            <File>
-              <FileName>elmo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\USER\SRC\elmo.c</FilePath>
             </File>
             <File>
               <FileName>vesc.c</FileName>
@@ -517,6 +507,16 @@
               <FileName>cylinder.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\USER\SRC\cylinder.c</FilePath>
+            </File>
+            <File>
+              <FileName>akmotor.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\SRC\akmotor.c</FilePath>
+            </File>
+            <File>
+              <FileName>elmo.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\USER\SRC\elmo.c</FilePath>
             </File>
           </Files>
         </Group>

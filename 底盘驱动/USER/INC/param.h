@@ -54,6 +54,15 @@ typedef struct{
 
 typedef struct
 {
+	bool set_all_begin;
+	bool set_all_enable;
+	vs16 set_all_speed;
+	vs16 set_all_angle;
+	vs16 set_all_speedlimit;
+}SET_ALL_TypeDef;
+
+typedef struct
+{
   u8 TxBuffer_USART1[USART1_Tx_BufferSize]; //串口一发送数据
   u8 RxBuffer_USART1[USART1_Rx_BufferSize]; //串口一接收数据
 

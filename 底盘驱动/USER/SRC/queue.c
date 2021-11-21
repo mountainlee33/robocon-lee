@@ -42,22 +42,7 @@ void Can_DeQueue(CAN_TypeDef *CANx, Can_QueueTypeDef *can_queue)
 	}
 	else
 	{
-		if(can_queue->Can_DataSend[can_queue->Front].ID>0x300)//elmo报文
-		{
-		ttTxMessage.IDE =CAN_ID_STD;
-		ttTxMessage.StdId =can_queue->Can_DataSend[can_queue->Front].ID;
-			
-		if(CAN1==CANx)	
-			Can_MesgCtrlList(Can1_MesgSentList,&Can1_Sendqueue,CAN_1);
-		else
-			Can_MesgCtrlList(Can2_MesgSentList,&Can2_Sendqueue,CAN_2);	
-		
-		ttTxMessage.DLC = can_queue->Can_DataSend[can_queue->Front].DLC;
-		ttTxMessage.RTR = CAN_RTR_DATA;
-		
-		memcpy(ttTxMessage.Data, (can_queue->Can_DataSend[can_queue->Front].Data),ttTxMessage.DLC*sizeof(uint8_t));
-		}	
-		else if((can_queue->Can_DataSend[can_queue->Front].ID &0xf0000000)!=0)//VESC报文的标志
+		if((can_queue->Can_DataSend[can_queue->Front].ID &0xf0000000)!=0)//VESC报文的标志
 		{
 			ttTxMessage.IDE = CAN_ID_EXT;
 			ttTxMessage.ExtId = can_queue->Can_DataSend[can_queue->Front].ID & 0x0fffffff;
@@ -67,18 +52,6 @@ void Can_DeQueue(CAN_TypeDef *CANx, Can_QueueTypeDef *can_queue)
 			
 			memcpy(ttTxMessage.Data,(can_queue->Can_DataSend[can_queue->Front].Data),ttTxMessage.DLC*sizeof(uint8_t));
 		}
-		else if (can_queue->Can_DataSend[can_queue->Front].ID < 0x008) //AK报文
-		{
-			ttTxMessage.IDE = CAN_ID_STD;// IDE    0：选择使用标准标识符    1：选择使用扩展标识符
-			ttTxMessage.StdId = can_queue->Can_DataSend[can_queue->Front].ID;//标识符为设置的id号
-			ttTxMessage.DLC = can_queue->Can_DataSend[can_queue->Front].DLC;
-			if (((can_queue->Can_DataSend[can_queue->Front].ID | 0x01F) != 0x009) || (can_queue->Can_DataSend[can_queue->Front].ID | 0x01F) != 0x014)
-				ttTxMessage.RTR = CAN_RTR_DATA;
-			else
-				ttTxMessage.RTR = CAN_RTR_REMOTE;// RTR   0：选择发送数据帧   1：选择发送遥控帧
-			memcpy(ttTxMessage.Data, (can_queue->Can_DataSend[can_queue->Front].Data), ttTxMessage.DLC * sizeof(uint8_t));
-		}
-	}
 		if (CANx == CAN2) //电机的报文
 		{
 			Can_MesgCtrlList(Can2_MesgSentList, &Can2_Sendqueue, CAN_2);
@@ -93,5 +66,6 @@ void Can_DeQueue(CAN_TypeDef *CANx, Can_QueueTypeDef *can_queue)
 				can_queue->Front = (can_queue->Front + 1) % CAN_QUEUESIZE;					
 			CAN_Transmit(CAN1, &ttTxMessage);		
 		}
+	}
 }
 

@@ -14,7 +14,7 @@ void CAN2_Mode_Init(void)
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_CAN2, ENABLE);
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, ENABLE);
 
-	GPIO_PinAFConfig(GPIOB, GPIO_PinSource5, GPIO_AF_CAN2);//GPIO_PinAFConfig端口复用功能
+	GPIO_PinAFConfig(GPIOB, GPIO_PinSource5, GPIO_AF_CAN2);
 	GPIO_PinAFConfig(GPIOB, GPIO_PinSource6, GPIO_AF_CAN2);
 
 	/* Configure CAN pin: RX  TX*/
@@ -30,9 +30,9 @@ void CAN2_Mode_Init(void)
 	NVIC_Init(&NVIC_InitStructure);
 
 	NVIC_InitStructure.NVIC_IRQChannel = CAN2_RX1_IRQn;
-	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;//抢占优先级
-	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;//响应优先级
-	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;//IRQ中断使能
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 2;
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 2;
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
 	NVIC_Init(&NVIC_InitStructure);
 
 	CAN_DeInit(CAN2);
@@ -52,19 +52,20 @@ void CAN2_Mode_Init(void)
 	CAN_InitStructure.CAN_BS1 = CAN_BS1_9tq;	 //时间段1占用8个时间单位
 	CAN_InitStructure.CAN_BS2 = CAN_BS2_4tq;	 //时间段2占用7个时间单位
 	CAN_InitStructure.CAN_Prescaler = 3; //分频系数（Fdiv）
-	CAN_Init(CAN2, &CAN_InitStructure);	 //初始化CAN2
-	
-	/* 波特率计算公式: BaudRate = APB1时钟频率/Fdiv/（SJW+BS1+BS2） */ 
+	CAN_Init(CAN2, &CAN_InitStructure);	 //初始化CAN1
+
+	/* 波特率计算公式: BaudRate = APB1时钟频率/Fdiv/（SJW+BS1+BS2） */
 	/* 42MHz/3/(1+9+4)=1Mhz */
-	
+
+	//配置过滤器
 	//DJ
-	CAN_FilterInitStructure.CAN_FilterNumber = 14;//列表模式且16位信息  存四个id
+	CAN_FilterInitStructure.CAN_FilterNumber = 14;
 	CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;
 	CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_16bit;
-	CAN_FilterInitStructure.CAN_FilterIdHigh = 0X201 << 5;//CAN_FilterIdHigh包含的是STD[0~10]和EXID[13~17]
-	CAN_FilterInitStructure.CAN_FilterIdLow = 0X202 << 5;//标准CAN ID本身是不包含扩展ID数据，
-	CAN_FilterInitStructure.CAN_FilterMaskIdHigh = 0X203 << 5;//因此为了要将标准CAN ID放入此寄存器
-	CAN_FilterInitStructure.CAN_FilterMaskIdLow = 0X204 << 5;//标准CAN ID首先应左移5位后才能对齐
+	CAN_FilterInitStructure.CAN_FilterIdHigh = 0X201 << 5;
+	CAN_FilterInitStructure.CAN_FilterIdLow = 0X202 << 5;
+	CAN_FilterInitStructure.CAN_FilterMaskIdHigh = 0X203 << 5;
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow = 0X204 << 5;
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment = CAN_FilterFIFO0;
 	CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStructure);
@@ -79,7 +80,6 @@ void CAN2_Mode_Init(void)
 	CAN_FilterInitStructure.CAN_FilterFIFOAssignment = CAN_FilterFIFO0;
 	CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStructure);
-	
 	//VESC
 	CAN_FilterInitStructure.CAN_FilterNumber = 20;
 	CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdMask;
@@ -92,13 +92,23 @@ void CAN2_Mode_Init(void)
 	CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
 	CAN_FilterInit(&CAN_FilterInitStructure);
 	
+  CAN_FilterInitStructure.CAN_FilterNumber = 25;
+	CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdMask;
+	CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_32bit;
+	CAN_FilterInitStructure.CAN_FilterIdHigh = ((((uint32_t)CAN_PACKET_STATUS_4 << 8) << 3) & 0xffff0000) >> 16;
+	CAN_FilterInitStructure.CAN_FilterIdLow = (((uint32_t)CAN_PACKET_STATUS_4 << 8) << 3) & 0xffff;
+	CAN_FilterInitStructure.CAN_FilterMaskIdHigh = (0xffffff00 << 3) >> 16;
+	CAN_FilterInitStructure.CAN_FilterMaskIdLow = (0xffffff00 << 3) & 0xffff;
+	CAN_FilterInitStructure.CAN_FilterFIFOAssignment = CAN_FilterFIFO1;
+	CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
+	CAN_FilterInit(&CAN_FilterInitStructure);
+	
 	CAN_ITConfig(CAN2, CAN_IT_FMP1, ENABLE);
 	CAN_ITConfig(CAN2, CAN_IT_FMP0, ENABLE);
-	
 }
 
 
-	void CAN2_RX0_IRQHandler(void)
+void CAN2_RX0_IRQHandler(void)
 {
 	if (CAN_GetITStatus(CAN2, CAN_IT_FMP0) != RESET)
 	{
@@ -146,7 +156,10 @@ void CAN2_RX1_IRQHandler(void)
 			{
 				VESCmotor[id].ValReal.speed = get_s32_from_buffer(rx_message.Data, &ind) / VESCmotor[id].instrinsic.POLE_PAIRS;
 				VESCmotor[id].ValReal.current = buffer_16_to_float(rx_message.Data , 1e1, &ind);
-				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 1e1 , &ind );				
+			}
+			else if ((rx_message.ExtId >> 8) == CAN_PACKET_STATUS_4)
+			{
+				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 5e1 , &ind+6 );				
 				//位置计算
 				ChangeData(&rx_message.Data[6],&rx_message.Data[7]);
 				DecodeU16Data(&VESCmotor[id].argum.angleNow,&rx_message.Data[6]);
@@ -157,9 +170,9 @@ void CAN2_RX1_IRQHandler(void)
 					VESCmotor[id].argum.distance = 0;
 				}
 				VESCmotor[id].argum.anglePrv = VESCmotor[id].argum.angleNow;
-				if(ABS(VESCmotor[id].argum.distance) > 1800)
-					VESCmotor[id].argum.distance -= SIG(VESCmotor[id].argum.distance) * 3600;
-				VESCmotor[id].ValReal.position += VESCmotor[id].argum.distance;				
+				if(ABS(VESCmotor[id].argum.distance) > 9000)
+					VESCmotor[id].argum.distance -= SIG(VESCmotor[id].argum.distance) * 18000;
+				VESCmotor[id].ValReal.position += VESCmotor[id].argum.distance/5;				
 				//位置残差更新
 				VESCmotor[id].argum.difPosition = VESCmotor[id].ValSet.position - VESCmotor[id].ValReal.position;
 				//锁点记录
@@ -170,17 +183,8 @@ void CAN2_RX1_IRQHandler(void)
 				}
 			}
 			VESCmotor[id].argum.lastRxTim = OSTimeGet();
-		}
+		 }
+	 }
+}
 #endif
-	}
-}
-
-/****接收到报文反馈后控制表处理****/
-static void Elmo_Feedback_Deel(MesgControlGrpTypeDef* Can_MesgSentList)
-{
-	Can_MesgSentList->ReceiveNumber+=1;
-	Can_MesgSentList->TimeOut=0;
-	Can_MesgSentList->SendSem--;
-	Can_MesgSentList->SentQueue.Front=(Can_MesgSentList->SentQueue.Front+1)%CAN_QUEUESIZE;
-}
 

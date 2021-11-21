@@ -105,7 +105,7 @@ void Enter_Motor_Control(u8 id, u8 cmd)
 	AKTransmit(id, initiation, 0);
 }
 
-u8 buf[8];
+u8 buff[8];
 
 void AK_Transmit(u8 id, float location, float vel, float f_kp, float f_kd, float tor)
 {
@@ -125,16 +125,16 @@ void AK_Transmit(u8 id, float location, float vel, float f_kp, float f_kd, float
 	torque = float_to_uint(tor, -18, 18, 12);
 
 	
-	buf[0] = p >> 8;
-	buf[1] = p & 0xFF;
-	buf[2] = v >> 4;
-	buf[3] = ((v & 0xF) << 4) | (kp >> 8);
-	buf[4] = kp & 0xFF;
-	buf[5] = kd >> 4;
-	buf[6] = ((kd & 0xF) << 4) | (torque >> 8);
-	buf[7] = torque & 0xff;
+	buff[0] = p >> 8;
+	buff[1] = p & 0xFF;
+	buff[2] = v >> 4;
+	buff[3] = ((v & 0xF) << 4) | (kp >> 8);
+	buff[4] = kp & 0xFF;
+	buff[5] = kd >> 4;
+	buff[6] = ((kd & 0xF) << 4) | (torque >> 8);
+	buff[7] = torque & 0xff;
 
-	AKTransmit(id, buf, 0);
+	AKTransmit(id, buff, 0);
 }
 
 

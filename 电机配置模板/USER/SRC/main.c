@@ -114,7 +114,6 @@ static void Task_VESCSEND(void *pdata)
 }
 static void Task_DataScope(void *pdata)
 {
-	u8 Send_Count;
 	while (1)
 	{
 		DataScope_Get_Channel_Data(motor[0].valueReal.velocity, 1);
@@ -127,7 +126,6 @@ static void Task_DataScope(void *pdata)
 		DataScope_Get_Channel_Data(8.0, 8);		 //将数据   写入通道 8
 		DataScope_Get_Channel_Data(9.0, 9);		 //将数据   写入通道 9
 		DataScope_Get_Channel_Data(10, 10);		 //将数据   写入通道 10
-		Send_Count = DataScope_Data_Generate(3); //数据转换，输入有几个通道
 		OSTimeDly(100);
 	}
 }

@@ -1,0 +1,20 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [{
+      "name": "Cortex Debug(JLINK)",
+      "cwd": "${workspaceRoot}",
+      "executable": "Obj\\project.axf",
+      "request": "attach",
+      "type": "cortex-debug",
+      "servertype": "jlink",
+      "device": "STM32F405RG",
+      "interface": "swd",
+      //"preLaunchTask": "build",
+      "svdFile": "E:\\NEW_mdk\\Keil\\STM32F4xx_DFP\\2.14.0\\CMSIS\\SVD\\STM32F40x.svd",
+      "ipAddress": null,
+      "serialNumber": null
+  }, ]
+}

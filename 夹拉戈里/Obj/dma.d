@@ -1,0 +1,16 @@
+.\obj\dma.o: GeneralFunction\src\dma.c
+.\obj\dma.o: .\GeneralFunction\inc\dma.h
+.\obj\dma.o: .\GeneralFunction\inc\sys.h
+.\obj\dma.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\dma.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
+.\obj\dma.o: D:\keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\dma.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h
+.\obj\dma.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmFunc.h
+.\obj\dma.o: D:\keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmSimd.h
+.\obj\dma.o: .\Libraries\CMSIS\system_stm32f4xx.h
+.\obj\dma.o: .\USER\INC\stm32f4xx_conf.h
+.\obj\dma.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\obj\dma.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\dma.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h
+.\obj\dma.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h
+.\obj\dma.o: .\USER\INC\delay.h

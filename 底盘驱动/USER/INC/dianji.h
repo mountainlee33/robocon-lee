@@ -102,21 +102,10 @@ typedef struct
 	PID_SetTypeDef PIDx, PIDs;				  //PID参数
 } DJmotor;
 
-/*DJ电机标志*/
-typedef struct
-{
-	bool um;
-	bool enable;
-	bool begin;
-	bool angle;
-	bool speed;
-} DJflag;
-
 extern MotorArgum motorargum;
 extern MotorLimit motorlimit;
 extern MotorParam M3508instrin, M2006instrin;
 extern DJmotor motor[8];
-extern DJflag Djflag;
 
 void SetM3508_1(short ID1, short ID2, short ID3, short ID4);
 void SetZero(DJmotor *motor);
@@ -128,5 +117,6 @@ void peakcurrent(void);
 void pulse_caculate(s16 id);
 void ifdjtimeout(u16 id);
 u8 ifdjstuck(u16 id);
+void Control_all_MOTOR(void);
 
 #endif

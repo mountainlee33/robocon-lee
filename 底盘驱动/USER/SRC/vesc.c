@@ -4,6 +4,7 @@ VESCParam SUNNYSKY, VESC_U10, VESC_U8;
 VESCLimit VESClimit;
 VESCArgum VESCargum;
 VESCMotor VESCmotor[4];
+SET_ALL_TypeDef VESCAll;
 
 static float angle_gap = 90.f;
 float dt = 1 / 20000.0f; //ASK:
@@ -27,12 +28,17 @@ void VESC_Init(void)
 	VESClimit.posSpLimit = 5000;
 	VESClimit.MaxCurrentSet = 30.f;
 	VESCargum.stuckTicks = 100;//100ms
+	VESClimit.stuckmotion = 1;//开启堵转判断
 
 	//间值参数设置
 	VESCargum.firstPos = true;
+	
+	VESCAll.set_all_begin = 0;
+	VESCAll.set_all_enable = 0;
+	VESCAll.set_all_speed = 0;
 
 	/******0号电机初始化******/
-	VESCmotor[0].instrinsic = VESC_U10;
+	VESCmotor[0].instrinsic = SUNNYSKY;
 	VESCmotor[0].enable = DISABLE;
 	VESCmotor[0].begin = false;
 	VESCmotor[0].mode = duty;
@@ -46,7 +52,7 @@ void VESC_Init(void)
 	VESC_PID_Init(&VESCmotor[0].s_pid, 0.001, 0.0001, 0.000001, 0.2);
 
 	/******1号电机初始化******/
-	VESCmotor[1].instrinsic = VESC_U10;
+	VESCmotor[1].instrinsic = SUNNYSKY;
 	VESCmotor[1].enable = DISABLE;
 	VESCmotor[1].begin = false;
 	VESCmotor[1].mode = duty;
@@ -60,7 +66,7 @@ void VESC_Init(void)
 	VESC_PID_Init(&VESCmotor[1].s_pid, 0.001, 0.0001, 0.000001, 0.2);
 
 	/******2号电机初始化******/
-	VESCmotor[2].instrinsic = VESC_U10;
+	VESCmotor[2].instrinsic = SUNNYSKY;
 	VESCmotor[2].enable = DISABLE;
 	VESCmotor[2].begin = false;
 	VESCmotor[2].mode = duty;
@@ -74,7 +80,7 @@ void VESC_Init(void)
 	VESC_PID_Init(&VESCmotor[2].s_pid, 0.001, 0.0001, 0.000001, 0.2);
 
 	/******3号电机初始化******/
-	VESCmotor[3].instrinsic = VESC_U10;
+	VESCmotor[3].instrinsic = SUNNYSKY;
 	VESCmotor[3].enable = DISABLE;
 	VESCmotor[3].begin = false;
 	VESCmotor[3].mode = duty;
@@ -89,14 +95,14 @@ void VESC_Init(void)
 
 	for (int i = 0; i < 4; i++)
 	{
-		VESC_calculate(&VESCmotor[i]);
+		VESC_Setzero(&VESCmotor[i]);
 		VESCmotor[i].limit = VESClimit;
 		VESCmotor[i].argum = VESCargum;
 	}
 }
 
 //开始时，位置清零
-void VESC_calculate(VESCMotor *motor)
+void VESC_Setzero(VESCMotor *motor)
 {
 	if (motor->status.isSetZero)
 	{
@@ -362,7 +368,7 @@ u8 ifvescstuck(u8 controllerid)//本杰明堵转
 	{
 		if (VESCmotor[controllerid - 1].mode == RPM)
 		{
-			if (VESCmotor[controllerid - 1].ValReal.speed != 0)
+			if (VESCmotor[controllerid - 1].ValSet.speed != 0)
 			{
 				if (ABS(VESCmotor[controllerid - 1].ValReal.speed) < 20) //电机速度小于阈值
 				{
@@ -384,11 +390,24 @@ u8 ifvescstuck(u8 controllerid)//本杰明堵转
 				{
 					Beep_Show(1); //响一下即本杰明堵转
 					VESC_Set_Current(controllerid,0,0);
-					return 1;
+					Led8_show(controllerid);
+					return 0;
 				}
 				else
-					return 0;
+					return 1;
 			}
 		}
+	}
+	return 1;
+}
+
+void Control_all_VESC(void)
+{
+	for(u8 i =0;i<4;i++)
+	{
+		ifvescstuck(i);
+		VESCmotor[i].begin = VESCAll.set_all_begin;
+		VESCmotor[i].enable = VESCAll.set_all_enable;
+		VESCmotor[i].ValSet.speed = VESCAll.set_all_speed;
 	}
 }

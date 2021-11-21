@@ -4,7 +4,8 @@ MotorArgum motorargum;
 MotorLimit motorlimit;
 MotorParam M3508instrin, M2006instrin;
 DJmotor motor[8];
-DJflag Djflag;
+SET_ALL_TypeDef MOTORAll;
+
 //电机参数初始化
 void Motor_Init(void)
 {
@@ -23,7 +24,7 @@ void Motor_Init(void)
 	motorlimit.isPosLimitON = false;
 	motorlimit.maxAngle = 1800; //轮毂最多跑+-0.5pi
 	motorlimit.isPosSPLimitOn = true;
-	motorlimit.posSPlimit = 2000;
+	motorlimit.posSPlimit = 19500;
 	motorlimit.isRealseWhenStuck = true;
 	motorlimit.zeroCurrent = 2000;
 	motorlimit.zeroSP = -800;
@@ -44,7 +45,7 @@ void Motor_Init(void)
 	motor[0].valueSet.velocity = 100;
 	motor[0].limit = motorlimit;
 	PID_Init(&motor[0].PIDs, 3.5, 0.12, 0, 0.4, motor[0].valueSet.velocity);
-	PID_Init(&motor[0].PIDx, 5, 0.3, 0.2, 1, motor[0].valueSet.pulse);
+	PID_Init(&motor[0].PIDx,  5, 0.3, 0.2, 1, motor[0].valueSet.pulse);
 
 	/*M2006（2）电机初始化*/
 	motor[1].intrinsic = M2006instrin;
@@ -79,8 +80,8 @@ void Motor_Init(void)
 	motor[3].valueSet.angle = 0;
 	motor[3].valueSet.velocity = 1000;
 	motor[3].limit = motorlimit;
-	PID_Init(&motor[3].PIDs, 8, 0.2, 0.3, 0.4, motor[3].valueSet.velocity);
-	PID_Init(&motor[3].PIDx, 8, 0.2, 0.3, 1, motor[3].valueSet.pulse);
+	PID_Init(&motor[3].PIDs,3.5, 0.12, 0, 0.4, motor[3].valueSet.velocity);
+	PID_Init(&motor[3].PIDx,5, 0.3, 0.2, 1, motor[3].valueSet.pulse);
 
 	for (int i = 0; i < 4; i++)
 	{
@@ -88,17 +89,11 @@ void Motor_Init(void)
 		motor[i].argum.maxPulse = motor[i].limit.maxAngle * motor[i].intrinsic.GEARRATIO * motor[i].intrinsic.RATIO * motor[i].intrinsic.LINE / 360.f;
 		motor[i].valueSet.pulse = motor[i].valueSet.angle * motor[i].intrinsic.GEARRATIO * motor[i].intrinsic.RATIO * motor[i].intrinsic.LINE / 360.f;
 	}
-	/*DJ电机标志为零*/
-	Djflag.angle = 0;
-	Djflag.begin = 0;
-	Djflag.enable = 0;
-	Djflag.speed = 0;
-	Djflag.um = 0;
 
 	for (int i = 0; i < 4; i++)
 	{
 		SetZero(&motor[i]);
-		motor[i].limit.posSPlimit = 2000; //位置模式下的速度限制
+		motor[i].limit.posSPlimit = 19500; //位置模式下的速度限制
 	}
 }
 //速度模式
@@ -246,15 +241,15 @@ void ifdjtimeout(u16 id)
 }
 void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 {
-	unsigned short can_id = 0x000;
+	unsigned short can_id = 0x200;
 	CanTxMsg tx_message;
 
 	tx_message.IDE = CAN_ID_STD;   //标准帧
 	tx_message.RTR = CAN_RTR_DATA; //数据帧
 	tx_message.DLC = 0x08;		   //8位
-	can_id = 0x200;
+
 	tx_message.StdId = can_id;
-	if (ifdjstuck(0) !=0 && (motor[0].enable == 1))
+	if ( motor[0].enable == 1)// !ifdjstuck(0) &&
 	{
 		tx_message.Data[0] = (ID1 & 0xFF00) >> 8;
 		tx_message.Data[1] = ID1 & 0xFF; //ID 1
@@ -264,7 +259,7 @@ void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 		tx_message.Data[0] = 0;
 		tx_message.Data[1] = 0;
 	}
-	if (ifdjstuck(1) != 0 && (motor[1].enable == 1))
+	if (  motor[1].enable == 1)//!ifdjstuck(1) &&
 	{
 		tx_message.Data[2] = (ID2 & 0xFF00) >> 8;
 		tx_message.Data[3] = ID2 & 0xFF; //ID 1
@@ -274,7 +269,7 @@ void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 		tx_message.Data[2] = 0;
 		tx_message.Data[3] = 0;
 	}
-	if (ifdjstuck(2) != 0  && (motor[2].enable == 1))
+	if ( motor[2].enable == 1)// !ifdjstuck(2) &&
 	{
 		tx_message.Data[4] = (ID3 & 0xFF00) >> 8;
 		tx_message.Data[5] = ID3 & 0xFF; //ID 1
@@ -284,7 +279,7 @@ void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 		tx_message.Data[4] = 0;
 		tx_message.Data[5] = 0;
 	}
-	if (ifdjstuck(3) != 0 && (motor[3].enable == 1))
+	if (  motor[3].enable == 1)//!ifdjstuck(3) &&
 	{
 		tx_message.Data[6] = (ID4 & 0xFF00) >> 8;
 		tx_message.Data[7] = ID4 & 0xFF; //ID 1
@@ -301,4 +296,16 @@ void peakcurrent(void)
 {
 	for (u8 id = 0; id < 8; id++)
 		PEAK(motor[id].valueSet.current, motor[id].intrinsic.CURRENT_LIMIT);
+}
+
+void Control_all_MOTOR(void)
+{
+	for(u8 i =0;i<4;i++)
+	{
+		motor[i].begin = MOTORAll.set_all_begin;
+		motor[i].enable = MOTORAll.set_all_enable;
+		motor[i].valueSet.velocity = MOTORAll.set_all_speed;
+		motor[i].valueSet.angle = MOTORAll.set_all_angle;
+		motor[i].limit.posSPlimit = MOTORAll.set_all_speedlimit;
+	}
 }

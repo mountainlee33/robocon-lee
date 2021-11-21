@@ -6,7 +6,7 @@ ELMOLimit ELMOlimit;
 ELMOArgum ELMOargum;
 Elmo_motor ELMOmotor[8];
 ELMOflag ELMOFlag;
-u32 speed;
+u32 speed1;
 u8 Um;
 u8 enable_or_disable;
 s32 Pa;
@@ -44,7 +44,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[0].begin = DISABLE;
 	ELMOmotor[0].mode = position;
 	ELMOmotor[0].valSet.angle = 0;
-	ELMOmotor[0].valSet.speed = 100;
+	ELMOmotor[0].valSet.speed1 = 100;
 	ELMOmotor[0].valSet.current = 100;
 	ELMOmotor[0].valSet.pulse = 0;
 	
@@ -54,7 +54,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[1].begin = DISABLE;
 	ELMOmotor[1].mode = position;
 	ELMOmotor[1].valSet.angle = 300;
-	ELMOmotor[1].valSet.speed = 100;
+	ELMOmotor[1].valSet.speed1 = 100;
 	ELMOmotor[1].valSet.current = 100;
 	ELMOmotor[1].valSet.pulse = 0;
 
@@ -64,7 +64,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[2].begin = DISABLE;
 	ELMOmotor[2].mode = position;
 	ELMOmotor[2].valSet.angle = 300;
-	ELMOmotor[2].valSet.speed = 100;
+	ELMOmotor[2].valSet.speed1 = 100;
 	ELMOmotor[2].valSet.current = 100;
 	ELMOmotor[2].valSet.pulse = 0;
 	
@@ -74,7 +74,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[3].begin = DISABLE;
 	ELMOmotor[3].mode = position;
 	ELMOmotor[3].valSet.angle = 300;
-	ELMOmotor[3].valSet.speed = 100;
+	ELMOmotor[3].valSet.speed1 = 100;
 	ELMOmotor[3].valSet.current = 100;
 	ELMOmotor[3].valSet.pulse = 0;
 	
@@ -83,7 +83,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[4].enable = DISABLE;
 	ELMOmotor[4].mode = position;
 	ELMOmotor[4].valSet.angle = 300;
-	ELMOmotor[4].valSet.speed = 100;
+	ELMOmotor[4].valSet.speed1 = 100;
 	ELMOmotor[4].valSet.current = 100;
 	ELMOmotor[4].valSet.pulse = 0;
 	
@@ -93,7 +93,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[5].begin = DISABLE;
 	ELMOmotor[5].mode = position;
 	ELMOmotor[5].valSet.angle = 300;
-	ELMOmotor[5].valSet.speed = 100;
+	ELMOmotor[5].valSet.speed1 = 100;
 	ELMOmotor[5].valSet.current = 100;
 	ELMOmotor[5].valSet.pulse = 0;
 
@@ -103,7 +103,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[6].begin = DISABLE;
 	ELMOmotor[6].mode = position;
 	ELMOmotor[6].valSet.angle = 300;
-	ELMOmotor[6].valSet.speed = 100;
+	ELMOmotor[6].valSet.speed1 = 100;
 	ELMOmotor[6].valSet.current = 100;
 	ELMOmotor[6].valSet.pulse = 0;
 	
@@ -113,7 +113,7 @@ void ELMO_motor_Init(void)
 	ELMOmotor[7].begin = DISABLE;
 	ELMOmotor[7].mode = position;
 	ELMOmotor[7].valSet.angle = 300;
-	ELMOmotor[7].valSet.speed = 100;
+	ELMOmotor[7].valSet.speed1 = 100;
 	ELMOmotor[7].valSet.current = 100;
 	ELMOmotor[7].valSet.pulse = 0;
 	
@@ -279,11 +279,11 @@ void ELMO_motor_ST(u32 ID, u8 InConGrpFlag)
 }
 
 //位置模式下持续速度
-void ELMO_motor_SP(u32 ID, s32 speed,u8 InConGrpFlag)
+void ELMO_motor_SP(u32 ID, s32 speed1,u8 InConGrpFlag)
 {
 	
 	s32 S_P;
-	S_P = ELMOmotor[ID -1].intrinsic.PULSE*4*speed / 60;
+	S_P = ELMOmotor[ID -1].intrinsic.PULSE*4*speed1 / 60;
 	
 	Can2_Sendqueue.Can_DataSend[Can2_Sendqueue.Rear].ID = 0x300 + ID;
 	Can2_Sendqueue.Can_DataSend[Can2_Sendqueue.Rear].DLC = 0x08;
@@ -368,7 +368,7 @@ void ELMO_motor_JV(u32 ID, u8 JV,u8 InConGrpFlag)
 {
 		
 		s32 J_V;
-		J_V = ELMOmotor[ID-1].intrinsic.PULSE *ELMOmotor[ID].valSet.speed/60.f;
+		J_V = ELMOmotor[ID-1].intrinsic.PULSE *ELMOmotor[ID].valSet.speed1/60.f;
 	
 		Can2_Sendqueue.Can_DataSend[Can2_Sendqueue.Rear].ID = 0x300 + ID;
 		Can2_Sendqueue.Can_DataSend[Can2_Sendqueue.Rear].DLC = 0x08;
@@ -734,7 +734,7 @@ void elmo_control(u32 id)
 		}
 		if (ELMOFlag.sp)
 		{
-			ELMO_motor_SP(id,speed,0);
+			ELMO_motor_SP(id,speed1,0);
 			ELMOFlag.sp = 0;
 		}
 		if (ELMOFlag.st)

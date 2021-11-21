@@ -4,12 +4,9 @@
 #include "stdbool.h"
 #include "stm32f4xx.h"
 
-#define USE_DJ     0
-#define USE_ELMO   1
+#define USE_DJ     1
 #define USE_VESC   1
-#define USE_VALVE		1
-#define USE_ODRIVE	1
-#define USE_AK		1
+
 
 
 /* BIT编号，用于流程号判断 */

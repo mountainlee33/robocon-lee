@@ -5,14 +5,12 @@
  * @Date: 2021-08-23 10:48:20
  * @return {*}
  */
-u8 ELMOid, VALVE_DATA;
-extern AK_Motor AKmotor[5];
+ bool control_open;
 int main(void)
 {
 	SystemInit();
 	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_3);
-	TIM2_Int_Init(11999, 6);
-	TIM3_Init();
+	TIM2_Init();
 	TIM5_Init();
 	CAN1_Mode_Init();
 	CAN2_Mode_Init();
@@ -20,6 +18,7 @@ int main(void)
 	Can_SendqueueInit();
 	InitCANControlList(Can2_MesgSentList, CAN_2);
 	param_Init();
+	control_open = 0;
 	OSInit();
 	OSTaskCreate(Task_Start, (void *)0, &START_TASK_STK[START_STK_SIZE - 1], START_TASK_PRIO);
 	OSStart(); //这句之后不要写东西
@@ -50,7 +49,12 @@ static void Task_Motor(void *pdata)
 {
 	while (1)
 	{
-	OSTimeDly(2000);
+	Led_Show();
+	if(control_open)
+	{
+	Control_all_MOTOR();
+	}
+	OSTimeDly(200);
 	}
 }
 static void Task_VESC(void *pdata)
@@ -65,10 +69,10 @@ static void Task_VESCSEND(void *pdata)
 {
 	while (1)
 	{
-		ifvescstuck(1);
-		ifvescstuck(2);
-		ifvescstuck(3);
-		ifvescstuck(4);		
+	if(control_open)
+	{
+		Control_all_VESC();	
+	}
 		Can_DeQueue(CAN2, &VESC_Sendqueue);
 		OSTimeDly(1000); //延时太长，跑位置模式时会一卡一卡
 	}

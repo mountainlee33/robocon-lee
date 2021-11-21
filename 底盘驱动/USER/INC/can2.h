@@ -18,8 +18,6 @@
 
 void CAN2_Mode_Init(void);
 static void Elmo_Feedback_Deel(MesgControlGrpTypeDef* Can_MesgSentList);
-void CAN2_RX0_IRQHandler(void);
-void CAN2_RX1_IRQHandler(void);
 
 u8 CAN2_Send_Msg(u8 *msg, u8 len);
 u8 CAN2_Receive_Msg(u8 *buf);

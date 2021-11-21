@@ -10,6 +10,9 @@
 #include "dianji.h"
 #include "math.h"
 #include "beep.h"
+#include "led8.h"
+
+extern u8 all_speed,all_enable,all_begin;
 
 /****VESCÄÚ²Î****/
 typedef struct
@@ -98,6 +101,9 @@ typedef enum
 	CAN_PACKET_PROCESS_RX_BUFFER,
 	CAN_PACKET_PROCESS_SHORT_BUFFER,
 	CAN_PACKET_STATUS,
+	CAN_PACKET_STATUS_2,
+	CAN_PACKET_STATUS_3,
+	CAN_PACKET_STATUS_4,
 	CAN_PACKET_SET_CURRENT_REL,
 	CAN_PACKET_SET_CURRENT_BRAKE_REL,
 	CAN_PACKET_SET_CURRENT_HANDBRAKE
@@ -109,7 +115,7 @@ extern VESCArgum VESCargum;
 extern VESCMotor VESCmotor[4];
 
 void VESC_Init(void);
-void VESC_calculate(VESCMotor *motor);
+void VESC_Setzero(VESCMotor *motor);
 void VESC_RPM_mode_I(u8 id);
 void VESC_position_mode_pos(u8 id);
 void VESC_position_mode_I(u8 id);
@@ -122,5 +128,6 @@ void VESC_Set_Pos(u8 controller_ID, float pos, u8 InConGrpFlag);
 void VESC_Set_Brake_Current(u8 controller_ID, float brake_current, u8 InConGrpFlag);
 void VESC_Set_HandBrake_Current(u8 controller_ID, float handbrake_current, u8 InConGrpFlag);
 u8 ifvescstuck(u8 controllerid);
+void Control_all_VESC(void);
 
 #endif

@@ -1,15 +1,15 @@
 #include "tim2.h"
 extern DJmotor motor[8];
 
-void TIM2_Int_Init(u16 arr,u16 psc)
+void TIM2_Init()
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure;
 	NVIC_InitTypeDef NVIC_InitStructure;
 	
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE); //①使能 TIM2 时钟
 	
-	TIM_TimeBaseInitStructure.TIM_Period = arr; //自动重装载值
-	TIM_TimeBaseInitStructure.TIM_Prescaler=psc; //定时器分频
+	TIM_TimeBaseInitStructure.TIM_Period = 11999; //自动重装载值
+	TIM_TimeBaseInitStructure.TIM_Prescaler=6; //定时器分频
 	TIM_TimeBaseInitStructure.TIM_CounterMode=TIM_CounterMode_Up; //向上计数模式
 	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;//滤波器的时钟信号
 	

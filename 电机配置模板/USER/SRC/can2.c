@@ -216,8 +216,8 @@ void CAN2_RX1_IRQHandler(void)
 			}
 			if(rx_message.Data[0] == 'V' && rx_message.Data[1] == 'X'&& (rx_message.Data[3] & BIT6) != 1)				//主反馈
 			{
-				DecodeS32Data(&ELMOmotor[id].valReal.speed,&rx_message.Data[4]);
-				ELMOmotor[id].valReal.speed /= ELMOmotor[id].intrinsic.PULSE /60;
+				DecodeS32Data(&ELMOmotor[id].valReal.speed1,&rx_message.Data[4]);
+				ELMOmotor[id].valReal.speed1 /= ELMOmotor[id].intrinsic.PULSE /60;
 			}
 			if(rx_message.Data[0] == 'P' && rx_message.Data[1] == 'X'&& (rx_message.Data[3] & BIT6) != 1)				//主位置
 			{
