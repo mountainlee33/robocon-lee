@@ -140,7 +140,24 @@
           <Name>UL2CM3(-S0 -C0 -P0 )  -FN1 -FC1000 -FD20000000 -FF0STM32F4xx_1024 -FL0100000 -FS08000000 -FP0($$Device:STM32F405VG$Flash\STM32F4xx_1024.FLM)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>147</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134224940</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\mountainlee_33\Desktop\robocon-lee\搴曠洏椹卞姩\USER\SRC\can2.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\project\USER/SRC/can2.c\147</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -155,32 +172,32 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>VESCAll,0x0A</ItemText>
+          <ItemText>Can_DeQueue</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>MOTORAll,0x0A</ItemText>
+          <ItemText>VESC_Sendqueue,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Can_DeQueue</ItemText>
+          <ItemText>control_open,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>VESC_Sendqueue</ItemText>
+          <ItemText>rx_message</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>control_open,0x0A</ItemText>
+          <ItemText>\\project\USER/SRC/vesc.c\VESCAll,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>MOTORAll,0x0A</ItemText>
+          <ItemText>\\project\USER/SRC/dianji.c\MOTORAll,0x0A</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

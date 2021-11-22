@@ -4,11 +4,12 @@
 #include "stm32f4xx.h"
 #include "includes.h"
 #include "stdbool.h"
-#include "elmo.h"
 #include "led.h"
 #include "led8.h"
 #include "filter.h"
 #include "vesc.h"
+#include "dianji.h"
+
 #define RESET_PRO       \
   {                     \
     __set_FAULTMASK(1); \
@@ -92,6 +93,9 @@ typedef struct
 extern FlagTypeDef flag;
 extern Usart_Struct usart;
 extern ErrorTypeDef Error;
+extern SET_ALL_TypeDef MOTORAll;
+extern SET_ALL_TypeDef VESCAll;
+
 
 void ChangeData(u8 *buff2, u8 *buff1);
 void Flag_Init(void);

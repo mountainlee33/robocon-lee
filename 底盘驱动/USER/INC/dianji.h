@@ -8,6 +8,9 @@
 #include "utils.h"
 #include "can2.h"
 #include "led.h"
+#include "param.h"
+
+
 enum MOTOR_MODE
 {
 	duty = 0,

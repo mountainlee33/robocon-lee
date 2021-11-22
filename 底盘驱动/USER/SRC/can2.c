@@ -159,7 +159,11 @@ void CAN2_RX1_IRQHandler(void)
 			}
 			else if ((rx_message.ExtId >> 8) == CAN_PACKET_STATUS_4)
 			{
-				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 5e1 , &ind+6 );				
+				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 5e1 , &ind);				
+				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 5e1 , &ind);	
+				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 5e1 , &ind);	
+				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 5e1 , &ind);	
+			}
 				//Œª÷√º∆À„
 				ChangeData(&rx_message.Data[6],&rx_message.Data[7]);
 				DecodeU16Data(&VESCmotor[id].argum.angleNow,&rx_message.Data[6]);
@@ -181,7 +185,7 @@ void CAN2_RX1_IRQHandler(void)
 					VESCmotor[id].argum.lockAngle = VESCmotor[id].ValReal.angle;
 					VESCmotor[id].argum.lockPosition = VESCmotor[id].ValReal.position;
 				}
-			}
+			
 			VESCmotor[id].argum.lastRxTim = OSTimeGet();
 		 }
 	 }

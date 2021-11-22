@@ -10,6 +10,9 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "param.h"
+#include "vesc.h"
+#include "dianji.h"
+
 
 void USART2_Init(void);
 void UsartLCDshow(void);

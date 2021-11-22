@@ -41,7 +41,7 @@ void VESC_Init(void)
 	VESCmotor[0].instrinsic = SUNNYSKY;
 	VESCmotor[0].enable = DISABLE;
 	VESCmotor[0].begin = false;
-	VESCmotor[0].mode = duty;
+	VESCmotor[0].mode = RPM;
 	VESCmotor[0].ValSet.current = 0.0f;
 	VESCmotor[0].ValSet.speed = 0;
 	VESCmotor[0].ValSet.duty = 0;
@@ -55,7 +55,7 @@ void VESC_Init(void)
 	VESCmotor[1].instrinsic = SUNNYSKY;
 	VESCmotor[1].enable = DISABLE;
 	VESCmotor[1].begin = false;
-	VESCmotor[1].mode = duty;
+	VESCmotor[1].mode = RPM;
 	VESCmotor[1].ValSet.current = 0.0f;
 	VESCmotor[1].ValSet.speed = 0;
 	VESCmotor[1].ValSet.duty = 0;
@@ -69,7 +69,7 @@ void VESC_Init(void)
 	VESCmotor[2].instrinsic = SUNNYSKY;
 	VESCmotor[2].enable = DISABLE;
 	VESCmotor[2].begin = false;
-	VESCmotor[2].mode = duty;
+	VESCmotor[2].mode = RPM;
 	VESCmotor[2].ValSet.current = 0.0f;
 	VESCmotor[2].ValSet.speed = 0;
 	VESCmotor[2].ValSet.duty = 0;
@@ -83,7 +83,7 @@ void VESC_Init(void)
 	VESCmotor[3].instrinsic = SUNNYSKY;
 	VESCmotor[3].enable = DISABLE;
 	VESCmotor[3].begin = false;
-	VESCmotor[3].mode = duty;
+	VESCmotor[3].mode = RPM;
 	VESCmotor[3].ValSet.current = 0.0f;
 	VESCmotor[3].ValSet.speed = 0;
 	VESCmotor[3].ValSet.duty = 0;
@@ -405,7 +405,7 @@ void Control_all_VESC(void)
 {
 	for(u8 i =0;i<4;i++)
 	{
-		ifvescstuck(i);
+		ifvescstuck(i+1);
 		VESCmotor[i].begin = VESCAll.set_all_begin;
 		VESCmotor[i].enable = VESCAll.set_all_enable;
 		VESCmotor[i].ValSet.speed = VESCAll.set_all_speed;

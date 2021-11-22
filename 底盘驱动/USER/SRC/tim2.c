@@ -62,6 +62,7 @@ void TIM2_IRQHandler(void)
 		SetM3508_1(motor[0].valueSet.current, motor[1].valueSet.current, motor[2].valueSet.current, motor[3].valueSet.current);
 		peakcurrent(); //DJ电流限制
 		Can_DeQueue(CAN2, &Can2_Sendqueue); //ELMO EPOS
+		Can_DeQueue(CAN2, &VESC_Sendqueue);
 		if(flag.Can2CtrlList_Enable) TraversalControlList(Can2_MesgSentList,&Can2_Sendqueue,CAN_2);
 #endif
 	}

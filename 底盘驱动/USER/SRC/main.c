@@ -61,7 +61,6 @@ static void Task_VESC(void *pdata)
 {
 	while (1)
 	{
-		Can_DeQueue(CAN2, &VESC_Sendqueue);
 		OSTimeDly(2); //延时太长，跑位置模式时会一卡一卡
 	}
 }

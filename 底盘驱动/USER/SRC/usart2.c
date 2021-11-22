@@ -1,4 +1,7 @@
 #include "usart2.h"
+extern SET_ALL_TypeDef VESCAll;
+extern SET_ALL_TypeDef MOTORAll;
+
 void USART2_Init()
 {
 	USART_InitTypeDef USART_InitStructure;
@@ -449,6 +452,42 @@ void USART2_IRQHandler(void)
 //				break;
 //			}
 //		}
+			case 0x06:
+			{
+			if ((usart.RxBuffer_USART2[5] == 0x01) && (usart.RxBuffer_USART2[6] == 0x11)) 
+			{//驱动轮速度
+				VESCAll.set_all_speed = atof((char *)(&usart.RxBuffer_USART2[7]));
+			}
+			if ((usart.RxBuffer_USART2[5] == 0x02) && (usart.RxBuffer_USART2[6] == 0x11)) 
+			{//转动速度
+				MOTORAll.set_all_speedlimit = atof((char *)(&usart.RxBuffer_USART2[7]));
+			}
+			if ((usart.RxBuffer_USART2[5] == 0x03) && (usart.RxBuffer_USART2[6] == 0x11)) 
+			{//转动角度
+				MOTORAll.set_all_angle = atof((char *)(&usart.RxBuffer_USART2[7]));
+			}
+			if ((usart.RxBuffer_USART2[5] == 0x04) && (usart.RxBuffer_USART2[6] == 0x10)) 
+			{//转动使能
+				MOTORAll.set_all_enable =1;
+			}
+			if ((usart.RxBuffer_USART2[5] == 0x05) && (usart.RxBuffer_USART2[6] == 0x10)) 
+			{//转动开始
+				MOTORAll.set_all_begin =1;
+			}
+			if ((usart.RxBuffer_USART2[5] == 0x06) && (usart.RxBuffer_USART2[6] == 0x10)) 
+			{//驱动使能
+				VESCAll.set_all_enable =1;
+			}
+			if ((usart.RxBuffer_USART2[5] == 0x04) && (usart.RxBuffer_USART2[6] == 0x10)) 
+			{//驱动开始
+				VESCAll.set_all_begin =1;
+			}
+			if ((usart.RxBuffer_USART2[5] == 0x0C) && (usart.RxBuffer_USART2[6] == 0x10)) 
+			{//急停
+				VESCAll.set_all_enable =0;				MOTORAll.set_all_begin =0;
+				MOTORAll.set_all_enable =0;				VESCAll.set_all_begin =0;				
+			}
+			}
 			break;
 			}
 			USART2_RX_STA = 0;

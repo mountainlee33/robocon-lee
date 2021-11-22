@@ -12,8 +12,6 @@
 #include "beep.h"
 #include "led8.h"
 
-extern u8 all_speed,all_enable,all_begin;
-
 /****VESCÄÚ²Î****/
 typedef struct
 {
@@ -113,6 +111,9 @@ extern VESCParam SUNNYSKY, VESC_U10, VESC_U8;
 extern VESCLimit VESClimit;
 extern VESCArgum VESCargum;
 extern VESCMotor VESCmotor[4];
+extern u8 all_speed,all_enable,all_begin;
+
+
 
 void VESC_Init(void);
 void VESC_Setzero(VESCMotor *motor);
