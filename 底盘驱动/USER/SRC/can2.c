@@ -117,7 +117,7 @@ void CAN2_RX0_IRQHandler(void)
 		
 		if ((rx_message.StdId >= 0x201) && (rx_message.StdId <= 0x208) && (rx_message.RTR == CAN_RTR_Data)) //DJ电机报文处理
 		{
-			u8 id = rx_message.StdId - 0x201;
+			u8 id = rx_message.StdId - 0x205;
 			last_update_time[id] = now_update_time[id];
 			now_update_time[id] = OSTimeGet();
 			err_update_time[id] = now_update_time[id] - last_update_time[id];

@@ -52,6 +52,16 @@ void Can_DeQueue(CAN_TypeDef *CANx, Can_QueueTypeDef *can_queue)
 			
 			memcpy(ttTxMessage.Data,(can_queue->Can_DataSend[can_queue->Front].Data),ttTxMessage.DLC*sizeof(uint8_t));
 		}
+		if((can_queue->Can_DataSend[can_queue->Front].ID >=0x280)&&(can_queue->Can_DataSend[can_queue->Front].ID <=0x2A0))//CAN1
+		{
+			ttTxMessage.IDE = CAN_ID_STD;
+			ttTxMessage.StdId = can_queue->Can_DataSend[can_queue->Front].ID;
+			ttTxMessage.DLC = can_queue->Can_DataSend[can_queue->Front].DLC;
+			
+			ttTxMessage.RTR = CAN_RTR_DATA;
+			
+			memcpy(ttTxMessage.Data,(can_queue->Can_DataSend[can_queue->Front].Data),ttTxMessage.DLC*sizeof(uint8_t));
+		}
 		if (CANx == CAN2) //电机的报文
 		{
 			Can_MesgCtrlList(Can2_MesgSentList, &Can2_Sendqueue, CAN_2);

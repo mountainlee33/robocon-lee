@@ -46,8 +46,8 @@ s32 get_s32_from_buffer(const u8 *buffer, s32 *index)
 //将两个字节u8类型的数据合成为int类型返回
 s16 get_s16_from_buffer(const u8 *buffer, s32 *index)
 {
-	s16 res = ((uint32_t)buffer[*index]) << 8 |
-			  ((uint32_t)buffer[*index + 1]);
+	s16 res = ((s16)buffer[*index]) << 8 |
+			  ((s16)buffer[*index + 1]);
 	*index += 2;
 	return res;
 }
@@ -56,4 +56,13 @@ s16 get_s16_from_buffer(const u8 *buffer, s32 *index)
 float buffer_16_to_float(const uint8_t *buffer, float scale, int32_t *index)
 {
 	return (float)get_s16_from_buffer(buffer, index) / scale;
+}
+
+//将两个字节u8类型的数据合成为int类型返回
+s16 get_s16_from_buffer1(const u8 *buffer, s16 *index)
+{
+	s16 res = ((uint32_t)buffer[*index]) << 8 |
+			  ((uint32_t)buffer[*index + 1]);
+	*index += 2;
+	return res;
 }

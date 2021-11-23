@@ -30,28 +30,30 @@ void TIM3_IRQHandler(void)
   {
     TIM_ClearITPendingBit(TIM3, TIM_IT_Update); //清除中断标志位
 		
-#ifdef USE_VESC
-		for(u8 i = 0; i < 4; i++)//底盘轮系
-		{
-			//反馈超时判断
-			if((VESCmotor[i].argum.timeout == 1) && VESCmotor[i].enable &&((OSTimeGet()-VESCmotor[i].argum.lastRxTim)> VESCmotor[i].argum.timeoutTicks))
-				VESCmotor[i].argum.timeoutCnt ++;
-			else
-				VESCmotor[i].argum.timeoutCnt = 0;
-			if(VESCmotor[i].argum.timeoutCnt > 20)
-			{
-				insertError(Error.head, VESCERROR | ((i+1) << 4) | TIMEOUT );
-			}
-			else
-			{
-				VESCmotor[i].status.timeout = 0;
-				deletError(Error.head, ErrorFind(Error.head, VESCERROR | ((i+1) << 4) | TIMEOUT));
-			}
- 		}
-#endif
-#ifdef USE_DJ
-		for(int i =0; i < 4; i++)
-			ifdjtimeout(i);
-#endif
+//#ifdef USE_VESC
+//		for(u8 i = 0; i < 4; i++)//底盘轮系
+//		{
+//			//反馈超时判断
+//			if((VESCmotor[i].argum.timeout == 1) && VESCmotor[i].enable &&((OSTimeGet()-VESCmotor[i].argum.lastRxTim)> VESCmotor[i].argum.timeoutTicks))
+//				VESCmotor[i].argum.timeoutCnt ++;
+//			else
+//				VESCmotor[i].argum.timeoutCnt = 0;
+//			if(VESCmotor[i].argum.timeoutCnt > 20)
+//			{
+//				insertError(Error.head, VESCERROR | ((i+1) << 4) | TIMEOUT );
+//			}
+//			else
+//			{
+//				VESCmotor[i].status.timeout = 0;
+//				deletError(Error.head, ErrorFind(Error.head, VESCERROR | ((i+1) << 4) | TIMEOUT));
+//			}
+// 		}
+//#endif
+//#ifdef USE_DJ
+//		for(int i =0; i < 4; i++)
+//			ifdjtimeout(i);
+//#endif
+
+	Can_DeQueue(CAN2, &VESC_Sendqueue);
 	}
 }

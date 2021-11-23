@@ -241,7 +241,7 @@ void ifdjtimeout(u16 id)
 }
 void SetM3508_1(short ID1, short ID2, short ID3, short ID4) //发送1-4电机
 {
-	unsigned short can_id = 0x200;
+	unsigned short can_id = 0x1FF;
 	CanTxMsg tx_message;
 
 	tx_message.IDE = CAN_ID_STD;   //标准帧

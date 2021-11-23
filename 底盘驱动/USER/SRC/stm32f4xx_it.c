@@ -1,5 +1,5 @@
 #include "stm32f4xx_it.h"
-
+#include "beep.h"
 #include "delay.h"
 
 
@@ -33,6 +33,7 @@ void HardFault_Handler(void)
   {
 			delay_ms(500);
 		  Led8_show(9);
+			Beep_Show(4);
   }
 }
 

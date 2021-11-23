@@ -2,6 +2,7 @@
 u8 buf[4];
 s32 speed;
 s32 pos;
+s16 buff[4];
 extern VESCMotor VESCmotor[4];
 void CAN1_Mode_Init(void)
 {
@@ -19,10 +20,19 @@ void CAN1_Mode_Init(void)
   GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
   GPIO_InitStructure.GPIO_Pin = GPIO_Pin_11 | GPIO_Pin_12;
   GPIO_Init(GPIOA, &GPIO_InitStructure);
+	
+  NVIC_InitStructure.NVIC_IRQChannel = CAN1_RX0_IRQn;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority =3;
+  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
+  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
+  NVIC_Init(&NVIC_InitStructure);
 
+  CAN_DeInit(CAN1);
+  CAN_StructInit(&CAN_InitStructure);
+	
   /* CAN cell init */
   CAN_InitStructure.CAN_TTCM = DISABLE;         //非时间触发通道模式
-  CAN_InitStructure.CAN_ABOM = DISABLE;         //软件对CAN_MCR寄存器的INRQ位置1，随后清0，一旦监测到128次连续11位的隐性位，就退出离线状态
+  CAN_InitStructure.CAN_ABOM = ENABLE;         //软件对CAN_MCR寄存器的INRQ位置1，随后清0，一旦监测到128次连续11位的隐性位，就退出离线状态
   CAN_InitStructure.CAN_AWUM = DISABLE;         //睡眠模式由软件唤醒
   CAN_InitStructure.CAN_NART = DISABLE;         //禁止报文自动发送，即只发送一次，无论结果如何
   CAN_InitStructure.CAN_RFLM = DISABLE;         //报文不锁定，新的覆盖旧的
@@ -35,12 +45,6 @@ void CAN1_Mode_Init(void)
   CAN_InitStructure.CAN_BS2 = CAN_BS2_4tq; //时间段2占用3个时间单位
   CAN_InitStructure.CAN_Prescaler = 3;     //分频系数（Fdiv）
   CAN_Init(CAN1, &CAN_InitStructure);      //初始化CAN1
-
-  NVIC_InitStructure.NVIC_IRQChannel = CAN1_RX0_IRQn;
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
-  NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
-  NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;
-  NVIC_Init(&NVIC_InitStructure);
 
   //转向电机
   CAN_FilterInitStructure.CAN_FilterNumber = 1;
@@ -58,10 +62,10 @@ void CAN1_Mode_Init(void)
   CAN_FilterInitStructure.CAN_FilterNumber = 2;
   CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;
   CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_16bit;
-  CAN_FilterInitStructure.CAN_FilterIdHigh = 0X320 << 5;
-  CAN_FilterInitStructure.CAN_FilterIdLow = 0X301 << 5;
-  CAN_FilterInitStructure.CAN_FilterMaskIdHigh = 0X302 << 5;
-  CAN_FilterInitStructure.CAN_FilterMaskIdLow = 0X303 << 5;
+  CAN_FilterInitStructure.CAN_FilterIdHigh = 0X0304 << 5;
+  CAN_FilterInitStructure.CAN_FilterIdLow = 0X0301 << 5;
+  CAN_FilterInitStructure.CAN_FilterMaskIdHigh = 0X0302 << 5;
+  CAN_FilterInitStructure.CAN_FilterMaskIdLow = 0X0303 << 5;
   CAN_FilterInitStructure.CAN_FilterFIFOAssignment = CAN_FilterFIFO0;
   CAN_FilterInitStructure.CAN_FilterActivation = ENABLE;
   CAN_FilterInit(&CAN_FilterInitStructure);
@@ -70,7 +74,7 @@ void CAN1_Mode_Init(void)
   CAN_FilterInitStructure.CAN_FilterMode = CAN_FilterMode_IdList;
   CAN_FilterInitStructure.CAN_FilterScale = CAN_FilterScale_16bit;
   CAN_FilterInitStructure.CAN_FilterIdHigh = 0X0300 << 5;
-  CAN_FilterInitStructure.CAN_FilterIdLow = 0X000 << 5;
+  CAN_FilterInitStructure.CAN_FilterIdLow = 0X0320 << 5;
   CAN_FilterInitStructure.CAN_FilterMaskIdHigh = 0X000 << 5;
   CAN_FilterInitStructure.CAN_FilterMaskIdLow = 0X000 << 5;
   CAN_FilterInitStructure.CAN_FilterFIFOAssignment = CAN_FilterFIFO0;
@@ -79,8 +83,7 @@ void CAN1_Mode_Init(void)
 
   /* 波特率计算公式: BaudRate = APB1时钟频率/Fdiv/（SJW+BS1+BS2） */
   /* 42MHz/3/(1+9+4)=1Mhz */
-  CAN_DeInit(CAN1);
-  CAN_StructInit(&CAN_InitStructure);
+
 
   CAN_ITConfig(CAN1, CAN_IT_FMP0, ENABLE);
 }
@@ -88,16 +91,16 @@ void CAN1_Mode_Init(void)
 //与原报文一致
 static void answer_drivemotor(CanRxMsg *rx_message, u8 motorid)
 {
-  Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].ID = 0x300 + motorid;
+  Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].ID = 0x280 + motorid;
   Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].DLC = sizeof(rx_message);
-	
+  memcpy(&Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].Data[0], &rx_message->Data[0], rx_message->DLC);	
   Can1_Sendqueue.Rear = Rear1;
 }
 
 //查询电流，速度，位置
 static void answer_query(CanRxMsg *rx_message, u8 motorid, u8 *buf)
 {
-  Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].ID = 0x300 + motorid;
+  Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].ID = 0x280 + motorid;
   Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].DLC = 0x08;
   memcpy(&Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].Data[0], &rx_message->Data[0], rx_message->DLC);
   Can1_Sendqueue.Can_DataSend[Can1_Sendqueue.Rear].Data[4] = buf[0];
@@ -122,6 +125,7 @@ void CAN1_RX0_IRQHandler(void)
       int i;
       if (rx_message.Data[0] == 'M' && rx_message.Data[1] == 'O')
       {
+				rx_message.DLC = 0x04;
         for (i = 0; i < 4; i++)
         {
           VESCmotor[i].enable = rx_message.Data[4] & 0x01;
@@ -186,12 +190,12 @@ void CAN1_RX0_IRQHandler(void)
       }
     }
     //转向电机
-    if ((rx_message.StdId >= 305) && (rx_message.StdId <= 308))
+    if ((rx_message.StdId >= 0x305) && (rx_message.StdId <= 0x308))
     {
       if (rx_message.Data[0] == 'S' && rx_message.Data[1] == 'T')
       {
 				motorid = rx_message.StdId - 0x305;
-				VESCmotor[motorid].begin = 0;
+				motor[motorid].begin = 0;
 				
         motorid = 0x020;
         answer_drivemotor(&rx_message, motorid);
@@ -199,22 +203,22 @@ void CAN1_RX0_IRQHandler(void)
       if (rx_message.Data[0] == 'B' && rx_message.Data[1] == 'G')
       {
 				motorid = rx_message.StdId - 0x305;
-				VESCmotor[motorid].begin = 0;
+				motor[motorid].begin = 1;
 				
         motorid = 0x020;
         answer_drivemotor(&rx_message, motorid);
       }
       if (rx_message.Data[0] == 'P' && rx_message.Data[1] == 'X') //位置模式返回值乘100倍
       {
-        motorid = rx_message.StdId - 305;
+        motorid = rx_message.StdId - 0x300;
         get_s32_from_buffer(&rx_message.Data[4], &pos);
-        motor[motorid].valueSet.angle = pos / 1e2f;
+        motor[motorid-0x05].valueSet.angle = pos / 1e2f;
         answer_drivemotor(&rx_message, motorid);
       }
       if (rx_message.Data[0] == 'M' && rx_message.Data[1] == 'O') //单独使能
       {
-        motorid = rx_message.StdId - 305;
-        motor[motorid].enable = rx_message.Data[4];
+        motorid = rx_message.StdId - 0x300;
+        motor[motorid-0x05].enable = rx_message.Data[4];
         answer_drivemotor(&rx_message, motorid);
       }
     }
@@ -241,23 +245,17 @@ void CAN1_RX0_IRQHandler(void)
           answer_drivemotor(&rx_message, motorid);
         }
       }
-      else if (rx_message.Data[0] == 'P' && rx_message.Data[1] == 'X')
+      else if (rx_message.Data[0] == 'P' && rx_message.Data[1] == 'X')//查询位置
       {
-				for(int i = 0;i<4;i++)
-				{
-					buf[i] = 100 * motor[i].valueReal.angle;
-					rx_message.Data[2*i] = buf[i] >> 8;
-					rx_message.Data[2*i+1] = buf[i];
-				}
         answer_drivemotor(&rx_message, motorid);
       }
-      else
+      else//转到位置
       {
 				for(int i = 0;i<4;i++)
 				{
-					buf[i] = 100*motor[i].valueReal.angle;
-					rx_message.Data[2*i] = buf[i]>>8;
-					rx_message.Data[2*i+1] = buf[i];
+					DecodeS16Data(&buff[i],&rx_message.Data[2*i]);
+				  motor[i].valueSet.angle = buff[i]/100;
+					buff[i] = 100*motor[i].valueReal.angle;
 				}
         answer_drivemotor(&rx_message, motorid);
       }

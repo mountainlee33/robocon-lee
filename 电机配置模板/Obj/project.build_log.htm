@@ -26,7 +26,14 @@ Project File Date:  11/15/2021
 
 <h2>Output:</h2>
 Build target 'Target 1'
-".\Obj\project.axf" - 0 Error(s), 0 Warning(s).
+compiling usart2.c...
+USER\SRC\usart2.c(597): warning:  #181-D: argument is incompatible with corresponding format string conversion
+                                sprintf(str_temp, "%d", VESCmotor[m].ValReal.angle); //发送格式化输出到 str 所指向的字符串
+USER\SRC\usart2.c: 1 warning, 0 errors
+linking...
+Program Size: Code=66974 RO-data=1522 RW-data=212 ZI-data=52908  
+FromELF: creating hex file...
+".\Obj\project.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -54,9 +61,9 @@ Package Vendor: Keil
 
    * Component: Keil::Device:Startup:1.0.0
       Include file:  Device\Include\stm32f4xx.h
+      Source file:   Device\Source\system_stm32f4xx.c
       Include file:  RTE_Driver\Config\RTE_Device.h
       Source file:   Device\Source\ARM\startup_stm32f40xx.s
-      Source file:   Device\Source\system_stm32f4xx.c
 </pre>
 </body>
 </html>

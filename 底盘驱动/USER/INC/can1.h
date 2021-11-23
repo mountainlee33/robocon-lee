@@ -9,6 +9,7 @@
 #include "queue.h"
 #include "vesc.h"
 #include "dianji.h"
+#include "macro.h"
 
 void CAN1_Mode_Init(void);
 

@@ -94,7 +94,7 @@ I (.\USER\INC\numchange.h)(0x618F7583)
 I (D:\Keil\ARM\ARMCC\include\math.h)(0x5475F2FE)
 I (.\USER\INC\odrive.h)(0x618F7583)
 I (.\USER\INC\akmotor.h)(0x618F7583)
-F (.\USER\SRC\usart2.c)(0x61963E97)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\GeneralFunction\inc -I.\Libraries\CMSIS -I.\Libraries\Startup -I.\Libraries\STM32F4xx_StdPeriph_Driver\inc -I.\uCOSII\CONFIG -I.\uCOSII\CORE -I.\uCOSII\PORT -I.\USER\INC --locale=english-I C:\Users\mountainlee_33\Desktop\robocon-lee\电机配置模板\RTE-I D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.5\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -DSTM32F40X_HD-o .\obj\usart2.o --omf_browse .\obj\usart2.crf --depend .\obj\usart2.d)
+F (.\USER\SRC\usart2.c)(0x619A141A)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork -I.\GeneralFunction\inc -I.\Libraries\CMSIS -I.\Libraries\Startup -I.\Libraries\STM32F4xx_StdPeriph_Driver\inc -I.\uCOSII\CONFIG -I.\uCOSII\CORE -I.\uCOSII\PORT -I.\USER\INC --locale=english-I C:\Users\mountainlee_33\Desktop\robocon-lee\电机配置模板\RTE-I D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include-I D:\Keil\ARM\PACK\Keil\STM32F4xx_DFP\1.0.5\Device\Include-D__UVISION_VERSION="514" -D_RTE_ -DSTM32F40XX -DUSE_STDPERIPH_DRIVER -DSTM32F40X_HD-o .\obj\usart2.o --omf_browse .\obj\usart2.crf --depend .\obj\usart2.d)
 I (.\USER\INC\usart2.h)(0x618F7583)
 I (D:\Keil\ARM\ARMCC\include\stdio.h)(0x5475F300)
 I (D:\Keil\ARM\ARMCC\include\stdbool.h)(0x5475F300)
