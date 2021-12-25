@@ -1,0 +1,15 @@
+.\obj\tim5.o: USER\SRC\tim5.c
+.\obj\tim5.o: .\USER\INC\tim5.h
+.\obj\tim5.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\tim5.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
+.\obj\tim5.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\tim5.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h
+.\obj\tim5.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmFunc.h
+.\obj\tim5.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmSimd.h
+.\obj\tim5.o: .\Libraries\CMSIS\system_stm32f4xx.h
+.\obj\tim5.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_conf.h
+.\obj\tim5.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\misc.h
+.\obj\tim5.o: .\Libraries\CMSIS\stm32f4xx.h
+.\obj\tim5.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h
+.\obj\tim5.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h
+.\obj\tim5.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h

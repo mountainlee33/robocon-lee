@@ -34,7 +34,7 @@ void Motor_Init(void){
 	motorargum.stuckTicks = 1000; //1000ms
 	
 	/*M2006（1）电机初始化*/
-	motor[0].intrinsic=M2006instrin;
+	motor[0].intrinsic=M3508instrin;
 	motor[0].enable = DISABLE;
 	motor[0].begin=false;
 	motor[0].mode=position;//位置模式
@@ -42,8 +42,8 @@ void Motor_Init(void){
 	motor[0].valueSet.angle=0;
 	motor[0].valueSet.velocity=0;
 	motor[0].limit=motorlimit;
-	PID_Init(&motor[0].PIDs,3.5, 0.12, 0, 0.4,motor[0].valueSet.velocity);//速度
-	PID_Init(&motor[0].PIDx,5, 0.3, 0.2, 1,motor[0].valueSet.pulse);//位置
+	PID_Init(&motor[0].PIDs,8,0.2,0.3,0.4,motor[0].valueSet.velocity);//速度
+	PID_Init(&motor[0].PIDx,8,0.2,0.3,1,motor[0].valueSet.pulse);//位置
 
 	/*M2006（2）电机初始化*/
 	motor[1].intrinsic=M2006instrin;

@@ -35,6 +35,8 @@
 .\obj\main.o: .\USER\INC\led.h
 .\obj\main.o: .\USER\INC\param.h
 .\obj\main.o: .\USER\INC\led8.h
+.\obj\main.o: .\USER\INC\beep.h
+.\obj\main.o: .\USER\INC\param.h
 .\obj\main.o: .\USER\INC\tim2.h
 .\obj\main.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h
 .\obj\main.o: .\USER\INC\canctrollist.h

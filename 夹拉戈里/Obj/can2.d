@@ -32,3 +32,6 @@
 .\obj\can2.o: .\USER\INC\led.h
 .\obj\can2.o: .\USER\INC\param.h
 .\obj\can2.o: .\USER\INC\led8.h
+.\obj\can2.o: .\USER\INC\beep.h
+.\obj\can2.o: .\USER\INC\delay.h
+.\obj\can2.o: .\USER\INC\param.h

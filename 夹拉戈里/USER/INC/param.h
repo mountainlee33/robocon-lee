@@ -6,6 +6,8 @@
 #include "stdbool.h"
 #include "led.h"
 #include "led8.h"
+#include "beep.h"
+#include "dianji.h"
 
 #define RESET_PRO       \
   {                     \

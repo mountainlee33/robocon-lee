@@ -32,3 +32,6 @@
 .\obj\dianji.o: .\USER\INC\led.h
 .\obj\dianji.o: .\USER\INC\param.h
 .\obj\dianji.o: .\USER\INC\led8.h
+.\obj\dianji.o: .\USER\INC\beep.h
+.\obj\dianji.o: .\USER\INC\delay.h
+.\obj\dianji.o: .\USER\INC\param.h

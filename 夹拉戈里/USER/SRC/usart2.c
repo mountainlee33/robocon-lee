@@ -453,7 +453,7 @@ void USART2_IRQHandler(void)
 //				}
 //			}
 //			break;
-//			}
+			}
   		USART2_RX_STA = 0;
 			memset(usart.RxBuffer_USART2, 0, sizeof(usart.RxBuffer_USART2));
 		}
@@ -617,7 +617,7 @@ void UsartLCDshow(void)
 //		}
 //	}
 //	break;
-//	default:;
-//	}
-//	USART2_Send(i);
+	default:;
+	}
+	USART2_Send(i);
 }

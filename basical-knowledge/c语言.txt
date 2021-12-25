@@ -7,6 +7,7 @@
 \在最后表示换行
 &&逻辑与            ？条件运算符	||逻辑或
 %取余运算符
+？ ：    ？表示if语句，：表示else语句
 
 void *memcpy(void *str1, const void *str2, size_t n)
 从存储区 str2 复制 n 个字节到存储区 str1

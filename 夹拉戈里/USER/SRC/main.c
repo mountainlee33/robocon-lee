@@ -5,13 +5,13 @@
  * @Date: 2021-08-23 10:48:20
  * @return {*}
  */
- u8 VALVE_DATA;//1296
+ u8 VALVE_DATA;//1340
 vs16 paw_pos[5];
  bool procedure_begin;
 int main(void)
 {
 	SystemInit();
-	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_3);
+	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_3);//1000
 	TIM2_Int_Init(11999, 6);
 	TIM5_Init();
 	CAN1_Mode_Init();
@@ -43,10 +43,12 @@ static void Task_Start(void *pdata)
 
 static void Task_Motor(void *pdata)
 {
+	Beep_Show(3);
 	while (1)
 	{
 		OSTimeDly(2000);
-		VS4Channal_Send(motor[0].valueReal.velocity,0,0,0);
+		CYLINDE_CONTROL(VALVE_DATA);
+		VS4Channal_Send(motor[0].valueReal.velocity,0,0,0);//Ê¾²¨Æ÷Ê¾Êý
 	}
 }
 

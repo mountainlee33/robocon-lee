@@ -13,6 +13,7 @@ void Flag_Init(void)
 void param_Init(void)
 {
 		Motor_Init();
+	  Beep_Init();
 		Flag_Init();
 		LED_Configuration();
 		Led8_Configuration();

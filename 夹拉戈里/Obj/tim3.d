@@ -34,3 +34,6 @@
 .\obj\tim3.o: .\USER\INC\led.h
 .\obj\tim3.o: .\USER\INC\param.h
 .\obj\tim3.o: .\USER\INC\led8.h
+.\obj\tim3.o: .\USER\INC\beep.h
+.\obj\tim3.o: .\USER\INC\delay.h
+.\obj\tim3.o: .\USER\INC\param.h

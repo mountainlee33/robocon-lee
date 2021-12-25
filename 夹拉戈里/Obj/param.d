@@ -24,3 +24,14 @@
 .\obj\param.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h
 .\obj\param.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h
 .\obj\param.o: .\USER\INC\led8.h
+.\obj\param.o: .\USER\INC\beep.h
+.\obj\param.o: .\USER\INC\delay.h
+.\obj\param.o: .\USER\INC\param.h
+.\obj\param.o: .\USER\INC\dianji.h
+.\obj\param.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h
+.\obj\param.o: .\USER\INC\pid.h
+.\obj\param.o: .\USER\INC\utils.h
+.\obj\param.o: .\USER\INC\can2.h
+.\obj\param.o: .\USER\INC\dianji.h
+.\obj\param.o: .\USER\INC\queue.h
+.\obj\param.o: .\USER\INC\macro.h

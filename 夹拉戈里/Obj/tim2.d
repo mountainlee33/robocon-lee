@@ -34,4 +34,7 @@
 .\obj\tim2.o: .\USER\INC\led.h
 .\obj\tim2.o: .\USER\INC\param.h
 .\obj\tim2.o: .\USER\INC\led8.h
+.\obj\tim2.o: .\USER\INC\beep.h
+.\obj\tim2.o: .\USER\INC\delay.h
+.\obj\tim2.o: .\USER\INC\param.h
 .\obj\tim2.o: .\USER\INC\canctrollist.h

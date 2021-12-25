@@ -27,3 +27,14 @@
 .\obj\usart1.o: .\uCOSII\PORT\os_cpu.h
 .\obj\usart1.o: .\USER\INC\led.h
 .\obj\usart1.o: .\USER\INC\led8.h
+.\obj\usart1.o: .\USER\INC\beep.h
+.\obj\usart1.o: .\USER\INC\delay.h
+.\obj\usart1.o: .\USER\INC\param.h
+.\obj\usart1.o: .\USER\INC\dianji.h
+.\obj\usart1.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h
+.\obj\usart1.o: .\USER\INC\pid.h
+.\obj\usart1.o: .\USER\INC\utils.h
+.\obj\usart1.o: .\USER\INC\can2.h
+.\obj\usart1.o: .\USER\INC\dianji.h
+.\obj\usart1.o: .\USER\INC\queue.h
+.\obj\usart1.o: .\USER\INC\macro.h

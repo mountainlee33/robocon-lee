@@ -27,6 +27,9 @@
 .\obj\usart2.o: .\uCOSII\PORT\os_cpu.h
 .\obj\usart2.o: .\USER\INC\led.h
 .\obj\usart2.o: .\USER\INC\led8.h
+.\obj\usart2.o: .\USER\INC\beep.h
+.\obj\usart2.o: .\USER\INC\delay.h
+.\obj\usart2.o: .\USER\INC\param.h
 .\obj\usart2.o: .\USER\INC\dianji.h
 .\obj\usart2.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h
 .\obj\usart2.o: .\USER\INC\pid.h

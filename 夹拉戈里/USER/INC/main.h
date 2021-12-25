@@ -19,6 +19,7 @@
 #include "cylinder.h"
 #include "dianji.h"
 #include "led8.h"
+#include "beep.h"
 
 //START任务
 #define START_TASK_PRIO 5

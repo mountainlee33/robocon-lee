@@ -27,3 +27,12 @@
 .\obj\canctrollist.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h
 .\obj\canctrollist.o: .\Libraries\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h
 .\obj\canctrollist.o: .\USER\INC\led8.h
+.\obj\canctrollist.o: .\USER\INC\beep.h
+.\obj\canctrollist.o: .\USER\INC\delay.h
+.\obj\canctrollist.o: .\USER\INC\param.h
+.\obj\canctrollist.o: .\USER\INC\dianji.h
+.\obj\canctrollist.o: .\USER\INC\pid.h
+.\obj\canctrollist.o: .\USER\INC\utils.h
+.\obj\canctrollist.o: .\USER\INC\can2.h
+.\obj\canctrollist.o: .\USER\INC\dianji.h
+.\obj\canctrollist.o: .\USER\INC\macro.h
