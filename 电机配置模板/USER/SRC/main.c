@@ -51,7 +51,9 @@ static void Task_Start(void *pdata)
 	OSTaskCreate(Task_VESC, (void *)0, (OS_STK *)&VESC_TASK_STK[VESC_STK_SIZE - 1], VESC_TASK_PRIO);
 	OSTaskCreate(Task_VESCSEND, (void *)0, (OS_STK *)&VESCSEND_TASK_STK[VESCSEND_STK_SIZE - 1], VESCSEND_TASK_PRIO);
 #endif
-
+#ifdef USE_ODRIVE
+	OSTaskCreate(Task_ODRIVE, (void *)0, (OS_STK *)&ODRIVE_TASK_STK[ODRIVE_STK_SIZE - 1], ODRIVE_TASK_PRIO);
+#endif
 	OSTaskSuspend(START_TASK_PRIO); //挂起起始任务.
 	OS_EXIT_CRITICAL();				//退出临界区(可以被中断打断)
 }
@@ -64,6 +66,14 @@ static void Task_Motor(void *pdata)
 	}
 }
 
+static void Task_ODRIVE(void *pdata)
+{
+	while (1)
+	{
+		query(1);
+		OSTimeDly(1000);
+	}
+}
 static void Task_Elmo(void *pdata) //elmo任务
 {
 	while (1)
@@ -74,7 +84,7 @@ static void Task_Elmo(void *pdata) //elmo任务
 		OSTimeDly(50); //防止队列满
 		elmo_control(3);
 		OSTimeDly(50); //防止队列满
-	  ELMO_motor_ASKvx(1, 0);
+		ELMO_motor_ASKvx(1, 0);
 		ELMO_motor_ASKpx(1, 0);
 		OSTimeDly(100);
 		ELMO_motor_ASKvx(2, 0);
@@ -119,14 +129,13 @@ static void Task_DataScope(void *pdata)
 		DataScope_Get_Channel_Data(motor[0].valueReal.velocity, 1);
 		DataScope_Get_Channel_Data(motor[0].valueReal.current, 2);
 		DataScope_Get_Channel_Data(motor[0].valueReal.angle, 3);
-		DataScope_Get_Channel_Data(4.0, 4);		 //将数据   写入通道 4
-		DataScope_Get_Channel_Data(5.0, 5);		 //将数据   写入通道 5
-		DataScope_Get_Channel_Data(6.0, 6);		 //将数据   写入通道 6
-		DataScope_Get_Channel_Data(7.0, 7);		 //将数据   写入通道 7
-		DataScope_Get_Channel_Data(8.0, 8);		 //将数据   写入通道 8
-		DataScope_Get_Channel_Data(9.0, 9);		 //将数据   写入通道 9
-		DataScope_Get_Channel_Data(10, 10);		 //将数据   写入通道 10
+		DataScope_Get_Channel_Data(4.0, 4); //将数据   写入通道 4
+		DataScope_Get_Channel_Data(5.0, 5); //将数据   写入通道 5
+		DataScope_Get_Channel_Data(6.0, 6); //将数据   写入通道 6
+		DataScope_Get_Channel_Data(7.0, 7); //将数据   写入通道 7
+		DataScope_Get_Channel_Data(8.0, 8); //将数据   写入通道 8
+		DataScope_Get_Channel_Data(9.0, 9); //将数据   写入通道 9
+		DataScope_Get_Channel_Data(10, 10); //将数据   写入通道 10
 		OSTimeDly(100);
 	}
 }
-

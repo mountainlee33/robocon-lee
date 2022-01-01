@@ -2,7 +2,7 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
-#include "includes.h"//任何文件必须引入
+#include "includes.h" //任何文件必须引入
 #include "delay.h"
 #include "os_cpu.h"
 #include "ucos_ii.h"
@@ -52,13 +52,19 @@ static void Task_Elmo(void *pdata);
 //VESC任务
 #define VESC_TASK_PRIO 16
 #define VESC_STK_SIZE 256
-__align(8)  OS_STK VESC_TASK_STK[VESC_STK_SIZE];
+__align(8) OS_STK VESC_TASK_STK[VESC_STK_SIZE];
 static void Task_VESC(void *pdata);
 
 #define VESCSEND_TASK_PRIO 18
 #define VESCSEND_STK_SIZE 256
-__align(8)  OS_STK VESCSEND_TASK_STK[VESCSEND_STK_SIZE];
+__align(8) OS_STK VESCSEND_TASK_STK[VESCSEND_STK_SIZE];
 static void Task_VESCSEND(void *pdata);
+
+//ODRIVE任务
+#define ODRIVE_TASK_PRIO 20
+#define ODRIVE_STK_SIZE 256
+__align(8) OS_STK ODRIVE_TASK_STK[ODRIVE_STK_SIZE];
+static void Task_ODRIVE(void *pdata);
 
 //电磁阀任务
 #define VALVE_TASK_PRIO 8

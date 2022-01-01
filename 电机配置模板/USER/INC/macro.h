@@ -4,13 +4,12 @@
 #include "stdbool.h"
 #include "stm32f4xx.h"
 
-#define USE_DJ     0
-#define USE_ELMO   1
-#define USE_VESC   1
-#define USE_VALVE		1
-#define USE_ODRIVE	1
-#define USE_AK		1
-
+#define USE_DJ 1
+#define USE_ELMO 1
+#define USE_VESC 1
+#define USE_VALVE 1
+#define USE_ODRIVE 1
+#define USE_AK 1
 
 /* BIT编号，用于流程号判断 */
 #define BIT0 (0x01 >> 0)
@@ -21,7 +20,6 @@
 #define BIT5 (0x01 >> 5)
 #define BIT6 (0x01 >> 6)
 #define BIT7 (0x01 >> 7)
-
 
 #define EncodeS32Data(f, buff) \
 	{                          \
@@ -55,6 +53,6 @@
 	{                          \
 		*f = *(u16 *)buff;     \
 	}
-	
+
 #define PI 3.141592653
-#endif	
+#endif
