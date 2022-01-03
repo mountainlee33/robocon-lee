@@ -34,7 +34,7 @@ void Odrv_motor_Init(void)
     odrv_motor[0].mode = position;
     odrv_motor[0].input_mode = INPUT_MODE_INACTIVE;
     odrv_motor[0].Value_Set.current = 0;
-    odrv_motor[0].Value_Set.angle = 0;
+    odrv_motor[0].Value_Set.round = 0;
     odrv_motor[0].Value_Set.velocity = 0;
     odrv_motor[0].limit = odrivelimit;
 
@@ -43,7 +43,7 @@ void Odrv_motor_Init(void)
     odrv_motor[1].mode = position;
     odrv_motor[1].input_mode = INPUT_MODE_INACTIVE;
     odrv_motor[1].Value_Set.current = 0;
-    odrv_motor[1].Value_Set.angle = 0;
+    odrv_motor[1].Value_Set.round = 0;
     odrv_motor[1].Value_Set.velocity = 0;
     odrv_motor[1].limit = odrivelimit;
 
@@ -52,7 +52,7 @@ void Odrv_motor_Init(void)
     odrv_motor[2].mode = position;
     odrv_motor[2].input_mode = INPUT_MODE_INACTIVE;
     odrv_motor[2].Value_Set.current = 0;
-    odrv_motor[2].Value_Set.angle = 0;
+    odrv_motor[2].Value_Set.round = 0;
     odrv_motor[2].Value_Set.velocity = 0;
     odrv_motor[2].limit = odrivelimit;
 
@@ -61,7 +61,7 @@ void Odrv_motor_Init(void)
     odrv_motor[3].mode = position;
     odrv_motor[3].input_mode = INPUT_MODE_INACTIVE;
     odrv_motor[3].Value_Set.current = 0;
-    odrv_motor[3].Value_Set.angle = 0;
+    odrv_motor[3].Value_Set.round = 0;
     odrv_motor[3].Value_Set.velocity = 0;
     odrv_motor[3].limit = odrivelimit;
 
@@ -222,7 +222,7 @@ void Input_pos(u16 id)
     Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].ID = id << 9 | 0x00C;
     Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].DLC = 0x08;
 
-		EcodeFloatData_to_4byte(&odrv_motor[id - 1].Value_Set.angle,&Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].Data[0]);
+		EcodeFloatData_to_4byte(&odrv_motor[id - 1].Value_Set.round,&Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].Data[0]);
 
     Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].Data[4] = 0x00;
     Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].Data[5] = 0x00;

@@ -26,16 +26,49 @@ Project File Date:  01/03/2022
 
 <h2>Output:</h2>
 Build target 'Target 1'
+compiling main.c...
+compiling tim2.c...
+compiling usart2.c...
+USER\SRC\usart2.c(597): warning:  #181-D: argument is incompatible with corresponding format string conversion
+                                sprintf(str_temp, "%d", VESCmotor[m].ValReal.angle); //发送格式化输出到 str 所指向的字符串
+USER\SRC\usart2.c: 1 warning, 0 errors
+compiling can1.c...
+USER\SRC\can1.c(169): warning:  #167-D: argument of type "volatile float *" is incompatible with parameter of type "float *"
+            EcodeFloatData_to_4byte(&VESCmotor[i].ValReal.current, &buf[0]);
+USER\SRC\can1.c: 1 warning, 0 errors
+compiling tim5.c...
+compiling can2.c...
+USER\SRC\can2.c(316): warning:  #167-D: argument of type "vs32 *" is incompatible with parameter of type "void *restrict"
+                                memcpy(&odrv_motor[id-1].Argum.Motor_Error, &numchange, sizeof(s32));   
+USER\SRC\can2.c(321): warning:  #167-D: argument of type "vs32 *" is incompatible with parameter of type "void *restrict"
+                                memcpy(&odrv_motor[id-1].Argum.Encoder_Error, &numchange, sizeof(s32)); 
+USER\SRC\can2.c(326): warning:  #167-D: argument of type "volatile float *" is incompatible with parameter of type "void *restrict"
+                                memcpy(&odrv_motor[id-1].Value_Real.round, &numchange, sizeof(s32));
+USER\SRC\can2.c(328): warning:  #167-D: argument of type "volatile float *" is incompatible with parameter of type "void *restrict"
+                                memcpy(&odrv_motor[id-1].Value_Real.velocity, &numchange, sizeof(s32));         
+USER\SRC\can2.c(333): warning:  #167-D: argument of type "volatile float *" is incompatible with parameter of type "void *restrict"
+                                memcpy(&odrv_motor[id-1].Value_Real.current, &numchange, sizeof(s32));  
+USER\SRC\can2.c: 5 warnings, 0 errors
+compiling param.c...
+compiling usart3.c...
+compiling usart1.c...
+compiling tim3.c...
+compiling dianji.c...
+compiling vesc.c...
+compiling canctrollist.c...
 compiling odrive.c...
 USER\SRC\odrive.c(225): warning:  #167-D: argument of type "volatile float *" is incompatible with parameter of type "float *"
-                EcodeFloatData_to_4byte(&odrv_motor[id - 1].Value_Set.angle,&Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].Data[0]);
+                EcodeFloatData_to_4byte(&odrv_motor[id - 1].Value_Set.round,&Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].Data[0]);
 USER\SRC\odrive.c(241): warning:  #167-D: argument of type "volatile float *" is incompatible with parameter of type "float *"
       EcodeFloatData_to_4byte(&odrv_motor[id - 1].Value_Set.velocity, &Odrv_Sendqueue.Can_DataSend[Odrv_Sendqueue.Rear].Data[0]);
 USER\SRC\odrive.c: 2 warnings, 0 errors
+compiling akmotor.c...
+compiling elmo.c...
+compiling filter.c...
 linking...
 Program Size: Code=70046 RO-data=1522 RW-data=212 ZI-data=55204  
 FromELF: creating hex file...
-".\Obj\project.axf" - 0 Error(s), 2 Warning(s).
+".\Obj\project.axf" - 0 Error(s), 9 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -62,9 +95,9 @@ Package Vendor: Keil
       Source file:   CMSIS\UserCodeTemplates\ARM\ITM_Retarget.c
 
    * Component: Keil::Device:Startup:2.6.2
-      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
-      Source file:   MDK\Device\Source\ARM\STM32F40xxx_41xxx_OPT.s
       Include file:  Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h
+      Source file:   MDK\Device\Source\ARM\STM32F40xxx_41xxx_OPT.s
+      Source file:   MDK\Device\Source\ARM\STM32F4xx_OTP.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\arm\startup_stm32f405xx.s
       Source file:   Drivers\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
 </pre>

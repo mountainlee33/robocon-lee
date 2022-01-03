@@ -323,7 +323,7 @@ void CAN2_RX1_IRQHandler(void)
 			if ((rx_message.StdId == 0x409) | (rx_message.StdId == 0x209))
 			{
 				DecodeS32Data(&numchange, &rx_message.Data[0]);
-				memcpy(&odrv_motor[id-1].Value_Real.angle, &numchange, sizeof(s32));
+				memcpy(&odrv_motor[id-1].Value_Real.round, &numchange, sizeof(s32));
 				DecodeS32Data(&numchange, &rx_message.Data[4]);
 				memcpy(&odrv_motor[id-1].Value_Real.velocity, &numchange, sizeof(s32));		
 			}

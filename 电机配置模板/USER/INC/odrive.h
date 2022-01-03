@@ -114,7 +114,7 @@ typedef struct
 //电机外参
 typedef struct
 {
-    volatile float angle;    //轴前角度
+    volatile float round;    //轴前角度
     volatile float current;  //当前电流
     volatile float velocity; //当前速度
 } Odrv_Value;
