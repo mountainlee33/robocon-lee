@@ -70,7 +70,7 @@ static void Task_ODRIVE(void *pdata)
 {
 	while (1)
 	{
-		query(1);
+		Odrv_query(1);
 		OSTimeDly(1000);
 	}
 }

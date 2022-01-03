@@ -38,8 +38,8 @@
 .\obj\akmotor.o: .\USER\INC\filter.h
 .\obj\akmotor.o: .\USER\INC\param.h
 .\obj\akmotor.o: .\USER\INC\vesc.h
-.\obj\akmotor.o: .\USER\INC\canctrollist.h
-.\obj\akmotor.o: .\USER\INC\numchange.h
-.\obj\akmotor.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\akmotor.o: .\USER\INC\odrive.h
+.\obj\akmotor.o: .\USER\INC\numchange.h
+.\obj\akmotor.o: .\USER\INC\canctrollist.h
+.\obj\akmotor.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\akmotor.o: .\USER\INC\akmotor.h

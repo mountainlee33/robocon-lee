@@ -37,8 +37,8 @@
 .\obj\can2.o: .\USER\INC\filter.h
 .\obj\can2.o: .\USER\INC\param.h
 .\obj\can2.o: .\USER\INC\vesc.h
-.\obj\can2.o: .\USER\INC\canctrollist.h
-.\obj\can2.o: .\USER\INC\numchange.h
-.\obj\can2.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\can2.o: .\USER\INC\odrive.h
+.\obj\can2.o: .\USER\INC\numchange.h
+.\obj\can2.o: .\USER\INC\canctrollist.h
+.\obj\can2.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\can2.o: .\USER\INC\akmotor.h

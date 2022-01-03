@@ -38,8 +38,8 @@
 .\obj\elmo.o: .\USER\INC\filter.h
 .\obj\elmo.o: .\USER\INC\param.h
 .\obj\elmo.o: .\USER\INC\vesc.h
-.\obj\elmo.o: .\USER\INC\canctrollist.h
-.\obj\elmo.o: .\USER\INC\numchange.h
-.\obj\elmo.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\elmo.o: .\USER\INC\odrive.h
+.\obj\elmo.o: .\USER\INC\numchange.h
+.\obj\elmo.o: .\USER\INC\canctrollist.h
+.\obj\elmo.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\elmo.o: .\USER\INC\akmotor.h

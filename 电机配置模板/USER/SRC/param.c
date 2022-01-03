@@ -15,6 +15,7 @@ void param_Init(void)
 		ELMO_motor_Init();
 		ELMO_Init(CAN2);
 		Motor_Init();
+	  Odrv_motor_Init();
 		Flag_Init();
 		LED_Configuration();
 		Led8_Configuration();

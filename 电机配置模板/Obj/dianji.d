@@ -38,8 +38,8 @@
 .\obj\dianji.o: .\USER\INC\filter.h
 .\obj\dianji.o: .\USER\INC\param.h
 .\obj\dianji.o: .\USER\INC\vesc.h
-.\obj\dianji.o: .\USER\INC\canctrollist.h
-.\obj\dianji.o: .\USER\INC\numchange.h
-.\obj\dianji.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\dianji.o: .\USER\INC\odrive.h
+.\obj\dianji.o: .\USER\INC\numchange.h
+.\obj\dianji.o: .\USER\INC\canctrollist.h
+.\obj\dianji.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\dianji.o: .\USER\INC\akmotor.h

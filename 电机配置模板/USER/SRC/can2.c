@@ -307,20 +307,30 @@ void CAN2_RX1_IRQHandler(void)
 #ifdef USE_ODRIVE
 		if ((rx_message.StdId >= 0x203) && (rx_message.StdId <= 0x414) && (rx_message.RTR == CAN_RTR_Data))
 		{
+			s32 numchange;
+			u8 id=0;
+			id = rx_message.StdId >>9;
 			if ((rx_message.StdId == 0x403) | (rx_message.StdId == 0x203))
 			{
+				DecodeS32Data(&odrv_motor[id-1].Argum.Motor_Error,&rx_message.Data[0]);
+				memcpy(&odrv_motor[id-1].Argum.Motor_Error, &numchange, sizeof(s32));	
 			}
 			if ((rx_message.StdId == 0x404) | (rx_message.StdId == 0x204))
 			{
+				DecodeS32Data(&numchange,&rx_message.Data[0]);
+				memcpy(&odrv_motor[id-1].Argum.Encoder_Error, &numchange, sizeof(s32));	
 			}
 			if ((rx_message.StdId == 0x409) | (rx_message.StdId == 0x209))
 			{
-				DecodeS32Data(&odrv_motor[1].Value_Real.angle, &rx_message.Data[0]);
-				DecodeS32Data(&odrv_motor[1].Value_Real.velocity, &rx_message.Data[4]);
+				DecodeS32Data(&numchange, &rx_message.Data[0]);
+				memcpy(&odrv_motor[id-1].Value_Real.angle, &numchange, sizeof(s32));
+				DecodeS32Data(&numchange, &rx_message.Data[4]);
+				memcpy(&odrv_motor[id-1].Value_Real.velocity, &numchange, sizeof(s32));		
 			}
 			if ((rx_message.StdId == 0x414) | (rx_message.StdId == 0x214))
 			{
-				DecodeS32Data(&odrv_motor[1].Value_Real.current, &rx_message.Data[4]);
+				DecodeS32Data(&numchange, &rx_message.Data[4]);
+				memcpy(&odrv_motor[id-1].Value_Real.current, &numchange, sizeof(s32));	
 			}
 		}
 #endif

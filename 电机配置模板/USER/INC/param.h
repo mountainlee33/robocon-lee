@@ -9,6 +9,8 @@
 #include "led8.h"
 #include "filter.h"
 #include "vesc.h"
+#include "odrive.h"
+
 #define RESET_PRO       \
   {                     \
     __set_FAULTMASK(1); \

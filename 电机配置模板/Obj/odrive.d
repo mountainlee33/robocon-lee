@@ -40,7 +40,7 @@
 .\obj\odrive.o: .\USER\INC\filter.h
 .\obj\odrive.o: .\USER\INC\param.h
 .\obj\odrive.o: .\USER\INC\vesc.h
+.\obj\odrive.o: .\USER\INC\odrive.h
 .\obj\odrive.o: .\USER\INC\canctrollist.h
 .\obj\odrive.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
-.\obj\odrive.o: .\USER\INC\odrive.h
 .\obj\odrive.o: .\USER\INC\akmotor.h

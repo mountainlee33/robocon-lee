@@ -40,8 +40,8 @@
 .\obj\tim3.o: .\USER\INC\filter.h
 .\obj\tim3.o: .\USER\INC\param.h
 .\obj\tim3.o: .\USER\INC\vesc.h
-.\obj\tim3.o: .\USER\INC\canctrollist.h
-.\obj\tim3.o: .\USER\INC\numchange.h
-.\obj\tim3.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\tim3.o: .\USER\INC\odrive.h
+.\obj\tim3.o: .\USER\INC\numchange.h
+.\obj\tim3.o: .\USER\INC\canctrollist.h
+.\obj\tim3.o: D:\Keil\ARM\ARMCC\Bin\..\include\math.h
 .\obj\tim3.o: .\USER\INC\akmotor.h

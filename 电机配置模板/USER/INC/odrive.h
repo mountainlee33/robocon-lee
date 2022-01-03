@@ -141,8 +141,8 @@ typedef struct
     u8 timeoutCnt;    //超时用计数值
     u16 timeoutTicks; //判断超时用系统节拍数
     u16 stuckTicks;   //判断堵转用系统节拍数
-    u8 Motor_Error;   //电机报错内容
-    u8 Encoder_Error; //编码器报错内容
+    vs32 Motor_Error;   //电机报错内容
+    vs32 Encoder_Error; //编码器报错内容
 } Odrv_Argum;
 
 //odrive电机总结构体
@@ -158,17 +158,17 @@ typedef struct
     Odrv_Limit limit;                 //限制因素
 } Odrv_motor;
 
-void query(u8 id);
-void Input_Vel(u8 id);
-void Input_pos(u8 id);
-void Odrv_motor_ASKvel_pos(u8 id);
-void Odrv_motor_ASKiq(u8 id);
-void Check_Encoder_Error(u8 id);
-void Check_MotorError(u8 id);
-void clear_Error(u8 id);
-void Reboot(u8 id);
-void Odrv_Input_Mode(u8 id);
-void Odrv_AxisState(u8 id);
+void Odrv_query(u16 id);
+void Input_Vel(u16 id);
+void Input_pos(u16 id);
+void Odrv_motor_ASKvel_pos(u16 id);
+void Odrv_motor_ASKiq(u16 id);
+void Check_Encoder_Error(u16 id);
+void Check_MotorError(u16 id);
+void clear_Error(u16 id);
+void Reboot(u16 id);
+void Odrv_Input_Mode(u16 id);
+void Odrv_AxisState(u16 id);
 void Odrv_motor_Init(void);
 
 extern Odrv_Limit odrivelimit;

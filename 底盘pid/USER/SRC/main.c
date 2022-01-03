@@ -69,7 +69,7 @@ static void Task_DataScope(void *pdata)
 {
 	while (1)
 	{
-		VS4Channal_Send(VESCmotor[0].ValReal.speed, VESCmotor[1].ValReal.speed,VESCmotor[2].ValReal.speed,VESCmotor[3].ValReal.speed);
+		VS4Channal_Send(VESCmotor[2].ValSet.speed, VESCmotor[3].ValSet.speed,VESCmotor[2].ValReal.speed,VESCmotor[3].ValReal.speed);
 		OSTimeDly(100);
 	}
 }
