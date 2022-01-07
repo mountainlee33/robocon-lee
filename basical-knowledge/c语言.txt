@@ -7,8 +7,9 @@
 \在最后表示换行
 &&逻辑与            ？条件运算符	||逻辑或
 %取余运算符
+b##a      b和a名字連在一起
 ？ ：    ？表示if语句，：表示else语句
-
+go to Start語句：直接去向名字
 void *memcpy(void *str1, const void *str2, size_t n)
 从存储区 str2 复制 n 个字节到存储区 str1
 sprintf (str_temp, "%d", motor[0].mode)   发送格式化输出到 str 所指向的字符串

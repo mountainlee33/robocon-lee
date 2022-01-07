@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "led.h": "c",
+        "stm32f4xx.h": "c",
+        "beep.h": "c",
+        "uart.h": "c"
+    }
+}

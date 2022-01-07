@@ -1,0 +1,10 @@
+..\obj\uart.o: USER\src\uart.c
+..\obj\uart.o: .\USER\inc\uart.h
+..\obj\uart.o: .\SYSTEM\sys\sys.h
+..\obj\uart.o: .\SYSTEM\sys\stm32f4xx.h
+..\obj\uart.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
+..\obj\uart.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\uart.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h
+..\obj\uart.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmFunc.h
+..\obj\uart.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmSimd.h
+..\obj\uart.o: .\SYSTEM\sys\system_stm32f4xx.h

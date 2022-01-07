@@ -1,0 +1,210 @@
+
+odrv0.vbus_voltage  # 电压检测
+odrv0.axis0.error  # 错误检查
+dump_errors(odrv0) #查看错误
+dump_errors(odrv0, True) #清除错误（如果报错ODrive不会继续执行电机旋转指令）
+odrv0.reboot() #重启ODrive
+odrv0.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL #进入闭环控制
+odrv0.axis0.motor #检查电机参数设置
+odrv0.axis0.encoder #检查编码器参数设置
+odrv0.axis0.encoder.shadow_count #读取当前编码器度数
+
+配置u10，abz编码器流程
+流程：
+odrivetool
+odrv0.erase_configuration()# 恢复出厂配置
+odrv0.vbus_voltage#检查电压
+odrv0.axis0.error#检查M0
+odrv0.axis0.encoder.shadow_count#编码器计数
+
+配置主板参数
+odrv0.config.brake_resistance = 0  # 配置AUX接口上的制动电阻值（常见的为0.47、2.0Ω），如没接则配置为0
+odrv0.config.dc_bus_undervoltage_trip_level = 8.0  # 配置低压保护阈值（V）
+odrv0.config.dc_bus_overvoltage_trip_level = 56.0  # 配置高压保护阈值（V）
+odrv0.config.dc_max_positive_current = 50.0  # 配置过流保护阈值（A）
+odrv0.config.dc_max_negative_current = -5.0  # 配置反向电流阈值（电机制动产生的反向电流）（A）
+odrv0.config.max_regen_current = 0 # 配置回充电流值（根据供电电池的参数配置，开关电源供电配置为0）（A）
+odrv0.save_configuration()  # 保存参数
+
+配置电机参数
+odrv0.axis0.motor.config.pole_pairs = 21  # 配置电机0极对数
+odrv0.axis0.motor.config.current_lim = 35   # 配置电机0的限制电流（A）
+odrv0.axis0.motor.config.requested_current_range = 60 # 配置电机0的电流采样阈值（A）
+odrv0.axis0.motor.config.calibration_current = 10  # 配置电机0校准时的电流阈值
+
+odrv0.axis0.encoder.config.use_index = true
+odrv0.axis0.requested_state = AXIS_STATE_ENCODER_INDEX_SEARCH
+配置编码器参数
+odrv0.axis0.encoder.config.mode = ENCODER_MODE_INCREMENTAL # 配置电机0编码器类型。当前使用的是ABI正交（增量）编码器。
+odrv0.axis0.encoder.config.cpr = 4000  # 配置电机0编码器CPR（每转一圈，编码器的计数），为编码器线束*4，博客开篇有讲
+odrv0.axis0.encoder.config.bandwidth = 3000# 编码器带宽设置，CPR值越高带宽设置的也越高
+odrv0.axis0.encoder.config.calib_range = 10# 电机实际转动角度和开环移动距离之间允许的最大误差，超过此误差将报错ERROR_CPR_OUT_OF_RANGE
+
+配置无感情况：
+odrv0.axis0.controller.config.vel_gain = 0.01
+odrv0.axis0.controller.config.vel_integrator_gain = 0.05
+odrv0.axis0.controller.config.control_mode = 2
+odrv0.axis0.controller.vel_setpoint = 400
+odrv0.axis0.motor.config.direction = 1
+odrv0.axis0.sensorless_estimator.config.pm_flux_linkage = 5.51328895422 / (<pole pairs> * <motor kv>)
+
+电机和编码器校准
+odrv0.axis0.requested_state = AXIS_STATE_MOTOR_CALIBRATION # 进行电机参数校准（运行后电机会发出哔~的一声）
+odrv0.axis0.motor.config.pre_calibrated = True  # 设置电机预校准。
+odrv0.axis0.requested_state = AXIS_STATE_ENCODER_OFFSET_CALIBRATION  # 进行编码器校准
+
+odrv0.axis0.requested_state = AXIS_STATE_FULL_CALIBRATION_SEQUENCE #校准电机和编码器
+配置控制器参数
+位置模式(注意input_mode和control_mode的区别)
+odrv0.axis0.controller.config.control_mode = CONTROL_MODE_POSITION_CONTROL# 配置电机0控制模式，为位置闭环控制
+odrv0.axis0.controller.config.vel_limit = 120 # 配置电机0最大转速（转/秒）（电机kv值 * 电压 / 60）
+odrv0.axis0.controller.config.pos_gain = 20 # 配置位置环增益：20
+odrv0.axis0.cont roller.config.vel_gain = 0.05  # 配置速度环增益：0.05
+odrv0.axis0.controller.config.vel_integrator_gain = 0.02   # 配置积分增益：0.02
+odrv0.axis0.controller.config.input_mode = INPUT_MODE_TRAP_TRAJ  # 配置输入模式为：梯形轨迹模式
+odrv0.axis0.trap_traj.config.vel_limit = 50 # 配置梯形模式下的电机转速阈值（转/秒）
+odrv0.axis0.trap_traj.config.accel_limit = 10  # 配置梯形运动模式下的加速加速度
+odrv0.axis0.trap_traj.config.decel_limit = 10  # 配置梯形运动模式下的减速加速度
+odrv0.axis0.controller.input_pos = 10 # 控制电机运行到100圈的位置
+odrv0.axis0.controller.input_pos = 0 # 控制电机运行到0圈的位置
+
+速度模式
+odrv0.axis0.controller.config.control_mode = CONTROL_MODE_VELOCITY_CONTROL
+odrv0.axis0.controller.config.vel_ramp_rate = 0.5 
+odrv0.axis0.controller.config.input_mode = INPUT_MODE_VEL_RAMP
+odrv0.axis0.controller.input_vel = 1
+
+重启驱动器
+odrv0.reboot()
+
+进入闭环模式
+odrv0.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL
+
+调整设置：
+odrv0.axis0.config.startup_encoder_offset_calibration = True # 设置ODrive上电启动时，自动校准编码器
+odrv0.axis0.config.startup_closed_loop_control = True  # 设置ODrive上电启动时，自动进入闭环模式
+
+odrv0.axis0.requested_state = AXIS_STATE_IDLE  # 释放电机（释放后，电机退出闭环模式，外力可轻松拨动电机）
+odrv0.axis0.requested_state = AXIS_STATE_CLOSED_LOOP_CONTROL  # 配置电机为闭环模式
+
+适用canopen协议的can_node_id具体看官网
+can配置：
+odrv0.can.config.baud_rate  =1000000#当前can波特率 仅支持12500、25000、50000、1000000
+odrv0.can.config.protocol = #can通讯协议
+odrv0.axis0.config.can.node_id = 0x010 - Reserves messages 0x200 through 0x21F
+odrv0.axis1.config.can.node_id = 0x018 - Reserves messages 0x300 through 0x31F
+
+can测试：
+odrv0.can.error
+odrv0.axis0.config.can_node_id = 0x010
+odrv0.can.set_baud_rate(100000)
+207   04#电机校准
+207   07#编码器校准
+207   08#闭环模式
+20B   03  00  00  00  01  00  00  00 00#位置控制输入模式
+20B   03  00  00  00  05  00  00  00 00#梯形轨迹控制模式
+20C#跑至相应位置
+00  00  20  41 00 00 00 00 #十圈
+
+209   10 RTR#返回位置转速数据(前四字节为位置，后四字节为转速)
+217   10 RTR#查询总线电压数据(前四字节为总线电压数据值) 
+
+报错代码：odrv0.axis0.error
+ERROR_NONE = 0x00000000,#无报错
+ERROR_INVALID_STATE  = 0x00000001,
+ERROR_DC_BUS_UNDER_VOLTAGE = 0x00000002,
+ERROR_DC_BUS_OVER_VOLTAGE = 0x00000004,#过压
+ERROR_CURRENT_MEASUREMENT_TIMEOUT = 0x00000008,#电流检测超时
+ERROR_BRAKE_RESISTOR_DISARMED = 0x00000010,
+ERROR_MOTOR_DISARMED  = 0x00000020,
+ERROR_MOTOR_FAILED   = 0x00000040,#电机连接失败
+ERROR_SENSORLESS_ESTIMATOR_FAILED = 0x00000080,
+ERROR_ENCODER_FAILED  = 0x00000100,#编码器连接失败
+ERROR_CONTROLLER_FAILED  = 0x00000200,#控制器连接失败
+ERROR_POS_CTRL_DURING_SENSORLESS = 0x00000400,
+ERROR_WATCHDOG_TIMER_EXPIRED = 0x00000800,
+ERROR_MIN_ENDSTOP_PRESSED= 0x00001000,
+ERROR_MAX_ENDSTOP_PRESSED = 0x00002000,
+ERROR_ESTOP_REQUESTED  = 0x00004000,
+ERROR_HOMING_WITHOUT_ENDSTOP= 0x00020000,
+ERROR_OVER_TEMP  = 0x00040000,#过温
+
+电机错误代码：odrv0.axis0.motor.error
+ERROR_NONE = 0x00000000,
+ERROR_PHASE_RESISTANCE_OUT_OF_RANGE = 0x00000001,
+ERROR_PHASE_INDUCTANCE_OUT_OF_RANGE = 0x00000002,
+ERROR_ADC_FAILED  = 0x00000004,
+ERROR_DRV_FAULT      = 0x00000008,
+ERROR_CONTROL_DEADLINE_MISSED  = 0x00000010,
+ERROR_NOT_IMPLEMENTED_MOTOR_TYPE = 0x00000020,
+ERROR_BRAKE_CURRENT_OUT_OF_RANGE = 0x00000040,
+ERROR_MODULATION_MAGNITUDE   = 0x00000080,
+ERROR_BRAKE_DEADTIME_VIOLATION  = 0x00000100,
+ERROR_UNEXPECTED_TIMER_CALLBACK = 0x00000200,
+ERROR_CURRENT_SENSE_SATURATION  = 0x00000400,
+ERROR_CURRENT_LIMIT_VIOLATION = 0x00001000,
+ERROR_BRAKE_DUTY_CYCLE_NAN  = 0x00002000,
+ERROR_DC_BUS_OVER_REGEN_CURRENT  = 0x00004000,
+ERROR_DC_BUS_OVER_CURRENT = 0x00008000,
+
+原文链接：
+当前状态：
+AXIS_STATE_UNDEFINED   = 0,
+AXIS_STATE_IDLE = 1,
+AXIS_STATE_STARTUP_SEQUENCE      = 2,
+AXIS_STATE_FULL_CALIBRATION_SEQUENCE = 3,
+AXIS_STATE_MOTOR_CALIBRATION = 4,
+AXIS_STATE_SENSORLESS_CONTROL= 5,#无感控制
+AXIS_STATE_ENCODER_INDEX_SEARCH = 6,
+AXIS_STATE_ENCODER_OFFSET_CALIBRATION = 7,
+AXIS_STATE_CLOSED_LOOP_CONTROL = 8,#闭环控制
+AXIS_STATE_LOCKIN_SPIN = 9,
+AXIS_STATE_ENCODER_DIR_FIND = 10,
+AXIS_STATE_HOMING = 11,
+
+odrv0.axis0.config.can_node_id(s32)#axis0 的 can 通讯端点 ID
+odrv0.axis0.config.can_node_id_extended(bool)#can通讯是否为扩展帧
+
+odrv0.axis0.motor.current_control.p_gain#电流PI环的P值，自动计算生成
+odrv0.axis0.motor.current_control.i_gain #电流PI环的 I 值
+
+电机的指令
+odrv0.axis0.motor.config.motor_type #电机类型
+	MOTOR_TYPE_HIGH_CURRENT          = 0,
+	MOTOR_TYPE_GIMBAL                = 2,
+	MOTOR_TYPE_ACIM                  = 3,
+odrv0.axis0.motor.config.direction(s32)    #0无效，1和编码器方向相同，-1和编码器相反，无感要手动设置 
+odrv0.axis0.motor.config.current_lim(float) #电机最大运行电流
+odrv0.axis0.motor.config.torque_lim (float) #电机输出最大扭矩
+
+can通讯：
+CANsimple
+The node ID can be from 0 to 63 (0x3F)
+can_id= Upper 6 bits - Node ID - max 0x3F (or 0xFFFFFF when using extended CAN IDs) |Lower 5 bits - Command ID - max 0x1F
+can_id = axis_id << 5 | cmd_id
+cmd_id:
+0x001       Axis Error(0)(s32)   Axis Current State(4)(u8)   Controller Status(7)(u8)
+0x003       Get Motor Error (0)   
+0x004	 Get Encoder Error(s32)(0)
+0x005	 Get Sensorless Error(s32)(0)
+0x007        Set Axis Requested State
+0x009        Get Encoder Estimates:  encoder pos(0)   encoder vel(4)
+0x00B	 Set Controller Modes:     control mode(s32)(0)     input mode(s32)(0)
+0x00C       Set Input Pos:    input pos(0)(s32)        vel FF(4)(u16)     torque FF(6)(u16)
+0x00D      Set Input Vel:    Input Vel(0)(s32) 	      Torque FF(4)(s32)
+0x00E	Set Input Torque:       Input Torque(0)(s32)	
+0x00F	Set Limits:     Velocity Limit(0)(S32)	Current Limit(4)(s32)
+0x014	Get IQ:	Iq Setpoint(0)(s32)		Iq Measured(4)(s32)
+0x016       reboot Odrive 
+0x018       clear errors
+0x01A      Set Position Gain:	Pos Gain(0)(s32)
+0x01B	Set Vel Gains:	Vel Gain(0)	Vel Integrator Gain(4)
+
+ENCODER_MODE_INCREMENTAL                 = 0，增量式
+ENCODER_MODE_HALL                        = 1，
+ENCODER_MODE_SINCOS                      = 2
+ENCODER_MODE_SPI_ABS_CUI                 = 256
+ENCODER_MODE_SPI_ABS_AMS                 = 257
+ENCODER_MODE_SPI_ABS_AEAT                = 258
+
+

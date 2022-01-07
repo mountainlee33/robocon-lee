@@ -1,0 +1,10 @@
+..\obj\beep.o: USER\src\beep.c
+..\obj\beep.o: .\USER\inc\beep.h
+..\obj\beep.o: .\SYSTEM\sys\sys.h
+..\obj\beep.o: .\SYSTEM\sys\stm32f4xx.h
+..\obj\beep.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cm4.h
+..\obj\beep.o: D:\Keil\ARM\ARMCC\Bin\..\include\stdint.h
+..\obj\beep.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmInstr.h
+..\obj\beep.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmFunc.h
+..\obj\beep.o: D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Include\core_cmSimd.h
+..\obj\beep.o: .\SYSTEM\sys\system_stm32f4xx.h

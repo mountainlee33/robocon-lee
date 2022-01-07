@@ -1,8 +1,12 @@
 --cpu Cortex-M4.fp
 "..\obj\startup_stm32f40_41xxx.o"
 "..\obj\test.o"
-"..\obj\delay.o"
+"..\obj\led.o"
+"..\obj\beep.o"
+"..\obj\uart.o"
+"..\obj\can1.o"
 "..\obj\sys.o"
+"..\obj\delay.o"
 "D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib"
 --strict --scatter "..\OBJ\test.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols

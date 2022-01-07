@@ -1,0 +1,10 @@
+--cpu Cortex-M4.fp
+"..\obj\startup_stm32f40_41xxx.o"
+"..\obj\test.o"
+"..\obj\delay.o"
+"..\obj\sys.o"
+"D:\Keil\ARM\PACK\ARM\CMSIS\4.2.0\CMSIS\Lib\ARM\arm_cortexM4lf_math.lib"
+--strict --scatter "..\OBJ\test.sct"
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "..\OBJ\test.map" -o ..\OBJ\test.axf
