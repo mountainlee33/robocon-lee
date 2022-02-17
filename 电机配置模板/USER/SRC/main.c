@@ -12,7 +12,7 @@ int main(void)
 {
 	SystemInit();
 	NVIC_SetPriorityGrouping(NVIC_PriorityGroup_3);
-	TIM2_Int_Init(11999, 6);
+	TIM2_Init();
 	TIM5_Init();
 	CAN1_Mode_Init();
 	CAN2_Mode_Init();
@@ -126,16 +126,8 @@ static void Task_DataScope(void *pdata)
 {
 	while (1)
 	{
-		DataScope_Get_Channel_Data(motor[0].valueReal.velocity, 1);
-		DataScope_Get_Channel_Data(motor[0].valueReal.current, 2);
-		DataScope_Get_Channel_Data(motor[0].valueReal.angle, 3);
-		DataScope_Get_Channel_Data(4.0, 4); //将数据   写入通道 4
-		DataScope_Get_Channel_Data(5.0, 5); //将数据   写入通道 5
-		DataScope_Get_Channel_Data(6.0, 6); //将数据   写入通道 6
-		DataScope_Get_Channel_Data(7.0, 7); //将数据   写入通道 7
-		DataScope_Get_Channel_Data(8.0, 8); //将数据   写入通道 8
-		DataScope_Get_Channel_Data(9.0, 9); //将数据   写入通道 9
-		DataScope_Get_Channel_Data(10, 10); //将数据   写入通道 10
+		VS4Channal_Send(AKmotor[3].valReal.torque, AKmotor[3].valReal.speed,0,0);
+
 		OSTimeDly(100);
 	}
 }

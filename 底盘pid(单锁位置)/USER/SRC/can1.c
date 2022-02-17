@@ -143,7 +143,7 @@ void CAN1_RX0_IRQHandler(void)
       if (rx_message.Data[0] == 'M' && rx_message.Data[1] == 'O')
       {
 				rx_message.DLC = 0x04;
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < 3; i++)
         {
           VESCmotor[i].enable = rx_message.Data[4] & 0x01;
           if (VESCmotor[i].enable != 0)
@@ -153,14 +153,14 @@ void CAN1_RX0_IRQHandler(void)
       }
       if (rx_message.Data[0] == 'S' && rx_message.Data[1] == 'T')
       {
-        for (i = 0; i < 4; i++)
-        {
-          VESCmotor[i].mode = position;
 					if(stop_flag == 0)
 					{
+					for (i = 0; i < 3; i++)
+					{
+          VESCmotor[i].mode = position;
 					pos=VESCmotor[i].ValReal.angle;
 					VESCmotor[i].ValSet.angle = pos;
-					VESC_position_mode_pos(i);
+					VESC_Set_Pos(i+1,VESCmotor[i].ValSet.angle,0);
 					stop_flag = 1;
 					}
         }
@@ -168,9 +168,9 @@ void CAN1_RX0_IRQHandler(void)
       }
       if (rx_message.Data[0] == 'B' && rx_message.Data[1] == 'G')
       {
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < 3; i++)
         {
-          VESCmotor[i].mode = 2;
+          VESCmotor[i].mode =  2;
           VESCmotor[i].begin = 1;
         }
 				stop_flag = 0;
@@ -179,7 +179,7 @@ void CAN1_RX0_IRQHandler(void)
       if (rx_message.Data[0] == 'P' && rx_message.Data[1] == 'X')
       {
         motorid = motorid + 0x001;
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < 3; i++)
         {
           Ecodeint32Data_to_4byte(&VESCmotor[i].ValReal.position, &buf[0]);
           answer_query(&rx_message, motorid,buf);
@@ -188,7 +188,7 @@ void CAN1_RX0_IRQHandler(void)
       if (rx_message.Data[0] == 'V' && rx_message.Data[1] == 'X')
       {
         motorid = motorid + 0x002;
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < 3; i++)
         {
           Ecodeint32Data_to_4byte(&VESCmotor[i].ValReal.speed, &buf[0]);
           answer_query(&rx_message, motorid,buf);
@@ -197,7 +197,7 @@ void CAN1_RX0_IRQHandler(void)
       if (rx_message.Data[0] == 'I' && rx_message.Data[1] == 'Q')//查询电流
       {
         motorid = motorid + 0x003;
-        for (i = 0; i < 4; i++)
+        for (i = 0; i < 3; i++)
         {
           EcodeFloatData_to_4byte(&VESCmotor[i].ValSet.current, &buf[0]);
           answer_query(&rx_message, motorid,buf);
@@ -245,6 +245,11 @@ void CAN1_RX0_IRQHandler(void)
         motor[motorid-0x05].enable = rx_message.Data[4];
         answer_drivemotor(&rx_message, motorid);
       }
+			if(rx_message.Data[0] == 'Z' && rx_message.Data[1] == 'J')
+			{
+				motorid = rx_message.StdId - 0x300;
+				answer_drivemotor(&rx_message,motorid);
+			}
     }
 
     if (rx_message.StdId == 0x320)
@@ -252,7 +257,7 @@ void CAN1_RX0_IRQHandler(void)
       motorid = rx_message.StdId - 0x320;
       if (rx_message.Data[0] == 'M' && rx_message.Data[1] == 'O')
       {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
           motor[i].enable = rx_message.Data[5];
           if (motor[i].enable == 0)
@@ -260,9 +265,16 @@ void CAN1_RX0_IRQHandler(void)
         }
         answer_drivemotor(&rx_message, motorid);
       }
+			else if (rx_message.Data[0] == 'Z' && rx_message.Data[1] == 'E')//尋靈
+			{
+				for(int i = 0; i < 3; i++)
+				{
+					//motor[i].mode = zero;
+				}
+			}
       else if (rx_message.Data[0] == 'S' && rx_message.Data[1] == 'P') //位置模式下的速度限制
       {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
           get_s32_from_buffer(&rx_message.Data[4], &speed);
           motor[i].limit.posSPlimit = speed;
@@ -275,12 +287,13 @@ void CAN1_RX0_IRQHandler(void)
       }
       else//转到位置
       {
-				for(int i = 0;i<4;i++)
+				for(int i = 0;i< 3;i++)
 				{
 					DecodeS16Data(&num[i],&rx_message.Data[2*i]);
 				  motor[i].valueSet.angle = num[i]/100;
 					num[i] = 100*motor[i].valueReal.angle;
 				}
+				motorid = rx_message.StdId - 0x300;
         answer_turn(&rx_message, motorid,num);
       }
     }

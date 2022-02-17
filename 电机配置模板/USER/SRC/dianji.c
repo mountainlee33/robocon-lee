@@ -14,7 +14,7 @@ void Motor_Init(void){
   M3508instrin.CURRENT_LIMIT = 14745; //14745
 
   M2006instrin.LINE = 8192;
-  M2006instrin.RATIO = 36.0f;
+  M2006instrin.RATIO = 1.0f;
   M2006instrin.CURRENT_LIMIT = 9000;  //9000
   M2006instrin.GEARRATIO = 1.0f;//6.117f;    //外参齿数比
 
@@ -42,8 +42,8 @@ void Motor_Init(void){
 	motor[0].valueSet.angle=0;
 	motor[0].valueSet.velocity=0;
 	motor[0].limit=motorlimit;
-	PID_Init(&motor[0].PIDs,3.5, 0.12, 0, 0.4,motor[0].valueSet.velocity);
-	PID_Init(&motor[0].PIDx,5, 0.3, 0.2, 1,motor[0].valueSet.pulse);
+	PID_Init(&motor[0].PIDs,8.0, 0.5, 0, 1,motor[0].valueSet.velocity);
+	PID_Init(&motor[0].PIDx, 1.3, 0.15, 0.0, 1,motor[0].valueSet.pulse);
 
 	/*M2006（2）电机初始化*/
 	motor[1].intrinsic=M2006instrin;

@@ -1,5 +1,5 @@
 #include "can2.h"
-extern DJmotor motor[8];
+extern DJmotor motor[4];
 u32 last_update_time[8] = {0};
 u32 now_update_time[8] = {0};
 u32 err_update_time[8] = {0};
@@ -52,7 +52,7 @@ void CAN2_Mode_Init(void)
 	CAN_InitStructure.CAN_BS1 = CAN_BS1_9tq;	 //时间段1占用8个时间单位
 	CAN_InitStructure.CAN_BS2 = CAN_BS2_4tq;	 //时间段2占用7个时间单位
 	CAN_InitStructure.CAN_Prescaler = 3; //分频系数（Fdiv）
-	CAN_Init(CAN2, &CAN_InitStructure);	 //初始化CAN1
+	CAN_Init(CAN2, &CAN_InitStructure);	 //初始化CAN2
 
 	/* 波特率计算公式: BaudRate = APB1时钟频率/Fdiv/（SJW+BS1+BS2） */
 	/* 42MHz/3/(1+9+4)=1Mhz */
@@ -151,12 +151,18 @@ void CAN2_RX1_IRQHandler(void)
 		if((rx_message.IDE == CAN_ID_EXT) && (rx_message.RTR == CAN_RTR_DATA))
 		{
 			int32_t ind = 0 ;
+			s16 current,angle;
 			u8 id = (rx_message.ExtId & 0x0f) - 1;
 			if((rx_message.ExtId >> 8 ) ==CAN_PACKET_STATUS)
 			{
-				VESCmotor[id].ValReal.speed = get_s32_from_buffer(rx_message.Data, &ind) / VESCmotor[id].instrinsic.POLE_PAIRS;
-				VESCmotor[id].ValReal.current = buffer_16_to_float(rx_message.Data, 1e1, &ind);
-				VESCmotor[id].ValReal.angle = buffer_16_to_float(rx_message.Data, 1e1, &ind);	
+				VESCmotor[id].ValReal.speed=buffer_32_to_float(rx_message.Data,1e0,&ind)/VESCmotor[id].instrinsic.POLE_PAIRS;		//0 1 2 3
+				VESCmotor[id].ValReal.current=buffer_16_to_float(rx_message.Data,1e1,&ind);		// 4 5  得到的电流除以10
+				VESCmotor[id].ValReal.angle=buffer_16_to_float(rx_message.Data,1e1,&ind);
+//				VESCmotor[id].ValReal.speed = get_s32_from_buffer(rx_message.Data, &ind) / VESCmotor[id].instrinsic.POLE_PAIRS;
+//				DecodeS16Data(&current, &rx_message.Data[4]);
+//				VESCmotor[id].ValReal.current = current/1e3;
+//				DecodeS16Data(&angle, &rx_message.Data[6]);
+//				VESCmotor[id].ValReal.angle = angle/1e3 ;
 				//位置计算
 				ChangeData(&rx_message.Data[6],&rx_message.Data[7]);
 				DecodeU16Data(&VESCmotor[id].argum.angleNow,&rx_message.Data[6]);

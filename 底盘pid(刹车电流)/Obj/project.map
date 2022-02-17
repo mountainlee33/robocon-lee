@@ -2537,48 +2537,48 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       104          4          0          0          0        746   beep.o
-      1820         52          0         20          0       3313   can1.o
-      1576         34          0          0         96       2296   can2.o
-       836          4          0          0          0       2015   canctrollist.o
-        68          0          0          0          0       1022   delay.o
-      4556        120          0          8       1832       7802   dianji.o
-       412         32          0          0         64       2402   filter.o
-       172          6          0          0          0        717   led.o
-       152         10         18          0          0       1279   led8.o
-       388         56          0          1       3584     319571   main.o
-       224         20          0          0          0       1977   misc.o
-       264          0          0          0          0       2658   numchange.o
-      2240        216        256         76       7084      15526   os_core.o
-       176         32          0          0          0        316   os_cpu_a.o
-       648         16          0          4          0      38409   os_cpu_c.o
-      2060         42          0          0          0       6904   os_flag.o
-       484         16          0          0          0       3124   os_mem.o
-      1512         30          0          0          0       5529   os_q.o
-      1984         70          0          0          0       7557   os_task.o
-       428         28          0          0          0       1802   os_time.o
-       236         12          0          8        661       4229   param.o
-       416         14          0          0          0       1894   pid.o
-       412         32          0          0      22164       3842   queue.o
-        64         26        392          0      11264        852   startup_stm32f4xx.o
-      2544         38          0          0          0       8128   stm32f4xx_can.o
-       936         32          0          0          0       6449   stm32f4xx_dma.o
-       604         36          0          0          0       4217   stm32f4xx_gpio.o
-        42          0          0          0          0       1183   stm32f4xx_it.o
-      1416         48          0         16          0      11139   stm32f4xx_rcc.o
-      3234         60          0          0          0      22456   stm32f4xx_tim.o
-      1050         26          0          0          0       7928   stm32f4xx_usart.o
-       528         46          0         20          0       1887   system_stm32f4xx.o
-       292         20          0          0          0        840   tim2.o
-       152          8          0          0          0        828   tim3.o
-       716         44          0          1          0       1111   tim5.o
-       720         32          0          1         64       2838   usart1.o
-      3068        116          0          5         32       3338   usart2.o
-      2780         86          0          0          0       9710   utils.o
-      3356        152          0         16       1448       9877   vesc.o
+       104          4          0          0          0        762   beep.o
+      1820         52          0         20          0       3361   can1.o
+      1576         34          0          0         96       2336   can2.o
+       836          4          0          0          0       2047   canctrollist.o
+        68          0          0          0          0       1038   delay.o
+      4556        120          0          8       1832       7870   dianji.o
+       412         32          0          0         64       2454   filter.o
+       172          6          0          0          0        733   led.o
+       152         10         18          0          0       1327   led8.o
+       388         56          0          1       3584     319775   main.o
+       224         20          0          0          0       2005   misc.o
+       264          0          0          0          0       2690   numchange.o
+      2240        216        256         76       7084      15578   os_core.o
+       176         32          0          0          0        328   os_cpu_a.o
+       648         16          0          4          0      38477   os_cpu_c.o
+      2060         42          0          0          0       6928   os_flag.o
+       484         16          0          0          0       3152   os_mem.o
+      1512         30          0          0          0       5557   os_q.o
+      1984         70          0          0          0       7589   os_task.o
+       428         28          0          0          0       1818   os_time.o
+       236         12          0          8        661       4289   param.o
+       416         14          0          0          0       1922   pid.o
+       412         32          0          0      22164       3902   queue.o
+        64         26        392          0      11264        860   startup_stm32f4xx.o
+      2544         38          0          0          0       8156   stm32f4xx_can.o
+       936         32          0          0          0       6481   stm32f4xx_dma.o
+       604         36          0          0          0       4245   stm32f4xx_gpio.o
+        42          0          0          0          0       1195   stm32f4xx_it.o
+      1416         48          0         16          0      11179   stm32f4xx_rcc.o
+      3234         60          0          0          0      22484   stm32f4xx_tim.o
+      1050         26          0          0          0       7956   stm32f4xx_usart.o
+       528         46          0         20          0       1931   system_stm32f4xx.o
+       292         20          0          0          0        856   tim2.o
+       152          8          0          0          0        840   tim3.o
+       716         44          0          1          0       1143   tim5.o
+       720         32          0          1         64       2882   usart1.o
+      3068        116          0          5         32       3386   usart2.o
+      2780         86          0          0          0       9738   utils.o
+      3356        152          0         16       1448       9945   vesc.o
 
     ----------------------------------------------------------------------
-     42676       1616        698        184      48300     527711   Object Totals
+     42676       1616        698        184      48300     529215   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          6          0          0          8          7          0   (incl. Padding)
 
@@ -2713,8 +2713,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     56122       2430       1522        184      48400     523919   Grand Totals
-     56122       2430       1522        184      48400     523919   ELF Image Totals
+     56122       2430       1522        184      48400     525423   Grand Totals
+     56122       2430       1522        184      48400     525423   ELF Image Totals
      56122       2430       1522        184          0          0   ROM Totals
 
 ==============================================================================

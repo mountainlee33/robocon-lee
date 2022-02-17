@@ -1,0 +1,18 @@
+speed:0.0048     0.00020   0.00012(best)
+speed:0.0032     0.00012   0.00010(medium)
+speed:0.0032     0.00020   0.00008
+motor current max:100.91   brake :-100.91
+battery :130   -60
+abs current limit:false
+position:0.01    0    0.00005
+position0.008   0   0.00005
+position:0.012    0.00001    0.00010
+
+
+speed:0.0032   0.0002   0.0001   0.2
+position: 0.018  0.00004  0.00015 0.2  1
+
+speed:0.0025  0.0005   0.0001  0.2
+position: 0.064  0.00003  0.0005  0.3
+              0.016  0.00001  0.0001   0.3  0.05
+position:0.6  0.00015  0.003  0.3 6

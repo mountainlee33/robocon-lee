@@ -1,0 +1,39 @@
+odrv0.reboot()   重启ODrive
+start_liveplotter(lambda:[odrv0.axis1.encoder.vel_estimate,odrv0.axis1.controller.vel_setpoint]) 启动图形界面
+odrv0.axis1.controller.vel_setpoint=100 设置速度为100个脉冲每秒
+odrv0.axis1.controller.vel_setpoint=50
+odrv0.axis1.controller.vel_setpoint=200
+odrv0.axis1.controller.vel_setpoint=1440
+odrv0.axis1.controller.vel_setpoint=14400设置速度为14400个脉冲每秒，即10转/秒，速度达不到设定
+odrv0.axis1.controller.vel_setpoint=0
+odrv0.axis1.motor.config.motor_type=MOTOR_TYPE_HIGH_CURRENT，将电机设定为大功率电机
+odrv0.save_configuration()，保存配置
+odrv0.reboot()，重启，测试闭环速度控制
+odrv0.axis1.controller.vel_setpoint=14400，设置速度为14400个脉冲每秒，即10转/秒，速度已达到设定
+odrv0.axis1.controller.vel_setpoint=0
+odrv0.axis1.controller.vel_setpoint=100设置速度为100个脉冲每秒
+odrv0.axis1.controller.vel_setpoint=200
+odrv0.axis1.controller.vel_setpoint=300
+odrv0.axis1.controller.vel_setpoint=500
+odrv0.axis1.controller.vel_setpoint=50
+odrv0.axis1.controller.vel_setpoint=1440设置速度为1440个脉冲每秒
+odrv0.axis1.controller.vel_setpoint=28800
+odrv0.axis1.controller.vel_setpoint=14400
+odrv0.axis1.controller.vel_setpoint=0 低速时转动不稳定，调整PID参数
+odrv0.axis1.controller.config.vel_gain
+odrv0.axis1.controller.config.vel_integrator_gain
+odrv0.axis1.controller.vel_setpoint=100
+odrv0.axis1.controller.config.vel_integrator_gain=0.1速度环积分增益
+odrv0.axis1.controller.vel_setpoint=50
+odrv0.axis1.controller.config.pos_gain=10
+odrv0.axis1.controller.config.pos_gain=5
+odrv0.axis1.controller.vel_setpoint=100
+odrv0.axis1.controller.vel_setpoint=200
+odrv0.axis1.controller.config.vel_integrator_gain=0.5
+odrv0.axis1.controller.config.vel_integrator_gain=0.2
+odrv0.axis1.controller.config.vel_integrator_gain=0.1
+odrv0.axis1.controller.config.vel_integrator_gain=0.05
+odrv0.axis1.controller.vel_setpoint=50调整后转速稳定平缓
+odrv0.axis1.controller.vel_setpoint=100
+odrv0.axis1.controller.vel_setpoint=1000
+odrv0.axis1.controller.vel_setpoint=10000

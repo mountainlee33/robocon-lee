@@ -304,6 +304,7 @@ void ifVESCtimeout(u16 id)
 			if (VESCmotor[id].argum.timeoutCnt > VESCmotor[id].argum.timeoutTicks)
 			{
 				VESCmotor[id].status.timeout = true;
+				Led8_show(id+1);
 			}
 			else if(VESCmotor[0].status.timeout == 0 && VESCmotor[1].status.timeout == 0 && VESCmotor[2].status.timeout == 0 && VESCmotor[3].status.timeout == 0)
 			{

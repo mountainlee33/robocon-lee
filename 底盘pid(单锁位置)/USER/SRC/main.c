@@ -16,7 +16,7 @@ int main(void)
 	TIM3_Init();
 	TIM5_Init();
 	USART2_Init();
-	Usart1_Init();
+	USART1_Init();
 	Can_SendqueueInit();
 	InitCANControlList(Can2_MesgSentList, CAN_2);
 	param_Init();
@@ -41,6 +41,8 @@ static void Task_Start(void *pdata)
 #ifdef USE_VESC
 	OSTaskCreate(Task_VESC, (void *)0, (OS_STK *)&VESC_TASK_STK[VESC_STK_SIZE - 1], VESC_TASK_PRIO);
 #endif
+	OSTaskCreate(Task_Timeout, (void *)0, (OS_STK *)&TIMEOUT_TASK_STK[TIMEOUT_STK_SIZE - 1], TIMEOUT_TASK_PRIO);
+
 	OSTaskCreate(Task_DataScope, (void *)0, (OS_STK *)&DataSCOPE_TASK_STK[DataSCOPE_STK_SIZE - 1], DataSCOPE_TASK_PRIO);
 
 	OSTaskSuspend(START_TASK_PRIO); //挂起起始任务.
@@ -49,19 +51,46 @@ static void Task_Start(void *pdata)
 
 static void Task_Motor(void *pdata)
 {
-	Beep_Show(3);//上电叫三声
-	Led8_show(1);
+	Beep_Show(2);//上电叫兩声
+	Led8_show(0);
 	while (1)
 	{
 	Led_Show();
 	OSTimeDly(200);
 	}
 }
+
 static void Task_VESC(void *pdata)
+{
+	while(1)
+	{
+	  Can_DeQueue(CAN2, &VESC_Sendqueue);
+		OSTimeDly	(16);
+	}
+}
+static void Task_Timeout(void *pdata)
 {
 	while (1)
 	{
-		OSTimeDly(100); //延时太长，跑位置模式时会一卡一卡
+		for(int i = 0;i<3;i++)
+		{
+			if(motor[i].status.timeout == 1)
+			Led8_show(i+1);
+			OSTimeDly(100);
+			if(VESCmotor[i].status.timeout == 1)
+			{
+			Led8_show(i+4);
+			OSTimeDly(100);
+			}
+			if(motor[0].status.zero == 1 && motor[1].status.zero == 1 && motor[2].status.zero == 1)
+			{
+			Beep_Show(8);
+			motor[0].status.zero = 0;
+			motor[1].status.zero = 0;
+			motor[2].status.zero = 0;
+			}
+		}
+	OSTimeDly(100);
 	}
 }
 

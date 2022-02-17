@@ -28,19 +28,24 @@ __align(8) OS_STK START_TASK_STK[START_STK_SIZE];
 static void Task_Start(void *pdata);
 
 //DJ任务
-#define MOTOR_TASK_PRIO 7
+#define MOTOR_TASK_PRIO 18
 #define MOTOR_STK_SIZE 256
 __align(8) OS_STK MOTOR_TASK_STK[MOTOR_STK_SIZE];
 static void Task_Motor(void *pdata);
 
 //VESC任务
-#define VESC_TASK_PRIO 16
+#define TIMEOUT_TASK_PRIO 7
+#define TIMEOUT_STK_SIZE 256
+__align(8)  OS_STK TIMEOUT_TASK_STK[TIMEOUT_STK_SIZE];
+static void Task_Timeout(void *pdata);
+
+#define VESC_TASK_PRIO 8
 #define VESC_STK_SIZE 256
 __align(8)  OS_STK VESC_TASK_STK[VESC_STK_SIZE];
 static void Task_VESC(void *pdata);
 
 //虚拟示波器
-#define DataSCOPE_TASK_PRIO 18
+#define DataSCOPE_TASK_PRIO 16
 #define DataSCOPE_STK_SIZE 128
 __align(8) OS_STK DataSCOPE_TASK_STK[DataSCOPE_STK_SIZE];
 static void Task_DataScope(void *pdata);

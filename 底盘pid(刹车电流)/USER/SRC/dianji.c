@@ -231,6 +231,7 @@ void ifdjtimeout(u16 id)
 			if (motor[id].argum.timeoutCnt > motor[id].argum.timeoutTicks)
 			{
 				motor[id].status.timeout = 1;
+				Led8_show(id+3);
 			}
 			else if(motor[0].status.timeout == 0 && motor[1].status.timeout == 0 && motor[2].status.timeout == 0 && motor[3].status.timeout == 0)
 			{
